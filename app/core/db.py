@@ -10,7 +10,9 @@ class Base(DeclarativeBase):
     """Parent class for all database models."""
 
 
-engine = create_engine(get_settings().database_url, pool_pre_ping=True)
+engine = create_engine(
+    get_settings().database_url, pool_pre_ping=True, connect_args={"connect_timeout": 3}
+)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
 
