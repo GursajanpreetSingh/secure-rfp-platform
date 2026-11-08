@@ -1,0 +1,125 @@
+# SOURCE OF TRUTH for all synthetic data in this project.
+# Every document, RFP and expected test answer is derived from this file.
+# Meridian Cloud Services is FICTIONAL. Any resemblance to real organizations is coincidental.
+
+as_of_date: 2026-11-08   # "today" for validity checks such as certificate expiry
+
+company:
+  name: Meridian Cloud Services
+  founded: 2016
+  headquarters: Pune, India
+  employees: 240
+  business: SaaS cloud security and compliance platform
+
+certifications:
+  - id: CERT-ISO27001
+    name: ISO/IEC 27001
+    status: active
+    issued: 2024-03-01
+    expires: 2027-02-28
+    document_key: iso27001_certificate
+  - id: CERT-SOC2
+    name: SOC 2 Type II
+    status: active
+    issued: 2025-07-01
+    expires: 2027-06-30
+    document_key: soc2_summary
+  - id: CERT-ISO9001          # TRAP: expired evidence
+    name: ISO 9001
+    status: expired
+    issued: 2021-12-31
+    expires: 2024-12-31
+    document_key: iso9001_certificate_expired
+
+security:
+  encryption_at_rest: AES-256
+  encryption_in_transit: "TLS 1.3"
+  key_rotation_days: 365
+  mfa_required: all_staff            # policy v2 (v1 said admins_only)
+  password_min_length: 14
+  pentest_frequency: annual
+  last_pentest_date: 2025-09-15
+  patch_sla_days:
+    critical: 7
+    high: 30
+  incident_notification_hours: 72
+  data_residency: [India, EU]
+  log_retention_days: 365
+
+continuity:
+  backup_frequency: daily
+  rpo_hours: 4
+  rto_hours: 8
+  dr_test_frequency: annual
+  last_dr_test_date: 2026-03-20
+
+performance:
+  tested_concurrent_users: 5000      # TRAP: RFPs will ask for 10,000 (partial)
+  test_date: 2025-08-10
+  p95_latency_ms: 300
+
+support:
+  hours: "Mon-Fri 09:00-18:00 IST"
+  support_24x7: false                # TRAP: contradicts a 24/7 requirement
+  channels: [email, phone, ticket_portal]
+  uptime_sla_percent: 99.9
+  response_hours:
+    critical: 1
+    high: 4
+    normal: 24
+
+privacy:
+  dpdp_policy: true
+  gdpr_dpa_available: true
+  customer_data_deletion_days: 90
+
+references:
+  - id: REF-001
+    client: Orion Retail Group
+    year: 2023
+    scope: Compliance platform rollout
+    users: 1200
+  - id: REF-002
+    client: Eurolink Logistics
+    year: 2024
+    scope: Audit evidence automation
+    users: 800
+  - id: REF-003
+    client: Bharat Fintech Ltd
+    year: 2025
+    scope: Vendor risk platform
+    users: 2500
+
+subcontractors:                      # CONFIDENTIAL document
+  - name: NimbusHost
+    service: Cloud hosting (India and EU regions)
+  - name: Sentinel Test Labs
+    service: Independent penetration testing
+
+hr:                                  # INTERNAL, enterprise Q&A only (never RFP evidence)
+  annual_leave_days: 24
+  sick_leave_days: 10
+  working_hours_per_week: 40
+
+restricted:                          # RESTRICTED, explicit ACL only
+  fy25_revenue_inr_crore: 142
+  fy25_net_margin_percent: 11
+  strategic_plan_2026:
+    - Launch an EU data-center region in 2027
+    - Acquire a small audit-analytics startup
+  salary_band_engineer_lpa: "12-20"  # HR head only
+
+superseded_facts:                    # TRAP: old documents that must NOT be used as evidence
+  - id: OLD-BROCHURE-2022
+    claim: "Data encrypted at rest with AES-128"
+    superseded_on: 2023-04-01
+    replaced_by: security.encryption_at_rest
+  - id: OLD-POLICY-V1
+    claim: "MFA required for administrators only"
+    superseded_on: 2025-01-15
+    replaced_by: security.mfa_required
+
+not_documented:                      # TRAP: deliberately in NO document (expect insufficient_evidence)
+  - on_premise_deployment
+  - fedramp_authorization
+  - dedicated_onsite_engineer
