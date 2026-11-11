@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     llm_api_key: SecretStr = SecretStr("")
     embedding_model: str = ""
 
+    # Password for the synthetic demo accounts created by scripts/seed_users.py
+    seed_user_password: SecretStr = SecretStr("")
+
     @field_validator("jwt_secret")
     @classmethod
     def jwt_secret_must_be_strong(cls, v: SecretStr) -> SecretStr:

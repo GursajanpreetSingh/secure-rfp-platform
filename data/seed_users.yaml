@@ -1,0 +1,65 @@
+# Synthetic demo accounts for Meridian Cloud Services (fictional).
+# NO passwords here: the password comes from SEED_USER_PASSWORD in the private .env file.
+# Emails use reserved test domains (.test, .example) that can never belong to a real person.
+
+users:
+  - email: ceo@meridian.test
+    full_name: Chief Executive (demo)
+    role: executive
+    department: executive
+    clearance: restricted
+
+  - email: cfo@meridian.test
+    full_name: Chief Financial Officer (demo)
+    role: executive
+    department: finance
+    clearance: restricted
+
+  - email: eng@meridian.test
+    full_name: Platform Engineer (demo)
+    role: employee
+    department: engineering
+    clearance: confidential
+
+  - email: security@meridian.test
+    full_name: Security Engineer (demo)
+    role: employee
+    department: security
+    clearance: confidential
+
+  - email: sales@meridian.test
+    full_name: Sales Manager (demo)
+    role: employee
+    department: sales
+    clearance: internal
+
+  - email: hr.head@meridian.test
+    full_name: Head of HR (demo)
+    role: employee
+    department: hr
+    clearance: confidential
+
+  - email: auditor@meridian.test
+    full_name: Compliance Auditor (demo)
+    role: auditor
+    department: compliance
+    clearance: confidential
+
+  - email: client@client.example
+    full_name: External Client (demo)
+    role: external
+    department: null
+    clearance: public
+
+  - email: admin@meridian.test
+    full_name: System Administrator (demo)
+    role: admin
+    department: it
+    clearance: internal
+
+  - email: former@meridian.test
+    full_name: Former Employee (demo)
+    role: employee
+    department: sales
+    clearance: internal
+    is_active: false
