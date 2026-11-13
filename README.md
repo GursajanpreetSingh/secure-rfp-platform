@@ -4,8 +4,9 @@ A permission-aware, evidence-grounded RAG system that analyses an RFP, finds sup
 company documents the user is authorised to see, drafts cited responses, and lets a human review
 every answer before export.
 
-> Status: Day 1 of 30 complete (foundation). The ingestion, retrieval and RFP workflow are being
-> built next. This README describes what exists today.
+> Status: Day 2 of 30 complete (foundation and security core). Synthetic data generation is in
+> progress; ingestion, retrieval and the RFP workflow come next. This README describes what exists
+> today.
 
 ## Design principles
 
@@ -19,16 +20,19 @@ every answer before export.
 
 ## What exists today
 
-| Area | State |
-|---|---|
-| Database: PostgreSQL 16 + pgvector in Docker | Done |
-| Models and migrations: users, documents, ACLs, chunks (vector + keyword indexes), audit events | Done |
-| Append-only audit log (database triggers) | Done |
-| FastAPI app with `/health` endpoint | Done |
-| Source-of-truth data file (`data/company_facts.yaml`) and its validation tests | Done |
-| CI: lint, migrations from scratch, tests | Done |
-| Authentication and policy function | Next (Day 2) |
-| Document ingestion, secure retrieval, RFP workflow, UI, evaluation | Planned |
+| Area                                                                                           | State       |
+| ---------------------------------------------------------------------------------------------- | ----------- |
+| Database: PostgreSQL 16 + pgvector in Docker                                                   | Done        |
+| Models and migrations: users, documents, ACLs, chunks (vector + keyword indexes), audit events | Done        |
+| Append-only audit log (database triggers)                                                      | Done        |
+| FastAPI app with `/health`, `POST /auth/login` and `GET /auth/me`                              | Done        |
+| Password hashing (Argon2id) and signed access tokens (JWT)                                     | Done        |
+| Policy function: 12 ordered rules, tested against 30,000 random cases                          | Done        |
+| Audit helper and login logging (no secrets, no typed emails)                                   | Done        |
+| Source-of-truth data file (`data/company_facts.yaml`) and demo users                           | Done        |
+| CI: lint, migrations from scratch, tests                                                       | Done        |
+| Synthetic documents (14 files, 20+ pages each) and test RFPs                                   | In progress |
+| Document ingestion, secure retrieval, RFP workflow, UI, evaluation                             | Planned     |
 
 ## Quick start
 
@@ -42,14 +46,17 @@ cd secure-rfp-platform
 uv sync
 cp .env.example .env
 sed -i "s|^JWT_SECRET=.*|JWT_SECRET=$(uv run python -c 'import secrets; print(secrets.token_urlsafe(48))')|" .env
+sed -i "s|^SEED_USER_PASSWORD=.*|SEED_USER_PASSWORD=$(uv run python -c 'import secrets; print(secrets.token_urlsafe(16))')|" .env
 
 docker compose up -d
 uv run alembic upgrade head
+uv run python -m app.auth.seed
 uv run uvicorn app.api.main:app --reload
 ```
 
 Then open http://127.0.0.1:8000/health (expect `{"status":"ok","db":true}`) and
-http://127.0.0.1:8000/docs for the interactive API documentation.
+http://127.0.0.1:8000/docs for the interactive API documentation. The demo accounts are listed in
+`data/seed_users.yaml`; their shared password is the `SEED_USER_PASSWORD` value in your `.env`.
 
 ## Development
 
@@ -65,16 +72,18 @@ Tests marked `integration` need the database container running. Run only the oth
 
 ## Project layout
 
-| Path | Purpose |
-|---|---|
-| `app/core` | Settings and database connection |
-| `app/models` | Database models |
-| `app/api` | FastAPI application |
-| `app/auth`, `app/ingestion`, `app/retrieval`, `app/workflows`, `app/audit`, `app/export` | Reserved for upcoming modules |
-| `migrations` | Alembic database migrations |
-| `data` | Synthetic company facts and, later, generated documents and RFPs |
-| `tests` | Unit, integration and security tests |
-| `docs/decisions` | Architecture decision records |
+| Path                                                            | Purpose                                                                      |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `app/core`                                                      | Settings and database connection                                             |
+| `app/models`                                                    | Database models                                                              |
+| `app/auth`                                                      | Passwords, tokens, login, demo-user seeding, and the policy function         |
+| `app/audit`                                                     | Audit event helper                                                           |
+| `app/api`                                                       | FastAPI application and routes                                               |
+| `app/ingestion`, `app/retrieval`, `app/workflows`, `app/export` | Reserved for upcoming modules                                                |
+| `migrations`                                                    | Alembic database migrations                                                  |
+| `data`                                                          | Synthetic company facts, demo users and, later, generated documents and RFPs |
+| `tests`                                                         | Unit, integration and security tests                                         |
+| `docs`                                                          | Architecture decision records and known limitations                          |
 
 ## Data
 
@@ -86,3 +95,4 @@ requirement, contradicted and undocumented capabilities) so that correctness can
 ## Documentation
 
 - [ADR 001: PostgreSQL with pgvector as the single data store](docs/decisions/001-postgres-pgvector.md)
+- [Known limitations](docs/known-limitations.md)
