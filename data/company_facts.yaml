@@ -2,7 +2,7 @@
 # Every document, RFP and expected test answer is derived from this file.
 # Meridian Cloud Services is FICTIONAL. Any resemblance to real organizations is coincidental.
 
-as_of_date: 2026-11-08   # "today" for validity checks such as certificate expiry
+as_of_date: 2026-11-08 # "today" for validity checks such as certificate expiry
 
 company:
   name: Meridian Cloud Services
@@ -24,7 +24,7 @@ certifications:
     issued: 2025-07-01
     expires: 2027-06-30
     document_key: soc2_summary
-  - id: CERT-ISO9001          # TRAP: expired evidence
+  - id: CERT-ISO9001 # TRAP: expired evidence
     name: ISO 9001
     status: expired
     issued: 2021-12-31
@@ -35,7 +35,7 @@ security:
   encryption_at_rest: AES-256
   encryption_in_transit: "TLS 1.3"
   key_rotation_days: 365
-  mfa_required: all_staff            # policy v2 (v1 said admins_only)
+  mfa_required: all_staff # policy v2 (v1 said admins_only)
   password_min_length: 14
   pentest_frequency: annual
   last_pentest_date: 2025-09-15
@@ -54,13 +54,13 @@ continuity:
   last_dr_test_date: 2026-03-20
 
 performance:
-  tested_concurrent_users: 5000      # TRAP: RFPs will ask for 10,000 (partial)
+  tested_concurrent_users: 5000 # TRAP: RFPs will ask for 10,000 (partial)
   test_date: 2025-08-10
   p95_latency_ms: 300
 
 support:
   hours: "Mon-Fri 09:00-18:00 IST"
-  support_24x7: false                # TRAP: contradicts a 24/7 requirement
+  support_24x7: false # TRAP: contradicts a 24/7 requirement
   channels: [email, phone, ticket_portal]
   uptime_sla_percent: 99.9
   response_hours:
@@ -90,26 +90,26 @@ references:
     scope: Vendor risk platform
     users: 2500
 
-subcontractors:                      # CONFIDENTIAL document
+subcontractors: # CONFIDENTIAL document
   - name: NimbusHost
     service: Cloud hosting (India and EU regions)
   - name: Sentinel Test Labs
     service: Independent penetration testing
 
-hr:                                  # INTERNAL, enterprise Q&A only (never RFP evidence)
+hr: # INTERNAL, enterprise Q&A only (never RFP evidence)
   annual_leave_days: 24
   sick_leave_days: 10
   working_hours_per_week: 40
 
-restricted:                          # RESTRICTED, explicit ACL only
+restricted: # RESTRICTED, explicit ACL only
   fy25_revenue_inr_crore: 142
   fy25_net_margin_percent: 11
   strategic_plan_2026:
     - Launch an EU data-center region in 2027
     - Acquire a small audit-analytics startup
-  salary_band_engineer_lpa: "12-20"  # HR head only
+  salary_band_engineer_lpa: "12-20" # HR head only
 
-superseded_facts:                    # TRAP: old documents that must NOT be used as evidence
+superseded_facts: # TRAP: old documents that must NOT be used as evidence
   - id: OLD-BROCHURE-2022
     claim: "Data encrypted at rest with AES-128"
     superseded_on: 2023-04-01
@@ -119,7 +119,416 @@ superseded_facts:                    # TRAP: old documents that must NOT be used
     superseded_on: 2025-01-15
     replaced_by: security.mfa_required
 
-not_documented:                      # TRAP: deliberately in NO document (expect insufficient_evidence)
+not_documented: # TRAP: deliberately in NO document (expect insufficient_evidence)
   - on_premise_deployment
   - fedramp_authorization
   - dedicated_onsite_engineer
+
+# ---------------------------------------------------------------------------
+# DETAIL SECTIONS for the long-form documents. Same rule as above: facts only.
+# ---------------------------------------------------------------------------
+
+certification_details:
+  CERT-ISO27001:
+    standard: "ISO/IEC 27001:2022"
+    certificate_number: CWC-ISMS-2024-00417
+    certification_body: Calder Wynn Certification Ltd
+    scope: >-
+      Design, development, hosting and support of the Meridian compliance and cloud security
+      platform for customers in India and the European Union.
+    stage1_audit: 2024-01-15
+    stage2_audit: 2024-02-12
+    surveillance_audits: [2025-02-10, 2026-02-09]
+    recertification_audit_planned: 2027-01-18
+    findings:
+      major: 0
+      minor_raised: 6
+      minor_closed: 6
+    annex_a:
+      total_controls: 93
+      applicable_controls: 91
+      themes: { organizational: 37, people: 8, physical: 14, technological: 34 }
+      exclusions:
+        - {
+            control: A.8.30,
+            name: Outsourced development,
+            reason: No software development is outsourced,
+          }
+        - {
+            control: A.7.12,
+            name: Cabling security,
+            reason: All infrastructure is hosted by the data-centre provider,
+          }
+  CERT-ISO9001:
+    standard: "ISO 9001:2015"
+    certificate_number: CWC-QMS-2021-00233
+    certification_body: Calder Wynn Certification Ltd
+    scope: >-
+      Provision of cloud-based compliance software and related customer support services.
+    stage1_audit: 2021-10-18
+    stage2_audit: 2021-11-22
+    surveillance_audits: [2022-11-21, 2023-11-20]
+    findings:
+      major: 0
+      minor_raised: 4
+      minor_closed: 4
+
+performance_test:
+  test_id: PT-2025-08
+  tool: scripted load generator
+  environment:
+    load_generator_nodes: 8
+    application_nodes: 12
+    application_node_size: 8 vCPU and 32 GB memory
+    database: one primary and two read replicas
+    region: India
+  scenarios:
+    [login, dashboard view, evidence search, document upload, report generation]
+  stage_ramp_minutes: 10
+  stage_steady_minutes: 30
+  stages:
+    - {
+        users: 1000,
+        p50_ms: 85,
+        p95_ms: 140,
+        p99_ms: 210,
+        error_percent: 0.01,
+        requests_per_second: 420,
+        app_cpu_percent: 24,
+      }
+    - {
+        users: 2000,
+        p50_ms: 92,
+        p95_ms: 170,
+        p99_ms: 260,
+        error_percent: 0.02,
+        requests_per_second: 830,
+        app_cpu_percent: 38,
+      }
+    - {
+        users: 3000,
+        p50_ms: 105,
+        p95_ms: 210,
+        p99_ms: 330,
+        error_percent: 0.03,
+        requests_per_second: 1230,
+        app_cpu_percent: 52,
+      }
+    - {
+        users: 4000,
+        p50_ms: 124,
+        p95_ms: 255,
+        p99_ms: 420,
+        error_percent: 0.05,
+        requests_per_second: 1610,
+        app_cpu_percent: 63,
+      }
+    - {
+        users: 5000,
+        p50_ms: 150,
+        p95_ms: 300,
+        p99_ms: 520,
+        error_percent: 0.08,
+        requests_per_second: 1980,
+        app_cpu_percent: 74,
+      }
+  acceptance_criteria: { p95_ms_max: 400, error_percent_max: 0.5 }
+  highest_load_tested: 5000
+
+architecture:
+  regions: [India (Mumbai), EU (Frankfurt)]
+  zones: [edge, application, data, management, backup]
+  encryption:
+    at_rest: AES-256
+    mode: GCM
+    in_transit: "TLS 1.3"
+    key_management: envelope encryption with a dedicated key service
+    key_rotation_days: 365
+  components:
+    - {
+        name: Edge load balancer,
+        layer: edge,
+        purpose: Distributes incoming traffic and terminates TLS,
+      }
+    - {
+        name: Web application firewall,
+        layer: edge,
+        purpose: Filters malicious requests before they reach the application,
+      }
+    - {
+        name: Web front end,
+        layer: application,
+        purpose: Serves the browser interface,
+      }
+    - {
+        name: API gateway,
+        layer: application,
+        purpose: Authenticates callers and routes requests to services,
+      }
+    - {
+        name: Identity service,
+        layer: application,
+        purpose: Manages user accounts roles and sign-in,
+      }
+    - {
+        name: Policy engine,
+        layer: application,
+        purpose: Decides which records each user may see,
+      }
+    - {
+        name: Evidence service,
+        layer: application,
+        purpose: Stores and links compliance evidence to controls,
+      }
+    - {
+        name: Report service,
+        layer: application,
+        purpose: Builds audit and compliance reports,
+      }
+    - {
+        name: Notification service,
+        layer: application,
+        purpose: Sends email and in-app notifications,
+      }
+    - {
+        name: Job scheduler,
+        layer: application,
+        purpose: Runs scheduled and background jobs,
+      }
+    - {
+        name: Primary database,
+        layer: data,
+        purpose: Holds customer records and configuration,
+      }
+    - {
+        name: Read replicas,
+        layer: data,
+        purpose: Serve read-heavy queries to reduce load on the primary,
+      }
+    - {
+        name: Object store,
+        layer: data,
+        purpose: Holds uploaded files and generated reports,
+      }
+    - {
+        name: Search index,
+        layer: data,
+        purpose: Supports full-text search across evidence,
+      }
+    - {
+        name: Message queue,
+        layer: data,
+        purpose: Passes work between services reliably,
+      }
+    - {
+        name: Key service,
+        layer: management,
+        purpose: Creates stores and rotates encryption keys,
+      }
+    - {
+        name: Log pipeline,
+        layer: management,
+        purpose: Collects and retains security and application logs,
+      }
+    - {
+        name: Metrics and alerting,
+        layer: management,
+        purpose: Tracks health and raises alerts,
+      }
+    - {
+        name: Backup service,
+        layer: backup,
+        purpose: Takes daily backups and verifies restores,
+      }
+
+incident_response:
+  severity_levels:
+    - {
+        level: SEV1,
+        name: Critical,
+        definition: Confirmed data breach or complete loss of service for all customers,
+      }
+    - {
+        level: SEV2,
+        name: High,
+        definition: Major feature unavailable or partial loss of service for many customers,
+      }
+    - {
+        level: SEV3,
+        name: Medium,
+        definition: Degraded performance or a minor feature unavailable,
+      }
+    - {
+        level: SEV4,
+        name: Low,
+        definition: Cosmetic issue or a single-user problem with a workaround,
+      }
+  phases: [detection, triage, containment, eradication, recovery, review]
+  roles: [incident commander, communications lead, technical lead, scribe]
+  dr_test:
+    date: 2026-03-20
+    rto_achieved_hours: 6.5
+    rpo_achieved_hours: 3.0
+    scenario: Loss of the primary data-centre with restore from backup
+
+support_details:
+  response_clock: support hours
+  maintenance_window: "Sunday 02:00-04:00 IST"
+  uptime_measurement_period: calendar month
+  service_credits:
+    - { below_percent: 99.9, credit_percent: 5 }
+    - { below_percent: 99.0, credit_percent: 10 }
+    - { below_percent: 95.0, credit_percent: 25 }
+  escalation_levels:
+    - { level: L1, name: Support analyst }
+    - { level: L2, name: Support engineer }
+    - { level: L3, name: Platform engineering }
+    - { level: L4, name: Head of support }
+  severity_examples_count: 40
+
+reference_details:
+  REF-001:
+    industry: Retail
+    duration_months: 9
+    modules: [evidence management, audit workflows]
+    outcome: Audit preparation time reduced by 40 percent
+  REF-002:
+    industry: Logistics
+    duration_months: 6
+    modules: [evidence management, control testing]
+    outcome: Evidence collection automated for 120 controls
+  REF-003:
+    industry: Financial technology
+    duration_months: 12
+    modules: [vendor risk, evidence management]
+    outcome: Vendor onboarding time reduced from 21 days to 9 days
+
+old_documents:
+  brochure_2022:
+    title: Meridian Platform Product Guide 2022
+    published: 2022-03-01
+    superseded_on: 2023-04-01
+    claims:
+      encryption_at_rest: AES-128
+      uptime_sla_percent: 99.5
+      hosting_regions: [India]
+  security_policy_v1:
+    version: 1
+    effective: 2022-06-01
+    superseded_on: 2025-01-15
+    claims:
+      mfa_required: admins_only
+      password_min_length: 10
+      log_retention_days: 180
+  draft_support_proposal:
+    title: Support Expansion Proposal
+    status: draft
+    proposed_start: 2027-04-01
+    claims: [24/7 support for all severities from 2027-04-01]
+    additional_analysts: 12
+
+policy_register:
+  information_security_policy:
+    current_version: 2
+    current_effective: 2025-01-15
+    document_number: MCS-POL-001
+    owner: Chief Information Security Officer
+    review_cycle_months: 12
+
+fy25_detail:
+  revenue_segments_inr_crore:
+    { subscriptions: 96, professional_services: 31, support_contracts: 15 }
+  fy24_revenue_inr_crore: 114.5
+  revenue_growth_percent: 24
+  customers: 118
+  cash_inr_crore: 38
+
+hr_policy:
+  probation_months: 6
+  notice_period_days: 60
+  remote_days_per_week: 2
+  maternity_leave_weeks: 26
+  paternity_leave_days: 10
+  public_holidays_per_year: 12
+
+salary_bands:
+  unit: LPA (lakh rupees per year)
+  bands:
+    - {
+        family: engineering,
+        level: E1,
+        title: Associate Engineer,
+        min: 6,
+        max: 10,
+      }
+    - { family: engineering, level: E2, title: Engineer, min: 12, max: 20 }
+    - {
+        family: engineering,
+        level: E3,
+        title: Senior Engineer,
+        min: 20,
+        max: 32,
+      }
+    - {
+        family: engineering,
+        level: E4,
+        title: Staff Engineer,
+        min: 32,
+        max: 48,
+      }
+    - { family: security, level: S1, title: Security Analyst, min: 7, max: 11 }
+    - {
+        family: security,
+        level: S2,
+        title: Security Engineer,
+        min: 12,
+        max: 20,
+      }
+    - {
+        family: security,
+        level: S3,
+        title: Senior Security Engineer,
+        min: 20,
+        max: 32,
+      }
+    - {
+        family: security,
+        level: S4,
+        title: Security Architect,
+        min: 32,
+        max: 50,
+      }
+    - { family: sales, level: A1, title: Sales Executive, min: 5, max: 8 }
+    - { family: sales, level: A2, title: Account Manager, min: 9, max: 15 }
+    - {
+        family: sales,
+        level: A3,
+        title: Senior Account Manager,
+        min: 15,
+        max: 26,
+      }
+    - { family: sales, level: A4, title: Sales Director, min: 28, max: 45 }
+    - { family: support, level: U1, title: Support Analyst, min: 4, max: 7 }
+    - { family: support, level: U2, title: Support Engineer, min: 8, max: 13 }
+    - {
+        family: support,
+        level: U3,
+        title: Senior Support Engineer,
+        min: 13,
+        max: 20,
+      }
+    - { family: support, level: U4, title: Support Manager, min: 20, max: 32 }
+    - { family: hr, level: H1, title: HR Associate, min: 4, max: 7 }
+    - { family: hr, level: H2, title: HR Business Partner, min: 9, max: 15 }
+    - { family: hr, level: H3, title: Senior HR Partner, min: 15, max: 25 }
+    - { family: hr, level: H4, title: Head of HR, min: 30, max: 45 }
+    - { family: finance, level: F1, title: Finance Analyst, min: 5, max: 8 }
+    - { family: finance, level: F2, title: Finance Manager, min: 10, max: 18 }
+    - {
+        family: finance,
+        level: F3,
+        title: Senior Finance Manager,
+        min: 18,
+        max: 30,
+      }
+    - { family: finance, level: F4, title: Head of Finance, min: 32, max: 50 }
