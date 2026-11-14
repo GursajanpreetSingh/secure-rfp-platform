@@ -1,0 +1,297 @@
+# Metadata and access rules for the 14 synthetic documents.
+# The generator reads this to know what to build; ingestion later reads it to set permissions.
+# Every dotted path under `facts` must resolve inside company_facts.yaml.
+
+minimum_pages: 20
+
+documents:
+  - id: DOC-001
+    title: Information Security Policy
+    logical_key: information_security_policy
+    version: 2
+    filename: DOC-001_information_security_policy_v2.pdf
+    format: pdf
+    target_pages: 22
+    document_type: policy
+    department: security
+    classification: internal
+    allowed_roles: [employee, executive, auditor]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: active
+    document_date: 2025-01-10
+    effective_date: 2025-01-15
+    facts:
+      - security.mfa_required
+      - security.password_min_length
+      - security.encryption_at_rest
+      - security.encryption_in_transit
+      - security.key_rotation_days
+      - security.patch_sla_days.critical
+      - security.patch_sla_days.high
+      - security.log_retention_days
+      - security.pentest_frequency
+      - policy_register.information_security_policy.current_version
+
+  - id: DOC-002
+    title: ISO/IEC 27001 Certification Package
+    logical_key: iso27001_certification_package
+    version: 1
+    filename: DOC-002_iso27001_certification_package.pdf
+    format: pdf
+    target_pages: 20
+    document_type: certificate_package
+    department: compliance
+    classification: public
+    allowed_roles: [admin, auditor, employee, executive, external]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: active
+    document_date: 2024-03-01
+    valid_until: 2027-02-28
+    facts:
+      - certification_details.CERT-ISO27001.certificate_number
+      - certification_details.CERT-ISO27001.stage2_audit
+      - certification_details.CERT-ISO27001.annex_a.total_controls
+
+  - id: DOC-003
+    title: Security Architecture
+    logical_key: security_architecture
+    version: 1
+    filename: DOC-003_security_architecture.pdf
+    format: pdf
+    target_pages: 28
+    document_type: architecture
+    department: engineering
+    classification: confidential
+    allowed_roles: [employee, executive]
+    allowed_purposes: [rfp]
+    status: active
+    document_date: 2026-02-01
+    facts:
+      - architecture.encryption.at_rest
+      - architecture.encryption.in_transit
+      - architecture.regions
+      - architecture.components
+      - security.data_residency
+
+  - id: DOC-004
+    title: Performance Test Report
+    logical_key: performance_test_report
+    version: 1
+    filename: DOC-004_performance_test_report.pdf
+    format: pdf
+    target_pages: 24
+    document_type: test_report
+    department: engineering
+    classification: confidential
+    allowed_roles: [employee, executive]
+    allowed_purposes: [rfp]
+    status: active
+    document_date: 2025-08-31
+    facts:
+      - performance_test.stages
+      - performance_test.highest_load_tested
+      - performance.tested_concurrent_users
+      - performance.test_date
+
+  - id: DOC-005
+    title: Support Policy and Service Level Agreement
+    logical_key: support_policy_and_sla
+    version: 1
+    filename: DOC-005_support_policy_and_sla.pdf
+    format: pdf
+    target_pages: 20
+    document_type: sla
+    department: support
+    classification: public
+    allowed_roles: [admin, auditor, employee, executive, external]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: active
+    document_date: 2025-04-01
+    facts:
+      - support.hours
+      - support.uptime_sla_percent
+      - support.response_hours.critical
+      - support_details.service_credits
+
+  - id: DOC-006
+    title: Business Continuity, Disaster Recovery and Incident Response Plan
+    logical_key: continuity_dr_incident_response_plan
+    version: 1
+    filename: DOC-006_continuity_dr_incident_response_plan.docx
+    format: docx
+    target_pages: 28
+    document_type: plan
+    department: operations
+    classification: internal
+    allowed_roles: [employee, executive, auditor]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: active
+    document_date: 2026-04-15
+    facts:
+      - continuity.rpo_hours
+      - continuity.rto_hours
+      - security.incident_notification_hours
+      - incident_response.dr_test.date
+      - incident_response.severity_levels
+
+  - id: DOC-007
+    title: Customer Case Studies
+    logical_key: customer_case_studies
+    version: 1
+    filename: DOC-007_customer_case_studies.pdf
+    format: pdf
+    target_pages: 22
+    document_type: case_studies
+    department: sales
+    classification: public
+    allowed_roles: [admin, auditor, employee, executive, external]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: active
+    document_date: 2025-10-01
+    facts:
+      - references
+      - reference_details.REF-001.outcome
+      - reference_details.REF-002.outcome
+      - reference_details.REF-003.outcome
+
+  - id: DOC-008
+    title: Information Security Policy
+    logical_key: information_security_policy
+    version: 1
+    filename: DOC-008_information_security_policy_v1.pdf
+    format: pdf
+    target_pages: 20
+    document_type: policy
+    department: security
+    classification: internal
+    allowed_roles: [employee, executive, auditor]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: superseded
+    document_date: 2022-05-20
+    effective_date: 2022-06-01
+    superseded_on: 2025-01-15
+    facts:
+      - old_documents.security_policy_v1.claims.mfa_required
+      - old_documents.security_policy_v1.claims.password_min_length
+      - old_documents.security_policy_v1.claims.log_retention_days
+      - old_documents.security_policy_v1.superseded_on
+
+  - id: DOC-009
+    title: ISO 9001 Certification Package
+    logical_key: iso9001_certification_package
+    version: 1
+    filename: DOC-009_iso9001_certification_package.pdf
+    format: pdf
+    target_pages: 20
+    document_type: certificate_package
+    department: compliance
+    classification: public
+    allowed_roles: [admin, auditor, employee, executive, external]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: active
+    document_date: 2021-12-31
+    valid_until: 2024-12-31
+    facts:
+      - certification_details.CERT-ISO9001.certificate_number
+      - certification_details.CERT-ISO9001.stage2_audit
+
+  - id: DOC-010
+    title: Meridian Platform Product Guide 2022
+    logical_key: product_guide_2022
+    version: 1
+    filename: DOC-010_product_guide_2022.pdf
+    format: pdf
+    target_pages: 20
+    document_type: brochure
+    department: sales
+    classification: public
+    allowed_roles: [admin, auditor, employee, executive, external]
+    allowed_purposes: [rfp, enterprise_qa]
+    status: superseded
+    document_date: 2022-03-01
+    superseded_on: 2023-04-01
+    facts:
+      - old_documents.brochure_2022.claims.encryption_at_rest
+      - old_documents.brochure_2022.claims.uptime_sla_percent
+      - old_documents.brochure_2022.claims.hosting_regions
+
+  - id: DOC-011
+    title: Support Expansion Proposal (Draft)
+    logical_key: support_expansion_proposal
+    version: 1
+    filename: DOC-011_draft_support_expansion_proposal.docx
+    format: docx
+    target_pages: 20
+    document_type: proposal
+    department: support
+    classification: internal
+    allowed_roles: [employee, executive]
+    allowed_purposes: [rfp]
+    status: draft
+    document_date: 2026-09-10
+    facts:
+      - old_documents.draft_support_proposal.proposed_start
+      - old_documents.draft_support_proposal.additional_analysts
+
+  - id: DOC-012
+    title: Employee Handbook and Leave Policy
+    logical_key: employee_handbook
+    version: 1
+    filename: DOC-012_employee_handbook_and_leave_policy.docx
+    format: docx
+    target_pages: 30
+    document_type: handbook
+    department: hr
+    classification: internal
+    allowed_roles: [employee, executive]
+    allowed_purposes: [enterprise_qa]
+    status: active
+    document_date: 2025-06-01
+    facts:
+      - hr.annual_leave_days
+      - hr.sick_leave_days
+      - hr.working_hours_per_week
+      - hr_policy.probation_months
+      - hr_policy.notice_period_days
+
+  - id: DOC-013
+    title: FY25 Financial Summary and Strategic Outlook
+    logical_key: fy25_financial_summary
+    version: 1
+    filename: DOC-013_fy25_financial_summary.pdf
+    format: pdf
+    target_pages: 20
+    document_type: financial_report
+    department: finance
+    classification: restricted
+    allowed_roles: [executive]
+    allowed_purposes: [enterprise_qa]
+    status: active
+    document_date: 2025-07-15
+    acl:
+      - { effect: allow, subject_type: user, subject: cfo@meridian.test }
+    facts:
+      - restricted.fy25_revenue_inr_crore
+      - restricted.fy25_net_margin_percent
+      - restricted.strategic_plan_2026
+      - fy25_detail.revenue_segments_inr_crore
+
+  - id: DOC-014
+    title: Salary Bands FY26
+    logical_key: salary_bands_fy26
+    version: 1
+    filename: DOC-014_salary_bands_fy26.txt
+    format: txt
+    target_pages: 20
+    document_type: compensation
+    department: hr
+    classification: restricted
+    allowed_roles: [employee]
+    allowed_purposes: []
+    status: active
+    document_date: 2025-04-01
+    acl:
+      - { effect: allow, subject_type: user, subject: hr.head@meridian.test }
+    facts:
+      - salary_bands.bands
+      - restricted.salary_band_engineer_lpa
