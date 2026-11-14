@@ -1,8 +1,8 @@
-from app.datagen.txt_writer import render_txt, write_txt
 from docx import Document as WordDocument
 
 from app.datagen import model as m
 from app.datagen.docx_writer import write_docx
+from app.datagen.txt_writer import render_txt, write_txt
 
 
 def _doc() -> m.Document:
