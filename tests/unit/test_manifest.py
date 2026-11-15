@@ -8,7 +8,7 @@ import yaml
 
 from app.auth.policy import decide
 from app.auth.policy_types import Decision, Reason, Subject
-from app.datagen.manifest import load_manifest, to_resource
+from app.corpus.manifest import load_manifest, to_resource
 from app.models.enums import AclEffect, Classification, DocStatus, Purpose, Role, SubjectType
 
 ROOT = Path(__file__).resolve().parents[2]

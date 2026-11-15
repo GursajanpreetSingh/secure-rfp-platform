@@ -57,3 +57,18 @@ def test_doc001_states_the_operational_requirements_from_the_facts():
     assert "within 30 days" in text
     assert "retained for 365 days" in text
     assert "on an annual basis" in text
+
+
+def test_doc001_mentions_every_fact_listed_in_the_manifest():
+    facts = load_facts()
+    text = " ".join(prose_units(_doc()))
+    for path in _entry().facts:
+        value = str(facts.get(path)).replace("_", " ")
+        assert value in text, path
+
+
+def test_doc001_is_complete_and_reaches_the_minimum_length(tmp_path):
+    titles = [s.title for s in _doc().sections]
+    assert titles[-1] == "Appendix B. Related documents"
+    assert "19. Incident management" in titles
+    assert "within 72 hours" in " ".join(prose_units(_doc()))
