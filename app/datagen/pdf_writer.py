@@ -14,6 +14,7 @@ from reportlab.lib.units import mm
 from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
+    KeepTogether,
     NextPageTemplate,
     PageTemplate,
     Spacer,
@@ -73,6 +74,8 @@ H = {
         spaceAfter=4,
     ),
 }
+for _style in H.values():
+    _style.keepWithNext = 1  # a heading never sits alone at the bottom of a page
 COVER_TITLE = ParagraphStyle(
     "CoverTitle",
     parent=BODY,
@@ -133,12 +136,21 @@ class _DocTemplate(BaseDocTemplate):
             self.notify("TOCEntry", (flowable.toc_level, flowable.toc_text, self.page))
 
 
+def _column_widths(block: m.Table, width: float) -> list[float]:
+    """Give wider columns to columns with longer text, within sensible limits."""
+    weights = []
+    for i, head in enumerate(block.headers):
+        lengths = [len(str(head))] + [len(str(row[i])) for row in block.rows]
+        weights.append(min(60, max(12, sum(lengths) / len(lengths))))
+    total = sum(weights)
+    return [width * w / total for w in weights]
+
+
 def _table(block: m.Table, width: float) -> list:
-    ncols = len(block.headers)
     data = [[RLParagraph(escape(str(h)), CELL_HEAD) for h in block.headers]]
     for row in block.rows:
         data.append([RLParagraph(escape(str(c)), CELL) for c in row])
-    table = RLTable(data, colWidths=[width / ncols] * ncols, repeatRows=1)
+    table = RLTable(data, colWidths=_column_widths(block, width), repeatRows=1)
     style = [
         ("BACKGROUND", (0, 0), (-1, 0), ACCENT),
         ("GRID", (0, 0), (-1, -1), 0.4, GRID),
@@ -153,6 +165,8 @@ def _table(block: m.Table, width: float) -> list:
     if block.caption:
         parts.append(RLParagraph(escape(block.caption), CAPTION))
     parts.append(Spacer(1, 8))
+    if len(block.rows) <= 14:  # keep a short table and its caption on one page
+        return [KeepTogether(parts)]
     return parts
 
 
