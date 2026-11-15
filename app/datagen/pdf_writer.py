@@ -137,11 +137,13 @@ class _DocTemplate(BaseDocTemplate):
 
 
 def _column_widths(block: m.Table, width: float) -> list[float]:
-    """Give wider columns to columns with longer text, within sensible limits."""
+    """Give wider columns to columns with longer text, never narrower than the longest word."""
     weights = []
     for i, head in enumerate(block.headers):
-        lengths = [len(str(head))] + [len(str(row[i])) for row in block.rows]
-        weights.append(min(60, max(12, sum(lengths) / len(lengths))))
+        cells = [str(head)] + [str(row[i]) for row in block.rows]
+        average = sum(len(c) for c in cells) / len(cells)
+        longest_word = max(len(word) for c in cells for word in c.split() or [""])
+        weights.append(min(60, max(12, average, longest_word * 1.5)))
     total = sum(weights)
     return [width * w / total for w in weights]
 

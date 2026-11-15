@@ -39,3 +39,13 @@ def test_doc001_states_the_facts_it_is_built_from():
     assert "from 10 to 14 characters" in text
     assert "from 180 to 365 days" in text
     assert "15 January 2025" in text
+
+
+def test_doc001_states_the_security_requirements_from_the_facts():
+    text = " ".join(prose_units(_doc()))
+    assert "AES-256 in GCM mode" in text
+    assert "TLS 1.3" in text
+    assert "rotated at least every 365 days" in text
+    assert "at least 14 characters" in text
+    assert "required for all staff" in text
+    assert "within 90 days" in text
