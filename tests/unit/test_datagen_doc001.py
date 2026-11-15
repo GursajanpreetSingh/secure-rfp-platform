@@ -49,3 +49,11 @@ def test_doc001_states_the_security_requirements_from_the_facts():
     assert "at least 14 characters" in text
     assert "required for all staff" in text
     assert "within 90 days" in text
+
+
+def test_doc001_states_the_operational_requirements_from_the_facts():
+    text = " ".join(prose_units(_doc()))
+    assert "within 7 days" in text
+    assert "within 30 days" in text
+    assert "retained for 365 days" in text
+    assert "on an annual basis" in text
