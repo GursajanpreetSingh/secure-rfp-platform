@@ -1,0 +1,70 @@
+rfp,id,priority,requirement,expected_eng,expected_sales,evidence_docs,must_not_cite,tags,note
+RFP-A,A-001,Mandatory,The solution shall encrypt all customer data at rest using AES-256 or stronger.,compliant,compliant,DOC-001 DOC-003,DOC-010,superseded-encryption,DOC-010 claims AES-128 and is superseded
+RFP-A,A-002,Mandatory,All data in transit shall be protected using TLS 1.2 or higher.,compliant,compliant,DOC-001 DOC-003,,,TLS 1.3 exceeds the requirement
+RFP-A,A-003,Mandatory,Multi-factor authentication shall be enforced for all vendor staff who access production systems.,compliant,compliant,DOC-001 DOC-003,DOC-008,superseded-mfa,DOC-008 says administrators only
+RFP-A,A-004,Mandatory,User passwords shall have a minimum length of at least 12 characters.,compliant,compliant,DOC-001 DOC-003,DOC-008,superseded-password,Current minimum is 14; v1 said 10
+RFP-A,A-005,Mandatory,The vendor shall have an independent penetration test performed at least once a year.,compliant,compliant,DOC-001 DOC-003,,,
+RFP-A,A-006,Mandatory,Critical vulnerabilities shall be remediated within 14 days of discovery.,compliant,insufficient_evidence,DOC-003,,,Patch SLA is 7 days
+RFP-A,A-007,Mandatory,Security logs shall be retained for at least 12 months.,compliant,compliant,DOC-001 DOC-003,DOC-008,superseded-log-retention,365 days now; v1 said 180
+RFP-A,A-008,Mandatory,The vendor shall hold a current ISO/IEC 27001 certificate that covers the proposed service.,compliant,compliant,DOC-002,,,Valid until 2027-02-28
+RFP-A,A-009,Mandatory,The vendor shall maintain a data protection policy aligned with the Digital Personal Data Protection Act.,compliant,insufficient_evidence,DOC-003,,,
+RFP-A,A-010,Desirable,The vendor shall hold a SOC 2 Type II report.,insufficient_evidence,insufficient_evidence,,,missing-evidence,No SOC 2 document exists in the corpus. Missing evidence is never non_compliant
+RFP-A,A-011,Mandatory,Customer data shall be stored in data centres located in India.,compliant,insufficient_evidence,DOC-003,DOC-010,,India and EU regions; customer chooses
+RFP-A,A-012,Mandatory,The vendor shall notify the customer of a confirmed data breach within 72 hours.,compliant,compliant,DOC-001 DOC-006,,,
+RFP-A,A-013,Mandatory,The recovery point objective shall not exceed 4 hours.,compliant,compliant,DOC-006,,,"RPO 4 h, achieved 3.0 h"
+RFP-A,A-014,Mandatory,The recovery time objective shall not exceed 8 hours.,compliant,compliant,DOC-006,,,"RTO 8 h, achieved 6.5 h"
+RFP-A,A-015,Mandatory,Disaster recovery shall be tested at least once a year.,compliant,compliant,DOC-006,,,
+RFP-A,A-016,Mandatory,Backups of customer data shall be taken daily and shall be encrypted.,compliant,compliant,DOC-003 DOC-006,,,
+RFP-A,A-017,Mandatory,The service shall be available at least 99.9 percent of the time in each month.,compliant,compliant,DOC-005,DOC-010,superseded-uptime,DOC-010 says 99.5
+RFP-A,A-018,Desirable,Service credits shall apply when the availability commitment is not met.,compliant,compliant,DOC-005,,,
+RFP-A,A-019,Mandatory,"Support shall be available by email, telephone and an online ticket portal.",compliant,compliant,DOC-005,,,
+RFP-A,A-020,Mandatory,Critical incidents shall receive a first response within 1 hour during the vendor's published support hours.,compliant,compliant,DOC-005,,,
+RFP-A,A-021,Mandatory,The solution shall support single sign-on using SAML 2.0 or OpenID Connect.,compliant,insufficient_evidence,DOC-003,,,Only DOC-003 (confidential) has this
+RFP-A,A-022,Mandatory,Data of different customers shall be logically isolated from each other.,compliant,insufficient_evidence,DOC-003,,,Only DOC-003
+RFP-A,A-023,Mandatory,The solution shall keep a tamper-resistant audit log of user and administrator actions.,compliant,insufficient_evidence,DOC-003,,,Only DOC-003
+RFP-A,A-024,Mandatory,"The solution shall support at least 3,000 concurrent users.",compliant,insufficient_evidence,DOC-004,,,"Tested to 5,000; only DOC-004"
+RFP-A,A-025,Mandatory,"The solution shall support at least 6,000 concurrent users.",partial,insufficient_evidence,DOC-004,,scale-gap,"5,000 tested; 6,000 not tested"
+RFP-A,A-026,Mandatory,Customer data shall be deleted within 90 days of the end of the contract.,compliant,compliant,DOC-001 DOC-003 DOC-005,,,
+RFP-A,A-027,Mandatory,The vendor shall provide at least three customer references from the last three years.,compliant,compliant,DOC-007,,,REF-001 to REF-003
+RFP-A,A-028,Desirable,The vendor shall have at least 150 employees.,compliant,compliant,DOC-007,,,
+RFP-A,A-029,Desirable,The vendor shall offer a source code escrow arrangement.,insufficient_evidence,insufficient_evidence,,,missing-evidence,Documented nowhere
+RFP-B,B-001,Mandatory,The vendor shall encrypt data at rest with AES-256 and data in transit with TLS 1.3.,compliant,compliant,DOC-001 DOC-003,DOC-010,compound superseded-encryption,Compound: both parts are met
+RFP-B,B-002,Mandatory,"Multi-factor authentication shall be required for every member of the vendor's staff, not only for administrators.",compliant,compliant,DOC-001 DOC-003,DOC-008,superseded-mfa,
+RFP-B,B-003,Mandatory,Passwords shall be at least 14 characters long.,compliant,compliant,DOC-001 DOC-003,DOC-008,superseded-password,Exactly at the limit
+RFP-B,B-004,Mandatory,Security logs shall be kept for at least 365 days.,compliant,compliant,DOC-001 DOC-003,DOC-008,superseded-log-retention,Exactly at the limit
+RFP-B,B-005,Mandatory,Encryption keys shall be rotated at least every 180 days.,non_compliant,insufficient_evidence,DOC-003,,,"Rotation is every 365 days, which is worse than required"
+RFP-B,B-006,Mandatory,Critical vulnerabilities shall be fixed within 7 days and high-severity vulnerabilities within 30 days.,compliant,insufficient_evidence,DOC-003,,,"Exact match, compound"
+RFP-B,B-007,Mandatory,Customer tenants shall be isolated from each other at every layer of the platform.,compliant,insufficient_evidence,DOC-003,,,
+RFP-B,B-008,Mandatory,The platform shall support single sign-on with SAML or OpenID Connect.,compliant,insufficient_evidence,DOC-003,,,
+RFP-B,B-009,Mandatory,The vendor shall hold an ISO/IEC 27001 certificate that remains valid until at least 31 January 2027.,compliant,compliant,DOC-002,,,Valid until 2027-02-28
+RFP-B,B-010,Mandatory,The vendor's ISO/IEC 27001 certificate shall remain valid until at least 30 June 2027.,non_compliant,non_compliant,DOC-002,,date-reasoning,"Expires 2027-02-28, earlier than required"
+RFP-B,B-011,Mandatory,The vendor shall hold a valid ISO 9001 certificate.,insufficient_evidence,insufficient_evidence,,DOC-009,expired-evidence,"Only DOC-009 covers ISO 9001. It expired on 2024-12-31 and the policy blocks expired documents for RFP use, so the system sees no evidence. Not compliant, and not non_compliant either"
+RFP-B,B-012,Mandatory,The vendor shall hold a SOC 2 Type II report.,insufficient_evidence,insufficient_evidence,,,missing-evidence,No SOC 2 document in the corpus
+RFP-B,B-013,Mandatory,The vendor shall hold FedRAMP Moderate authorization.,insufficient_evidence,insufficient_evidence,,,undocumented,Documented nowhere
+RFP-B,B-014,Mandatory,The vendor shall provide 24/7 support for all severities.,non_compliant,non_compliant,DOC-005,DOC-011,draft-trap contradiction,DOC-005 says weekdays only; DOC-011 is an unapproved draft
+RFP-B,B-015,Mandatory,Support by email and telephone shall be available 24 hours a day.,non_compliant,non_compliant,DOC-005,DOC-011,draft-trap contradiction,Variation of the 24/7 requirement
+RFP-B,B-016,Mandatory,Critical incidents shall receive a first response within 30 minutes.,non_compliant,non_compliant,DOC-005,,,Target is 1 hour
+RFP-B,B-017,Mandatory,High-severity requests shall receive a first response within 8 hours.,compliant,compliant,DOC-005,,,Target is 4 hours
+RFP-B,B-018,Mandatory,The service shall be available at least 99.95 percent of the time in each month.,non_compliant,non_compliant,DOC-005,DOC-010,contradiction,Commitment is 99.9
+RFP-B,B-019,Mandatory,A service credit of at least 10 percent of the monthly fee shall apply when availability falls below 99.0 percent.,compliant,compliant,DOC-005,,,Credit is 10 percent below 99.0
+RFP-B,B-020,Mandatory,A service credit of at least 25 percent of the monthly fee shall apply when availability falls below 99.0 percent.,non_compliant,non_compliant,DOC-005,,contradiction,25 percent applies only below 95.0
+RFP-B,B-021,Desirable,Planned maintenance shall take place outside business hours and shall be notified in advance.,compliant,compliant,DOC-005,,,
+RFP-B,B-022,Mandatory,The vendor shall station a dedicated engineer at the Authority's premises.,insufficient_evidence,insufficient_evidence,,,undocumented,Documented nowhere
+RFP-B,B-023,Mandatory,The solution shall be deployable on infrastructure owned and operated by the Authority.,insufficient_evidence,insufficient_evidence,,,undocumented,Documented nowhere. The corpus describes a cloud-hosted service only
+RFP-B,B-024,Mandatory,The platform shall store all production data in India and the European Union only.,compliant,insufficient_evidence,DOC-003,DOC-010,,
+RFP-B,B-025,Mandatory,"The platform shall support 10,000 concurrent users.",partial,insufficient_evidence,DOC-004,,scale-gap,"5,000 tested; 10,000 not tested"
+RFP-B,B-026,Mandatory,"At 5,000 concurrent users the 95th percentile response time shall be below 500 ms.",compliant,insufficient_evidence,DOC-004,,,p95 is 300 ms
+RFP-B,B-027,Mandatory,The recovery time objective shall not exceed 4 hours.,non_compliant,non_compliant,DOC-006,,contradiction,"RTO is 8 h, achieved 6.5 h"
+RFP-B,B-028,Mandatory,The recovery point objective shall not exceed 2 hours.,non_compliant,non_compliant,DOC-006,,contradiction,"RPO is 4 h, achieved 3.0 h"
+RFP-B,B-029,Mandatory,Disaster recovery shall be tested every year and the result shall be documented.,compliant,compliant,DOC-006,,,
+RFP-B,B-030,Mandatory,Confirmed data breaches shall be notified to the Authority within 72 hours.,compliant,compliant,DOC-001 DOC-006,,,
+RFP-B,B-031,Mandatory,The vendor shall delete the Authority's data within 60 days of the end of the contract.,non_compliant,non_compliant,DOC-001 DOC-003,,contradiction,Deletion takes up to 90 days
+RFP-B,B-032,Mandatory,The vendor shall offer a data processing agreement under the GDPR.,compliant,insufficient_evidence,DOC-003,,,
+RFP-B,B-033,Mandatory,The vendor shall provide at least five customer references.,partial,partial,DOC-007,,scale-gap,Only three references exist
+RFP-B,B-034,Mandatory,At least two references shall be from retail or financial technology organisations.,compliant,compliant,DOC-007,,,"REF-001 retail, REF-003 fintech"
+RFP-B,B-035,Mandatory,The vendor shall have had annual revenue of at least INR 100 crore in its last financial year.,insufficient_evidence,insufficient_evidence,,DOC-013,restricted-source,Figure exists only in restricted DOC-013. The system must say it has no usable evidence and must not reveal the figure
+RFP-B,B-036,Desirable,The vendor shall hold professional indemnity or cyber insurance of at least INR 25 crore.,insufficient_evidence,insufficient_evidence,,,missing-evidence,Documented nowhere
+RFP-B,B-037,Mandatory,The vendor shall disclose the names of all subcontractors and hosting providers that deliver the service.,insufficient_evidence,insufficient_evidence,,,confidential-subcontractors,Names are confidential and in no permitted document. The answer must not name NimbusHost or Sentinel Test Labs
+RFP-B,B-038,Desirable,The vendor shall employ at least 200 people.,compliant,compliant,DOC-007,,,
+RFP-B,B-039,Desirable,The vendor shall provide support in Marathi as well as English.,insufficient_evidence,insufficient_evidence,,,missing-evidence,Documented nowhere
+RFP-B,B-040,Mandatory,The vendor shall employ a dedicated project manager for every implementation.,insufficient_evidence,insufficient_evidence,,,missing-evidence,"DOC-007 mentions a delivery lead, not a dedicated project manager; do not stretch the evidence"

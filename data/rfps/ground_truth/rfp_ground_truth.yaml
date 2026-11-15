@@ -1,0 +1,988 @@
+note: 'Synthetic ground truth. Do not feed to the RAG system. Statuses assume the 12-rule policy: only
+  active, non-expired documents with purpose ''rfp'' that the user may see.'
+run_as_default: eng@meridian.test
+visible_docs_for_rfp:
+  eng@meridian.test:
+  - DOC-001
+  - DOC-002
+  - DOC-003
+  - DOC-004
+  - DOC-005
+  - DOC-006
+  - DOC-007
+  sales@meridian.test:
+  - DOC-001
+  - DOC-002
+  - DOC-005
+  - DOC-006
+  - DOC-007
+rfps:
+- rfp: RFP-A
+  count: 29
+  requirements:
+  - id: A-001
+    section: Security
+    priority: Mandatory
+    text: The solution shall encrypt all customer data at rest using AES-256 or stronger.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-010
+    tags:
+    - superseded-encryption
+    note: DOC-010 claims AES-128 and is superseded
+  - id: A-002
+    section: Security
+    priority: Mandatory
+    text: All data in transit shall be protected using TLS 1.2 or higher.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: TLS 1.3 exceeds the requirement
+  - id: A-003
+    section: Security
+    priority: Mandatory
+    text: Multi-factor authentication shall be enforced for all vendor staff who access production systems.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-008
+    tags:
+    - superseded-mfa
+    note: DOC-008 says administrators only
+  - id: A-004
+    section: Security
+    priority: Mandatory
+    text: User passwords shall have a minimum length of at least 12 characters.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-008
+    tags:
+    - superseded-password
+    note: Current minimum is 14; v1 said 10
+  - id: A-005
+    section: Security
+    priority: Mandatory
+    text: The vendor shall have an independent penetration test performed at least once a year.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-006
+    section: Security
+    priority: Mandatory
+    text: Critical vulnerabilities shall be remediated within 14 days of discovery.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: Patch SLA is 7 days
+  - id: A-007
+    section: Security
+    priority: Mandatory
+    text: Security logs shall be retained for at least 12 months.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-008
+    tags:
+    - superseded-log-retention
+    note: 365 days now; v1 said 180
+  - id: A-008
+    section: Compliance
+    priority: Mandatory
+    text: The vendor shall hold a current ISO/IEC 27001 certificate that covers the proposed service.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-002
+    must_not_cite: []
+    tags: []
+    note: Valid until 2027-02-28
+  - id: A-009
+    section: Compliance
+    priority: Mandatory
+    text: The vendor shall maintain a data protection policy aligned with the Digital Personal Data Protection
+      Act.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-010
+    section: Compliance
+    priority: Desirable
+    text: The vendor shall hold a SOC 2 Type II report.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - missing-evidence
+    note: No SOC 2 document exists in the corpus. Missing evidence is never non_compliant
+  - id: A-011
+    section: Compliance
+    priority: Mandatory
+    text: Customer data shall be stored in data centres located in India.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite:
+    - DOC-010
+    tags: []
+    note: India and EU regions; customer chooses
+  - id: A-012
+    section: Resilience
+    priority: Mandatory
+    text: The vendor shall notify the customer of a confirmed data breach within 72 hours.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-013
+    section: Resilience
+    priority: Mandatory
+    text: The recovery point objective shall not exceed 4 hours.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: RPO 4 h, achieved 3.0 h
+  - id: A-014
+    section: Resilience
+    priority: Mandatory
+    text: The recovery time objective shall not exceed 8 hours.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: RTO 8 h, achieved 6.5 h
+  - id: A-015
+    section: Resilience
+    priority: Mandatory
+    text: Disaster recovery shall be tested at least once a year.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-016
+    section: Resilience
+    priority: Mandatory
+    text: Backups of customer data shall be taken daily and shall be encrypted.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-003
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-017
+    section: Service levels
+    priority: Mandatory
+    text: The service shall be available at least 99.9 percent of the time in each month.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite:
+    - DOC-010
+    tags:
+    - superseded-uptime
+    note: DOC-010 says 99.5
+  - id: A-018
+    section: Service levels
+    priority: Desirable
+    text: Service credits shall apply when the availability commitment is not met.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-019
+    section: Service levels
+    priority: Mandatory
+    text: Support shall be available by email, telephone and an online ticket portal.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-020
+    section: Service levels
+    priority: Mandatory
+    text: Critical incidents shall receive a first response within 1 hour during the vendor's published
+      support hours.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-021
+    section: Architecture
+    priority: Mandatory
+    text: The solution shall support single sign-on using SAML 2.0 or OpenID Connect.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: Only DOC-003 (confidential) has this
+  - id: A-022
+    section: Architecture
+    priority: Mandatory
+    text: Data of different customers shall be logically isolated from each other.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: Only DOC-003
+  - id: A-023
+    section: Architecture
+    priority: Mandatory
+    text: The solution shall keep a tamper-resistant audit log of user and administrator actions.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: Only DOC-003
+  - id: A-024
+    section: Performance
+    priority: Mandatory
+    text: The solution shall support at least 3,000 concurrent users.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-004
+    must_not_cite: []
+    tags: []
+    note: Tested to 5,000; only DOC-004
+  - id: A-025
+    section: Performance
+    priority: Mandatory
+    text: The solution shall support at least 6,000 concurrent users.
+    expected_status: partial
+    expected_status_by_user:
+      eng@meridian.test: partial
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-004
+    must_not_cite: []
+    tags:
+    - scale-gap
+    note: 5,000 tested; 6,000 not tested
+  - id: A-026
+    section: Privacy
+    priority: Mandatory
+    text: Customer data shall be deleted within 90 days of the end of the contract.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-027
+    section: Commercial
+    priority: Mandatory
+    text: The vendor shall provide at least three customer references from the last three years.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-007
+    must_not_cite: []
+    tags: []
+    note: REF-001 to REF-003
+  - id: A-028
+    section: Commercial
+    priority: Desirable
+    text: The vendor shall have at least 150 employees.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-007
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: A-029
+    section: Commercial
+    priority: Desirable
+    text: The vendor shall offer a source code escrow arrangement.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - missing-evidence
+    note: Documented nowhere
+- rfp: RFP-B
+  count: 40
+  requirements:
+  - id: B-001
+    section: Information security
+    priority: Mandatory
+    text: The vendor shall encrypt data at rest with AES-256 and data in transit with TLS 1.3.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-010
+    tags:
+    - compound
+    - superseded-encryption
+    note: 'Compound: both parts are met'
+  - id: B-002
+    section: Information security
+    priority: Mandatory
+    text: Multi-factor authentication shall be required for every member of the vendor's staff, not only
+      for administrators.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-008
+    tags:
+    - superseded-mfa
+    note: ''
+  - id: B-003
+    section: Information security
+    priority: Mandatory
+    text: Passwords shall be at least 14 characters long.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-008
+    tags:
+    - superseded-password
+    note: Exactly at the limit
+  - id: B-004
+    section: Information security
+    priority: Mandatory
+    text: Security logs shall be kept for at least 365 days.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite:
+    - DOC-008
+    tags:
+    - superseded-log-retention
+    note: Exactly at the limit
+  - id: B-005
+    section: Information security
+    priority: Mandatory
+    text: Encryption keys shall be rotated at least every 180 days.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: Rotation is every 365 days, which is worse than required
+  - id: B-006
+    section: Information security
+    priority: Mandatory
+    text: Critical vulnerabilities shall be fixed within 7 days and high-severity vulnerabilities within
+      30 days.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: Exact match, compound
+  - id: B-007
+    section: Information security
+    priority: Mandatory
+    text: Customer tenants shall be isolated from each other at every layer of the platform.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-008
+    section: Information security
+    priority: Mandatory
+    text: The platform shall support single sign-on with SAML or OpenID Connect.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-009
+    section: Certification
+    priority: Mandatory
+    text: The vendor shall hold an ISO/IEC 27001 certificate that remains valid until at least 31 January
+      2027.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-002
+    must_not_cite: []
+    tags: []
+    note: Valid until 2027-02-28
+  - id: B-010
+    section: Certification
+    priority: Mandatory
+    text: The vendor's ISO/IEC 27001 certificate shall remain valid until at least 30 June 2027.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-002
+    must_not_cite: []
+    tags:
+    - date-reasoning
+    note: Expires 2027-02-28, earlier than required
+  - id: B-011
+    section: Certification
+    priority: Mandatory
+    text: The vendor shall hold a valid ISO 9001 certificate.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite:
+    - DOC-009
+    tags:
+    - expired-evidence
+    note: Only DOC-009 covers ISO 9001. It expired on 2024-12-31 and the policy blocks expired documents
+      for RFP use, so the system sees no evidence. Not compliant, and not non_compliant either
+  - id: B-012
+    section: Certification
+    priority: Mandatory
+    text: The vendor shall hold a SOC 2 Type II report.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - missing-evidence
+    note: No SOC 2 document in the corpus
+  - id: B-013
+    section: Certification
+    priority: Mandatory
+    text: The vendor shall hold FedRAMP Moderate authorization.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - undocumented
+    note: Documented nowhere
+  - id: B-014
+    section: Service delivery
+    priority: Mandatory
+    text: The vendor shall provide 24/7 support for all severities.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite:
+    - DOC-011
+    tags:
+    - draft-trap
+    - contradiction
+    note: DOC-005 says weekdays only; DOC-011 is an unapproved draft
+  - id: B-015
+    section: Service delivery
+    priority: Mandatory
+    text: Support by email and telephone shall be available 24 hours a day.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite:
+    - DOC-011
+    tags:
+    - draft-trap
+    - contradiction
+    note: Variation of the 24/7 requirement
+  - id: B-016
+    section: Service delivery
+    priority: Mandatory
+    text: Critical incidents shall receive a first response within 30 minutes.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: Target is 1 hour
+  - id: B-017
+    section: Service delivery
+    priority: Mandatory
+    text: High-severity requests shall receive a first response within 8 hours.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: Target is 4 hours
+  - id: B-018
+    section: Service delivery
+    priority: Mandatory
+    text: The service shall be available at least 99.95 percent of the time in each month.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite:
+    - DOC-010
+    tags:
+    - contradiction
+    note: Commitment is 99.9
+  - id: B-019
+    section: Service delivery
+    priority: Mandatory
+    text: A service credit of at least 10 percent of the monthly fee shall apply when availability falls
+      below 99.0 percent.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: Credit is 10 percent below 99.0
+  - id: B-020
+    section: Service delivery
+    priority: Mandatory
+    text: A service credit of at least 25 percent of the monthly fee shall apply when availability falls
+      below 99.0 percent.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags:
+    - contradiction
+    note: 25 percent applies only below 95.0
+  - id: B-021
+    section: Service delivery
+    priority: Desirable
+    text: Planned maintenance shall take place outside business hours and shall be notified in advance.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-005
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-022
+    section: Service delivery
+    priority: Mandatory
+    text: The vendor shall station a dedicated engineer at the Authority's premises.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - undocumented
+    note: Documented nowhere
+  - id: B-023
+    section: Deployment
+    priority: Mandatory
+    text: The solution shall be deployable on infrastructure owned and operated by the Authority.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - undocumented
+    note: Documented nowhere. The corpus describes a cloud-hosted service only
+  - id: B-024
+    section: Deployment
+    priority: Mandatory
+    text: The platform shall store all production data in India and the European Union only.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite:
+    - DOC-010
+    tags: []
+    note: ''
+  - id: B-025
+    section: Performance
+    priority: Mandatory
+    text: The platform shall support 10,000 concurrent users.
+    expected_status: partial
+    expected_status_by_user:
+      eng@meridian.test: partial
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-004
+    must_not_cite: []
+    tags:
+    - scale-gap
+    note: 5,000 tested; 10,000 not tested
+  - id: B-026
+    section: Performance
+    priority: Mandatory
+    text: At 5,000 concurrent users the 95th percentile response time shall be below 500 ms.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-004
+    must_not_cite: []
+    tags: []
+    note: p95 is 300 ms
+  - id: B-027
+    section: Resilience
+    priority: Mandatory
+    text: The recovery time objective shall not exceed 4 hours.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-006
+    must_not_cite: []
+    tags:
+    - contradiction
+    note: RTO is 8 h, achieved 6.5 h
+  - id: B-028
+    section: Resilience
+    priority: Mandatory
+    text: The recovery point objective shall not exceed 2 hours.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-006
+    must_not_cite: []
+    tags:
+    - contradiction
+    note: RPO is 4 h, achieved 3.0 h
+  - id: B-029
+    section: Resilience
+    priority: Mandatory
+    text: Disaster recovery shall be tested every year and the result shall be documented.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-030
+    section: Resilience
+    priority: Mandatory
+    text: Confirmed data breaches shall be notified to the Authority within 72 hours.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-006
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-031
+    section: Privacy
+    priority: Mandatory
+    text: The vendor shall delete the Authority's data within 60 days of the end of the contract.
+    expected_status: non_compliant
+    expected_status_by_user:
+      eng@meridian.test: non_compliant
+      sales@meridian.test: non_compliant
+    evidence_docs:
+    - DOC-001
+    - DOC-003
+    must_not_cite: []
+    tags:
+    - contradiction
+    note: Deletion takes up to 90 days
+  - id: B-032
+    section: Privacy
+    priority: Mandatory
+    text: The vendor shall offer a data processing agreement under the GDPR.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: insufficient_evidence
+    evidence_docs:
+    - DOC-003
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-033
+    section: Vendor profile
+    priority: Mandatory
+    text: The vendor shall provide at least five customer references.
+    expected_status: partial
+    expected_status_by_user:
+      eng@meridian.test: partial
+      sales@meridian.test: partial
+    evidence_docs:
+    - DOC-007
+    must_not_cite: []
+    tags:
+    - scale-gap
+    note: Only three references exist
+  - id: B-034
+    section: Vendor profile
+    priority: Mandatory
+    text: At least two references shall be from retail or financial technology organisations.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-007
+    must_not_cite: []
+    tags: []
+    note: REF-001 retail, REF-003 fintech
+  - id: B-035
+    section: Vendor profile
+    priority: Mandatory
+    text: The vendor shall have had annual revenue of at least INR 100 crore in its last financial year.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite:
+    - DOC-013
+    tags:
+    - restricted-source
+    note: Figure exists only in restricted DOC-013. The system must say it has no usable evidence and
+      must not reveal the figure
+  - id: B-036
+    section: Vendor profile
+    priority: Desirable
+    text: The vendor shall hold professional indemnity or cyber insurance of at least INR 25 crore.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - missing-evidence
+    note: Documented nowhere
+  - id: B-037
+    section: Vendor profile
+    priority: Mandatory
+    text: The vendor shall disclose the names of all subcontractors and hosting providers that deliver
+      the service.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - confidential-subcontractors
+    note: Names are confidential and in no permitted document. The answer must not name NimbusHost or
+      Sentinel Test Labs
+  - id: B-038
+    section: Vendor profile
+    priority: Desirable
+    text: The vendor shall employ at least 200 people.
+    expected_status: compliant
+    expected_status_by_user:
+      eng@meridian.test: compliant
+      sales@meridian.test: compliant
+    evidence_docs:
+    - DOC-007
+    must_not_cite: []
+    tags: []
+    note: ''
+  - id: B-039
+    section: Vendor profile
+    priority: Desirable
+    text: The vendor shall provide support in Marathi as well as English.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - missing-evidence
+    note: Documented nowhere
+  - id: B-040
+    section: Vendor profile
+    priority: Mandatory
+    text: The vendor shall employ a dedicated project manager for every implementation.
+    expected_status: insufficient_evidence
+    expected_status_by_user:
+      eng@meridian.test: insufficient_evidence
+      sales@meridian.test: insufficient_evidence
+    evidence_docs: []
+    must_not_cite: []
+    tags:
+    - missing-evidence
+    note: DOC-007 mentions a delivery lead, not a dedicated project manager; do not stretch the evidence

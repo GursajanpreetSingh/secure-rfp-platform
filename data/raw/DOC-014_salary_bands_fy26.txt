@@ -1,0 +1,1117 @@
+SALARY BANDS FY26
+=================
+Pay ranges by job family and level. Restricted. For the head of HR only.
+
+Document ID: DOC-014
+Version: 1
+Classification: Restricted
+Status: Active
+Owner department: Hr
+Document date: 1 April 2025
+
+1. Purpose of this document
+===========================
+
+This document lists the pay bands for the financial year FY26. Each band gives the lowest and highest annual fixed pay that the company pays for a job at that level. All amounts are in LPA (lakh rupees per year).
+
+The bands are used when making offers, when reviewing pay and when deciding on promotions. They are reviewed once a year by the head of HR and the head of finance and approved by the Chief Executive.
+
+This document is restricted. It must not be copied, forwarded or discussed outside the small group named in the access list. Individual salaries are never published and are not included here.
+
+2. Handling rules
+=================
+
+  - Access is limited to the head of HR and persons named by the head of HR in writing.
+  - The document is stored only in the restricted human resources area.
+  - Printing is not allowed, except by the head of HR for a meeting, and the copy must be shredded afterwards.
+  - Sharing the figures with staff or candidates is not allowed. Offers state a specific amount, not the band.
+  - Any suspected leak must be reported at once to the head of HR and the information security manager.
+  - Every access to this document is recorded in the audit log.
+
+3. How the bands are built
+==========================
+
+The company has six job families: engineering, security, sales, support, human resources and finance. Each family has four levels. A level describes the size of the job, not the person's seniority in years.
+
+Level number | Description                                                
+-------------+------------------------------------------------------------
+1            | Entry level. Learns the work with guidance                 
+2            | Established professional. Works with little guidance       
+3            | Senior professional. Leads work and guides others          
+4            | Principal or head. Sets direction for an area or a function
+(Levels used in all families)
+
+Each band has five reference points: the minimum, the first quartile, the midpoint, the third quartile and the maximum. The midpoint is the market reference for a fully competent person at that level.
+
+4. Summary table of all bands
+=============================
+
+All figures are annual fixed pay in LPA (lakh rupees per year).
+
+Family      | Level | Title                    | Minimum | Maximum
+------------+-------+--------------------------+---------+--------
+Engineering | E1    | Associate Engineer       | 6       | 10     
+Engineering | E2    | Engineer                 | 12      | 20     
+Engineering | E3    | Senior Engineer          | 20      | 32     
+Engineering | E4    | Staff Engineer           | 32      | 48     
+Security    | S1    | Security Analyst         | 7       | 11     
+Security    | S2    | Security Engineer        | 12      | 20     
+Security    | S3    | Senior Security Engineer | 20      | 32     
+Security    | S4    | Security Architect       | 32      | 50     
+Sales       | A1    | Sales Executive          | 5       | 8      
+Sales       | A2    | Account Manager          | 9       | 15     
+Sales       | A3    | Senior Account Manager   | 15      | 26     
+Sales       | A4    | Sales Director           | 28      | 45     
+Support     | U1    | Support Analyst          | 4       | 7      
+Support     | U2    | Support Engineer         | 8       | 13     
+Support     | U3    | Senior Support Engineer  | 13      | 20     
+Support     | U4    | Support Manager          | 20      | 32     
+Hr          | H1    | HR Associate             | 4       | 7      
+Hr          | H2    | HR Business Partner      | 9       | 15     
+Hr          | H3    | Senior HR Partner        | 15      | 25     
+Hr          | H4    | Head of HR               | 30      | 45     
+Finance     | F1    | Finance Analyst          | 5       | 8      
+Finance     | F2    | Finance Manager          | 10      | 18     
+Finance     | F3    | Senior Finance Manager   | 18      | 30     
+Finance     | F4    | Head of Finance          | 32      | 50     
+(All salary bands for FY26)
+
+The same information is shown by family in the sections that follow, with the reference points and the main duties of each level.
+
+5. Bands for the engineering family
+===================================
+
+The engineering family has 4 levels. Across the family, pay runs from 6 at the bottom of E1 to 48 at the top of E4.
+
+5.1. E1: Associate Engineer
+---------------------------
+
+The associate engineer role is the first level of the engineering family. A person at this level works on well-defined tasks under regular guidance and builds the basics of the craft. The family builds and runs the customer platform.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 6                                 
+First quartile  | 7.0                               
+Midpoint        | 8.0                               
+Third quartile  | 9.0                               
+Maximum         | 10                                
+(E1 Associate Engineer pay points)
+
+Typical experience for the associate engineer role is 0 to 2 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a associate engineer:
+
+  - Writes and tests code for small features
+  - Fixes defects found by the team
+  - Learns the release process
+
+Offers for the E1 band normally fall between 6 and 8.0. An offer above 8.0 for a associate engineer needs the approval described in the section on exceptions.
+
+5.2. E2: Engineer
+-----------------
+
+The engineer role is the second level of the engineering family. A person at this level owns tasks from start to finish with light guidance and is trusted with routine decisions. The family builds and runs the customer platform.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 12                                
+First quartile  | 14.0                              
+Midpoint        | 16.0                              
+Third quartile  | 18.0                              
+Maximum         | 20                                
+(E2 Engineer pay points)
+
+Typical experience for the engineer role is 2 to 5 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a engineer:
+
+  - Delivers features end to end
+  - Reviews the code of colleagues
+  - Takes part in the on-call rota
+
+Offers for the E2 band normally fall between 12 and 16.0. An offer above 16.0 for a engineer needs the approval described in the section on exceptions.
+
+5.3. E3: Senior Engineer
+------------------------
+
+The senior engineer role is the third level of the engineering family. A person at this level owns larger pieces of work, guides colleagues and makes decisions that affect a whole team. The family builds and runs the customer platform.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 20                                
+First quartile  | 23.0                              
+Midpoint        | 26.0                              
+Third quartile  | 29.0                              
+Maximum         | 32                                
+(E3 Senior Engineer pay points)
+
+Typical experience for the senior engineer role is 5 to 9 years. The range spread from minimum to maximum is 60 percent.
+
+Main duties of a senior engineer:
+
+  - Designs components and leads small projects
+  - Mentors engineers at lower levels
+  - Improves performance and reliability
+
+Offers for the E3 band normally fall between 20 and 26.0. An offer above 26.0 for a senior engineer needs the approval described in the section on exceptions.
+
+5.4. E4: Staff Engineer
+-----------------------
+
+The staff engineer role is the fourth level of the engineering family. A person at this level sets direction across several teams, takes on the hardest problems and shapes standards for the company. The family builds and runs the customer platform.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 32                                
+First quartile  | 36.0                              
+Midpoint        | 40.0                              
+Third quartile  | 44.0                              
+Maximum         | 48                                
+(E4 Staff Engineer pay points)
+
+Typical experience for the staff engineer role is 9 years or more. The range spread from minimum to maximum is 50 percent.
+
+Main duties of a staff engineer:
+
+  - Sets technical direction for a product area
+  - Reviews designs from several teams
+  - Represents engineering in customer discussions on architecture
+
+Offers for the E4 band normally fall between 32 and 40.0. An offer above 40.0 for a staff engineer needs the approval described in the section on exceptions.
+
+6. Bands for the security family
+================================
+
+The security family has 4 levels. Across the family, pay runs from 7 at the bottom of S1 to 50 at the top of S4.
+
+6.1. S1: Security Analyst
+-------------------------
+
+The security analyst role is the first level of the security family. A person at this level works on well-defined tasks under regular guidance and builds the basics of the craft. The family protects the platform and the information of customers.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 7                                 
+First quartile  | 8.0                               
+Midpoint        | 9.0                               
+Third quartile  | 10.0                              
+Maximum         | 11                                
+(S1 Security Analyst pay points)
+
+Typical experience for the security analyst role is 0 to 2 years. The range spread from minimum to maximum is 57 percent.
+
+Main duties of a security analyst:
+
+  - Monitors alerts and triages events
+  - Prepares evidence for audits
+  - Supports access reviews
+
+Offers for the S1 band normally fall between 7 and 9.0. An offer above 9.0 for a security analyst needs the approval described in the section on exceptions.
+
+6.2. S2: Security Engineer
+--------------------------
+
+The security engineer role is the second level of the security family. A person at this level owns tasks from start to finish with light guidance and is trusted with routine decisions. The family protects the platform and the information of customers.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 12                                
+First quartile  | 14.0                              
+Midpoint        | 16.0                              
+Third quartile  | 18.0                              
+Maximum         | 20                                
+(S2 Security Engineer pay points)
+
+Typical experience for the security engineer role is 2 to 5 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a security engineer:
+
+  - Investigates incidents and recommends fixes
+  - Runs vulnerability scans and tracks fixes
+  - Reviews configuration of systems
+
+Offers for the S2 band normally fall between 12 and 16.0. An offer above 16.0 for a security engineer needs the approval described in the section on exceptions.
+
+6.3. S3: Senior Security Engineer
+---------------------------------
+
+The senior security engineer role is the third level of the security family. A person at this level owns larger pieces of work, guides colleagues and makes decisions that affect a whole team. The family protects the platform and the information of customers.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 20                                
+First quartile  | 23.0                              
+Midpoint        | 26.0                              
+Third quartile  | 29.0                              
+Maximum         | 32                                
+(S3 Senior Security Engineer pay points)
+
+Typical experience for the senior security engineer role is 5 to 9 years. The range spread from minimum to maximum is 60 percent.
+
+Main duties of a senior security engineer:
+
+  - Leads incident response for serious events
+  - Reviews designs for security risks
+  - Coaches engineers on secure practice
+
+Offers for the S3 band normally fall between 20 and 26.0. An offer above 26.0 for a senior security engineer needs the approval described in the section on exceptions.
+
+6.4. S4: Security Architect
+---------------------------
+
+The security architect role is the fourth level of the security family. A person at this level sets direction across several teams, takes on the hardest problems and shapes standards for the company. The family protects the platform and the information of customers.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 32                                
+First quartile  | 36.5                              
+Midpoint        | 41.0                              
+Third quartile  | 45.5                              
+Maximum         | 50                                
+(S4 Security Architect pay points)
+
+Typical experience for the security architect role is 9 years or more. The range spread from minimum to maximum is 56 percent.
+
+Main duties of a security architect:
+
+  - Defines the security architecture
+  - Advises executives on risk
+  - Leads work with certification bodies and large customers
+
+Offers for the S4 band normally fall between 32 and 41.0. An offer above 41.0 for a security architect needs the approval described in the section on exceptions.
+
+7. Bands for the sales family
+=============================
+
+The sales family has 4 levels. Across the family, pay runs from 5 at the bottom of A1 to 45 at the top of A4.
+
+7.1. A1: Sales Executive
+------------------------
+
+The sales executive role is the first level of the sales family. A person at this level works on well-defined tasks under regular guidance and builds the basics of the craft. The family wins and grows customer relationships.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 5                                 
+First quartile  | 5.8                               
+Midpoint        | 6.5                               
+Third quartile  | 7.2                               
+Maximum         | 8                                 
+(A1 Sales Executive pay points)
+
+Typical experience for the sales executive role is 0 to 2 years. The range spread from minimum to maximum is 60 percent.
+
+Main duties of a sales executive:
+
+  - Qualifies leads and books meetings
+  - Prepares quotes with guidance
+  - Keeps the customer system up to date
+
+Offers for the A1 band normally fall between 5 and 6.5. An offer above 6.5 for a sales executive needs the approval described in the section on exceptions.
+
+7.2. A2: Account Manager
+------------------------
+
+The account manager role is the second level of the sales family. A person at this level owns tasks from start to finish with light guidance and is trusted with routine decisions. The family wins and grows customer relationships.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 9                                 
+First quartile  | 10.5                              
+Midpoint        | 12.0                              
+Third quartile  | 13.5                              
+Maximum         | 15                                
+(A2 Account Manager pay points)
+
+Typical experience for the account manager role is 2 to 5 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a account manager:
+
+  - Runs the sales process for mid-sized accounts
+  - Prepares proposals and tender answers
+  - Meets agreed targets for new business
+
+Offers for the A2 band normally fall between 9 and 12.0. An offer above 12.0 for a account manager needs the approval described in the section on exceptions.
+
+7.3. A3: Senior Account Manager
+-------------------------------
+
+The senior account manager role is the third level of the sales family. A person at this level owns larger pieces of work, guides colleagues and makes decisions that affect a whole team. The family wins and grows customer relationships.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 15                                
+First quartile  | 17.8                              
+Midpoint        | 20.5                              
+Third quartile  | 23.2                              
+Maximum         | 26                                
+(A3 Senior Account Manager pay points)
+
+Typical experience for the senior account manager role is 5 to 9 years. The range spread from minimum to maximum is 73 percent.
+
+Main duties of a senior account manager:
+
+  - Leads sales for large accounts
+  - Coordinates solution and legal teams
+  - Coaches account managers
+
+Offers for the A3 band normally fall between 15 and 20.5. An offer above 20.5 for a senior account manager needs the approval described in the section on exceptions.
+
+7.4. A4: Sales Director
+-----------------------
+
+The sales director role is the fourth level of the sales family. A person at this level sets direction across several teams, takes on the hardest problems and shapes standards for the company. The family wins and grows customer relationships.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 28                                
+First quartile  | 32.2                              
+Midpoint        | 36.5                              
+Third quartile  | 40.8                              
+Maximum         | 45                                
+(A4 Sales Director pay points)
+
+Typical experience for the sales director role is 9 years or more. The range spread from minimum to maximum is 61 percent.
+
+Main duties of a sales director:
+
+  - Owns the sales plan for a region or segment
+  - Builds relationships with customer executives
+  - Hires and develops the sales team
+
+Offers for the A4 band normally fall between 28 and 36.5. An offer above 36.5 for a sales director needs the approval described in the section on exceptions.
+
+8. Bands for the support family
+===============================
+
+The support family has 4 levels. Across the family, pay runs from 4 at the bottom of U1 to 32 at the top of U4.
+
+8.1. U1: Support Analyst
+------------------------
+
+The support analyst role is the first level of the support family. A person at this level works on well-defined tasks under regular guidance and builds the basics of the craft. The family helps customers solve problems and use the platform well.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 4                                 
+First quartile  | 4.8                               
+Midpoint        | 5.5                               
+Third quartile  | 6.2                               
+Maximum         | 7                                 
+(U1 Support Analyst pay points)
+
+Typical experience for the support analyst role is 0 to 2 years. The range spread from minimum to maximum is 75 percent.
+
+Main duties of a support analyst:
+
+  - Answers customer requests within targets
+  - Learns the platform through practice
+  - Records problems clearly in tickets
+
+Offers for the U1 band normally fall between 4 and 5.5. An offer above 5.5 for a support analyst needs the approval described in the section on exceptions.
+
+8.2. U2: Support Engineer
+-------------------------
+
+The support engineer role is the second level of the support family. A person at this level owns tasks from start to finish with light guidance and is trusted with routine decisions. The family helps customers solve problems and use the platform well.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 8                                 
+First quartile  | 9.2                               
+Midpoint        | 10.5                              
+Third quartile  | 11.8                              
+Maximum         | 13                                
+(U2 Support Engineer pay points)
+
+Typical experience for the support engineer role is 2 to 5 years. The range spread from minimum to maximum is 62 percent.
+
+Main duties of a support engineer:
+
+  - Resolves technical requests
+  - Finds causes of repeated problems
+  - Writes help articles
+
+Offers for the U2 band normally fall between 8 and 10.5. An offer above 10.5 for a support engineer needs the approval described in the section on exceptions.
+
+8.3. U3: Senior Support Engineer
+--------------------------------
+
+The senior support engineer role is the third level of the support family. A person at this level owns larger pieces of work, guides colleagues and makes decisions that affect a whole team. The family helps customers solve problems and use the platform well.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 13                                
+First quartile  | 14.8                              
+Midpoint        | 16.5                              
+Third quartile  | 18.2                              
+Maximum         | 20                                
+(U3 Senior Support Engineer pay points)
+
+Typical experience for the senior support engineer role is 5 to 9 years. The range spread from minimum to maximum is 54 percent.
+
+Main duties of a senior support engineer:
+
+  - Handles the hardest customer cases
+  - Works with engineers on fixes
+  - Trains and guides analysts
+
+Offers for the U3 band normally fall between 13 and 16.5. An offer above 16.5 for a senior support engineer needs the approval described in the section on exceptions.
+
+8.4. U4: Support Manager
+------------------------
+
+The support manager role is the fourth level of the support family. A person at this level sets direction across several teams, takes on the hardest problems and shapes standards for the company. The family helps customers solve problems and use the platform well.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 20                                
+First quartile  | 23.0                              
+Midpoint        | 26.0                              
+Third quartile  | 29.0                              
+Maximum         | 32                                
+(U4 Support Manager pay points)
+
+Typical experience for the support manager role is 9 years or more. The range spread from minimum to maximum is 60 percent.
+
+Main duties of a support manager:
+
+  - Runs the support service and its targets
+  - Handles customer escalations
+  - Plans staffing and tools
+
+Offers for the U4 band normally fall between 20 and 26.0. An offer above 26.0 for a support manager needs the approval described in the section on exceptions.
+
+9. Bands for the hr family
+==========================
+
+The hr family has 4 levels. Across the family, pay runs from 4 at the bottom of H1 to 45 at the top of H4.
+
+9.1. H1: HR Associate
+---------------------
+
+The hr associate role is the first level of the hr family. A person at this level works on well-defined tasks under regular guidance and builds the basics of the craft. The family looks after hiring, development and wellbeing of staff.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 4                                 
+First quartile  | 4.8                               
+Midpoint        | 5.5                               
+Third quartile  | 6.2                               
+Maximum         | 7                                 
+(H1 HR Associate pay points)
+
+Typical experience for the hr associate role is 0 to 2 years. The range spread from minimum to maximum is 75 percent.
+
+Main duties of a hr associate:
+
+  - Supports hiring logistics and records
+  - Answers staff questions
+  - Maintains people data
+
+Offers for the H1 band normally fall between 4 and 5.5. An offer above 5.5 for a hr associate needs the approval described in the section on exceptions.
+
+9.2. H2: HR Business Partner
+----------------------------
+
+The hr business partner role is the second level of the hr family. A person at this level owns tasks from start to finish with light guidance and is trusted with routine decisions. The family looks after hiring, development and wellbeing of staff.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 9                                 
+First quartile  | 10.5                              
+Midpoint        | 12.0                              
+Third quartile  | 13.5                              
+Maximum         | 15                                
+(H2 HR Business Partner pay points)
+
+Typical experience for the hr business partner role is 2 to 5 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a hr business partner:
+
+  - Advises managers on people matters
+  - Runs recruitment for a function
+  - Supports reviews and development
+
+Offers for the H2 band normally fall between 9 and 12.0. An offer above 12.0 for a hr business partner needs the approval described in the section on exceptions.
+
+9.3. H3: Senior HR Partner
+--------------------------
+
+The senior hr partner role is the third level of the hr family. A person at this level owns larger pieces of work, guides colleagues and makes decisions that affect a whole team. The family looks after hiring, development and wellbeing of staff.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 15                                
+First quartile  | 17.5                              
+Midpoint        | 20.0                              
+Third quartile  | 22.5                              
+Maximum         | 25                                
+(H3 Senior HR Partner pay points)
+
+Typical experience for the senior hr partner role is 5 to 9 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a senior hr partner:
+
+  - Leads people programmes across teams
+  - Handles complex employee relations
+  - Advises leaders on organisation design
+
+Offers for the H3 band normally fall between 15 and 20.0. An offer above 20.0 for a senior hr partner needs the approval described in the section on exceptions.
+
+9.4. H4: Head of HR
+-------------------
+
+The head of hr role is the fourth level of the hr family. A person at this level sets direction across several teams, takes on the hardest problems and shapes standards for the company. The family looks after hiring, development and wellbeing of staff.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 30                                
+First quartile  | 33.8                              
+Midpoint        | 37.5                              
+Third quartile  | 41.2                              
+Maximum         | 45                                
+(H4 Head of HR pay points)
+
+Typical experience for the head of hr role is 9 years or more. The range spread from minimum to maximum is 50 percent.
+
+Main duties of a head of hr:
+
+  - Leads the human resources function
+  - Advises the executive team
+  - Owns pay structure and policy
+
+Offers for the H4 band normally fall between 30 and 37.5. An offer above 37.5 for a head of hr needs the approval described in the section on exceptions.
+
+10. Bands for the finance family
+================================
+
+The finance family has 4 levels. Across the family, pay runs from 5 at the bottom of F1 to 50 at the top of F4.
+
+10.1. F1: Finance Analyst
+-------------------------
+
+The finance analyst role is the first level of the finance family. A person at this level works on well-defined tasks under regular guidance and builds the basics of the craft. The family manages money, reporting and control of spending.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 5                                 
+First quartile  | 5.8                               
+Midpoint        | 6.5                               
+Third quartile  | 7.2                               
+Maximum         | 8                                 
+(F1 Finance Analyst pay points)
+
+Typical experience for the finance analyst role is 0 to 2 years. The range spread from minimum to maximum is 60 percent.
+
+Main duties of a finance analyst:
+
+  - Prepares routine entries and reports
+  - Reconciles accounts
+  - Supports audits
+
+Offers for the F1 band normally fall between 5 and 6.5. An offer above 6.5 for a finance analyst needs the approval described in the section on exceptions.
+
+10.2. F2: Finance Manager
+-------------------------
+
+The finance manager role is the second level of the finance family. A person at this level owns tasks from start to finish with light guidance and is trusted with routine decisions. The family manages money, reporting and control of spending.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 10                                
+First quartile  | 12.0                              
+Midpoint        | 14.0                              
+Third quartile  | 16.0                              
+Maximum         | 18                                
+(F2 Finance Manager pay points)
+
+Typical experience for the finance manager role is 2 to 5 years. The range spread from minimum to maximum is 80 percent.
+
+Main duties of a finance manager:
+
+  - Runs monthly closing for an area
+  - Prepares budgets and forecasts
+  - Reviews expense and invoices
+
+Offers for the F2 band normally fall between 10 and 14.0. An offer above 14.0 for a finance manager needs the approval described in the section on exceptions.
+
+10.3. F3: Senior Finance Manager
+--------------------------------
+
+The senior finance manager role is the third level of the finance family. A person at this level owns larger pieces of work, guides colleagues and makes decisions that affect a whole team. The family manages money, reporting and control of spending.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 18                                
+First quartile  | 21.0                              
+Midpoint        | 24.0                              
+Third quartile  | 27.0                              
+Maximum         | 30                                
+(F3 Senior Finance Manager pay points)
+
+Typical experience for the senior finance manager role is 5 to 9 years. The range spread from minimum to maximum is 67 percent.
+
+Main duties of a senior finance manager:
+
+  - Leads financial planning for a division
+  - Manages relations with auditors and banks
+  - Reviews complex transactions
+
+Offers for the F3 band normally fall between 18 and 24.0. An offer above 24.0 for a senior finance manager needs the approval described in the section on exceptions.
+
+10.4. F4: Head of Finance
+-------------------------
+
+The head of finance role is the fourth level of the finance family. A person at this level sets direction across several teams, takes on the hardest problems and shapes standards for the company. The family manages money, reporting and control of spending.
+
+Reference point | Value (LPA (lakh rupees per year))
+----------------+-----------------------------------
+Minimum         | 32                                
+First quartile  | 36.5                              
+Midpoint        | 41.0                              
+Third quartile  | 45.5                              
+Maximum         | 50                                
+(F4 Head of Finance pay points)
+
+Typical experience for the head of finance role is 9 years or more. The range spread from minimum to maximum is 56 percent.
+
+Main duties of a head of finance:
+
+  - Leads the finance function
+  - Advises the executive team on financial strategy
+  - Owns reporting to the board
+
+Offers for the F4 band normally fall between 32 and 41.0. An offer above 41.0 for a head of finance needs the approval described in the section on exceptions.
+
+11. Skills expected in the engineering family
+=============================================
+
+The table describes how each competence is shown at each level of the engineering family. A person is assessed against the column for their current level and, when a promotion is considered, against the next column.
+
+Competence                 | E1 Associate Engineer                                                                                          | E2 Engineer                                                                                             | E3 Senior Engineer                                                                                              | E4 Staff Engineer                                                                                                  
+---------------------------+----------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------
+Code quality               | shows the basics with guidance from a more senior colleague in code quality for engineering work               | applies the skill independently in normal situations in code quality for engineering work               | handles difficult situations and teaches the skill to others in code quality for engineering work               | sets the standard for the company and resolves the hardest cases in code quality for engineering work              
+System design              | shows the basics with guidance from a more senior colleague in system design for engineering work              | applies the skill independently in normal situations in system design for engineering work              | handles difficult situations and teaches the skill to others in system design for engineering work              | sets the standard for the company and resolves the hardest cases in system design for engineering work             
+Testing                    | shows the basics with guidance from a more senior colleague in testing for engineering work                    | applies the skill independently in normal situations in testing for engineering work                    | handles difficult situations and teaches the skill to others in testing for engineering work                    | sets the standard for the company and resolves the hardest cases in testing for engineering work                   
+Operations and reliability | shows the basics with guidance from a more senior colleague in operations and reliability for engineering work | applies the skill independently in normal situations in operations and reliability for engineering work | handles difficult situations and teaches the skill to others in operations and reliability for engineering work | sets the standard for the company and resolves the hardest cases in operations and reliability for engineering work
+Security awareness         | shows the basics with guidance from a more senior colleague in security awareness for engineering work         | applies the skill independently in normal situations in security awareness for engineering work         | handles difficult situations and teaches the skill to others in security awareness for engineering work         | sets the standard for the company and resolves the hardest cases in security awareness for engineering work        
+Communication              | shows the basics with guidance from a more senior colleague in communication for engineering work              | applies the skill independently in normal situations in communication for engineering work              | handles difficult situations and teaches the skill to others in communication for engineering work              | sets the standard for the company and resolves the hardest cases in communication for engineering work             
+Collaboration              | shows the basics with guidance from a more senior colleague in collaboration for engineering work              | applies the skill independently in normal situations in collaboration for engineering work              | handles difficult situations and teaches the skill to others in collaboration for engineering work              | sets the standard for the company and resolves the hardest cases in collaboration for engineering work             
+Learning                   | shows the basics with guidance from a more senior colleague in learning for engineering work                   | applies the skill independently in normal situations in learning for engineering work                   | handles difficult situations and teaches the skill to others in learning for engineering work                   | sets the standard for the company and resolves the hardest cases in learning for engineering work                  
+(Competence expectations in the engineering family)
+
+Managers use the table in review discussions. A person does not need to meet every cell for the next level, but should show consistent strength in most competences and in all areas that are central to the role of a staff engineer.
+
+12. Skills expected in the security family
+==========================================
+
+The table describes how each competence is shown at each level of the security family. A person is assessed against the column for their current level and, when a promotion is considered, against the next column.
+
+Competence         | S1 Security Analyst                                                                                 | S2 Security Engineer                                                                         | S3 Senior Security Engineer                                                                          | S4 Security Architect                                                                                   
+-------------------+-----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------
+Threat analysis    | shows the basics with guidance from a more senior colleague in threat analysis for security work    | applies the skill independently in normal situations in threat analysis for security work    | handles difficult situations and teaches the skill to others in threat analysis for security work    | sets the standard for the company and resolves the hardest cases in threat analysis for security work   
+Incident handling  | shows the basics with guidance from a more senior colleague in incident handling for security work  | applies the skill independently in normal situations in incident handling for security work  | handles difficult situations and teaches the skill to others in incident handling for security work  | sets the standard for the company and resolves the hardest cases in incident handling for security work 
+Risk assessment    | shows the basics with guidance from a more senior colleague in risk assessment for security work    | applies the skill independently in normal situations in risk assessment for security work    | handles difficult situations and teaches the skill to others in risk assessment for security work    | sets the standard for the company and resolves the hardest cases in risk assessment for security work   
+Technical depth    | shows the basics with guidance from a more senior colleague in technical depth for security work    | applies the skill independently in normal situations in technical depth for security work    | handles difficult situations and teaches the skill to others in technical depth for security work    | sets the standard for the company and resolves the hardest cases in technical depth for security work   
+Audit and evidence | shows the basics with guidance from a more senior colleague in audit and evidence for security work | applies the skill independently in normal situations in audit and evidence for security work | handles difficult situations and teaches the skill to others in audit and evidence for security work | sets the standard for the company and resolves the hardest cases in audit and evidence for security work
+Communication      | shows the basics with guidance from a more senior colleague in communication for security work      | applies the skill independently in normal situations in communication for security work      | handles difficult situations and teaches the skill to others in communication for security work      | sets the standard for the company and resolves the hardest cases in communication for security work     
+Collaboration      | shows the basics with guidance from a more senior colleague in collaboration for security work      | applies the skill independently in normal situations in collaboration for security work      | handles difficult situations and teaches the skill to others in collaboration for security work      | sets the standard for the company and resolves the hardest cases in collaboration for security work     
+Learning           | shows the basics with guidance from a more senior colleague in learning for security work           | applies the skill independently in normal situations in learning for security work           | handles difficult situations and teaches the skill to others in learning for security work           | sets the standard for the company and resolves the hardest cases in learning for security work          
+(Competence expectations in the security family)
+
+Managers use the table in review discussions. A person does not need to meet every cell for the next level, but should show consistent strength in most competences and in all areas that are central to the role of a security architect.
+
+13. Skills expected in the sales family
+=======================================
+
+The table describes how each competence is shown at each level of the sales family. A person is assessed against the column for their current level and, when a promotion is considered, against the next column.
+
+Competence            | A1 Sales Executive                                                                                  | A2 Account Manager                                                                           | A3 Senior Account Manager                                                                            | A4 Sales Director                                                                                       
+----------------------+-----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------
+Prospecting           | shows the basics with guidance from a more senior colleague in prospecting for sales work           | applies the skill independently in normal situations in prospecting for sales work           | handles difficult situations and teaches the skill to others in prospecting for sales work           | sets the standard for the company and resolves the hardest cases in prospecting for sales work          
+Discovery of needs    | shows the basics with guidance from a more senior colleague in discovery of needs for sales work    | applies the skill independently in normal situations in discovery of needs for sales work    | handles difficult situations and teaches the skill to others in discovery of needs for sales work    | sets the standard for the company and resolves the hardest cases in discovery of needs for sales work   
+Proposals and tenders | shows the basics with guidance from a more senior colleague in proposals and tenders for sales work | applies the skill independently in normal situations in proposals and tenders for sales work | handles difficult situations and teaches the skill to others in proposals and tenders for sales work | sets the standard for the company and resolves the hardest cases in proposals and tenders for sales work
+Negotiation           | shows the basics with guidance from a more senior colleague in negotiation for sales work           | applies the skill independently in normal situations in negotiation for sales work           | handles difficult situations and teaches the skill to others in negotiation for sales work           | sets the standard for the company and resolves the hardest cases in negotiation for sales work          
+Account planning      | shows the basics with guidance from a more senior colleague in account planning for sales work      | applies the skill independently in normal situations in account planning for sales work      | handles difficult situations and teaches the skill to others in account planning for sales work      | sets the standard for the company and resolves the hardest cases in account planning for sales work     
+Communication         | shows the basics with guidance from a more senior colleague in communication for sales work         | applies the skill independently in normal situations in communication for sales work         | handles difficult situations and teaches the skill to others in communication for sales work         | sets the standard for the company and resolves the hardest cases in communication for sales work        
+Collaboration         | shows the basics with guidance from a more senior colleague in collaboration for sales work         | applies the skill independently in normal situations in collaboration for sales work         | handles difficult situations and teaches the skill to others in collaboration for sales work         | sets the standard for the company and resolves the hardest cases in collaboration for sales work        
+Learning              | shows the basics with guidance from a more senior colleague in learning for sales work              | applies the skill independently in normal situations in learning for sales work              | handles difficult situations and teaches the skill to others in learning for sales work              | sets the standard for the company and resolves the hardest cases in learning for sales work             
+(Competence expectations in the sales family)
+
+Managers use the table in review discussions. A person does not need to meet every cell for the next level, but should show consistent strength in most competences and in all areas that are central to the role of a sales director.
+
+14. Skills expected in the support family
+=========================================
+
+The table describes how each competence is shown at each level of the support family. A person is assessed against the column for their current level and, when a promotion is considered, against the next column.
+
+Competence             | U1 Support Analyst                                                                                     | U2 Support Engineer                                                                             | U3 Senior Support Engineer                                                                              | U4 Support Manager                                                                                         
+-----------------------+--------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------
+Problem solving        | shows the basics with guidance from a more senior colleague in problem solving for support work        | applies the skill independently in normal situations in problem solving for support work        | handles difficult situations and teaches the skill to others in problem solving for support work        | sets the standard for the company and resolves the hardest cases in problem solving for support work       
+Product knowledge      | shows the basics with guidance from a more senior colleague in product knowledge for support work      | applies the skill independently in normal situations in product knowledge for support work      | handles difficult situations and teaches the skill to others in product knowledge for support work      | sets the standard for the company and resolves the hardest cases in product knowledge for support work     
+Customer communication | shows the basics with guidance from a more senior colleague in customer communication for support work | applies the skill independently in normal situations in customer communication for support work | handles difficult situations and teaches the skill to others in customer communication for support work | sets the standard for the company and resolves the hardest cases in customer communication for support work
+Escalation judgement   | shows the basics with guidance from a more senior colleague in escalation judgement for support work   | applies the skill independently in normal situations in escalation judgement for support work   | handles difficult situations and teaches the skill to others in escalation judgement for support work   | sets the standard for the company and resolves the hardest cases in escalation judgement for support work  
+Documentation          | shows the basics with guidance from a more senior colleague in documentation for support work          | applies the skill independently in normal situations in documentation for support work          | handles difficult situations and teaches the skill to others in documentation for support work          | sets the standard for the company and resolves the hardest cases in documentation for support work         
+Teamwork               | shows the basics with guidance from a more senior colleague in teamwork for support work               | applies the skill independently in normal situations in teamwork for support work               | handles difficult situations and teaches the skill to others in teamwork for support work               | sets the standard for the company and resolves the hardest cases in teamwork for support work              
+Calm under pressure    | shows the basics with guidance from a more senior colleague in calm under pressure for support work    | applies the skill independently in normal situations in calm under pressure for support work    | handles difficult situations and teaches the skill to others in calm under pressure for support work    | sets the standard for the company and resolves the hardest cases in calm under pressure for support work   
+Learning               | shows the basics with guidance from a more senior colleague in learning for support work               | applies the skill independently in normal situations in learning for support work               | handles difficult situations and teaches the skill to others in learning for support work               | sets the standard for the company and resolves the hardest cases in learning for support work              
+(Competence expectations in the support family)
+
+Managers use the table in review discussions. A person does not need to meet every cell for the next level, but should show consistent strength in most competences and in all areas that are central to the role of a support manager.
+
+15. Skills expected in the hr family
+====================================
+
+The table describes how each competence is shown at each level of the hr family. A person is assessed against the column for their current level and, when a promotion is considered, against the next column.
+
+Competence         | H1 HR Associate                                                                               | H2 HR Business Partner                                                                 | H3 Senior HR Partner                                                                           | H4 Head of HR                                                                                     
+-------------------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------
+Recruitment        | shows the basics with guidance from a more senior colleague in recruitment for hr work        | applies the skill independently in normal situations in recruitment for hr work        | handles difficult situations and teaches the skill to others in recruitment for hr work        | sets the standard for the company and resolves the hardest cases in recruitment for hr work       
+Employee relations | shows the basics with guidance from a more senior colleague in employee relations for hr work | applies the skill independently in normal situations in employee relations for hr work | handles difficult situations and teaches the skill to others in employee relations for hr work | sets the standard for the company and resolves the hardest cases in employee relations for hr work
+Policy knowledge   | shows the basics with guidance from a more senior colleague in policy knowledge for hr work   | applies the skill independently in normal situations in policy knowledge for hr work   | handles difficult situations and teaches the skill to others in policy knowledge for hr work   | sets the standard for the company and resolves the hardest cases in policy knowledge for hr work  
+Data and reporting | shows the basics with guidance from a more senior colleague in data and reporting for hr work | applies the skill independently in normal situations in data and reporting for hr work | handles difficult situations and teaches the skill to others in data and reporting for hr work | sets the standard for the company and resolves the hardest cases in data and reporting for hr work
+Coaching           | shows the basics with guidance from a more senior colleague in coaching for hr work           | applies the skill independently in normal situations in coaching for hr work           | handles difficult situations and teaches the skill to others in coaching for hr work           | sets the standard for the company and resolves the hardest cases in coaching for hr work          
+Communication      | shows the basics with guidance from a more senior colleague in communication for hr work      | applies the skill independently in normal situations in communication for hr work      | handles difficult situations and teaches the skill to others in communication for hr work      | sets the standard for the company and resolves the hardest cases in communication for hr work     
+Confidentiality    | shows the basics with guidance from a more senior colleague in confidentiality for hr work    | applies the skill independently in normal situations in confidentiality for hr work    | handles difficult situations and teaches the skill to others in confidentiality for hr work    | sets the standard for the company and resolves the hardest cases in confidentiality for hr work   
+Learning           | shows the basics with guidance from a more senior colleague in learning for hr work           | applies the skill independently in normal situations in learning for hr work           | handles difficult situations and teaches the skill to others in learning for hr work           | sets the standard for the company and resolves the hardest cases in learning for hr work          
+(Competence expectations in the hr family)
+
+Managers use the table in review discussions. A person does not need to meet every cell for the next level, but should show consistent strength in most competences and in all areas that are central to the role of a head of hr.
+
+16. Skills expected in the finance family
+=========================================
+
+The table describes how each competence is shown at each level of the finance family. A person is assessed against the column for their current level and, when a promotion is considered, against the next column.
+
+Competence               | F1 Finance Analyst                                                                                       | F2 Finance Manager                                                                                | F3 Senior Finance Manager                                                                                 | F4 Head of Finance                                                                                           
+-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------
+Accounting accuracy      | shows the basics with guidance from a more senior colleague in accounting accuracy for finance work      | applies the skill independently in normal situations in accounting accuracy for finance work      | handles difficult situations and teaches the skill to others in accounting accuracy for finance work      | sets the standard for the company and resolves the hardest cases in accounting accuracy for finance work     
+Planning and forecasting | shows the basics with guidance from a more senior colleague in planning and forecasting for finance work | applies the skill independently in normal situations in planning and forecasting for finance work | handles difficult situations and teaches the skill to others in planning and forecasting for finance work | sets the standard for the company and resolves the hardest cases in planning and forecasting for finance work
+Controls                 | shows the basics with guidance from a more senior colleague in controls for finance work                 | applies the skill independently in normal situations in controls for finance work                 | handles difficult situations and teaches the skill to others in controls for finance work                 | sets the standard for the company and resolves the hardest cases in controls for finance work                
+Analysis                 | shows the basics with guidance from a more senior colleague in analysis for finance work                 | applies the skill independently in normal situations in analysis for finance work                 | handles difficult situations and teaches the skill to others in analysis for finance work                 | sets the standard for the company and resolves the hardest cases in analysis for finance work                
+Reporting                | shows the basics with guidance from a more senior colleague in reporting for finance work                | applies the skill independently in normal situations in reporting for finance work                | handles difficult situations and teaches the skill to others in reporting for finance work                | sets the standard for the company and resolves the hardest cases in reporting for finance work               
+Communication            | shows the basics with guidance from a more senior colleague in communication for finance work            | applies the skill independently in normal situations in communication for finance work            | handles difficult situations and teaches the skill to others in communication for finance work            | sets the standard for the company and resolves the hardest cases in communication for finance work           
+Collaboration            | shows the basics with guidance from a more senior colleague in collaboration for finance work            | applies the skill independently in normal situations in collaboration for finance work            | handles difficult situations and teaches the skill to others in collaboration for finance work            | sets the standard for the company and resolves the hardest cases in collaboration for finance work           
+Learning                 | shows the basics with guidance from a more senior colleague in learning for finance work                 | applies the skill independently in normal situations in learning for finance work                 | handles difficult situations and teaches the skill to others in learning for finance work                 | sets the standard for the company and resolves the hardest cases in learning for finance work                
+(Competence expectations in the finance family)
+
+Managers use the table in review discussions. A person does not need to meet every cell for the next level, but should show consistent strength in most competences and in all areas that are central to the role of a head of finance.
+
+17. Career path in the engineering family
+=========================================
+
+People in the engineering family move up through four levels. Movement is based on growth of scope and skill, not on time served.
+
+17.1. From Associate Engineer (E1) to Engineer (E2)
+---------------------------------------------------
+
+Moving from associate engineer to engineer means a change in scope. The associate engineer works within a range of 6 to 10. The engineer works within 12 to 20. The panel looks for evidence that the person already works at the scope of a engineer and that colleagues rely on them for it.
+
+17.2. From Engineer (E2) to Senior Engineer (E3)
+------------------------------------------------
+
+Moving from engineer to senior engineer means a change in scope. The engineer works within a range of 12 to 20. The senior engineer works within 20 to 32. The panel looks for evidence that the person already works at the scope of a senior engineer and that colleagues rely on them for it.
+
+17.3. From Senior Engineer (E3) to Staff Engineer (E4)
+------------------------------------------------------
+
+Moving from senior engineer to staff engineer means a change in scope. The senior engineer works within a range of 20 to 32. The staff engineer works within 32 to 48. The panel looks for evidence that the person already works at the scope of a staff engineer and that colleagues rely on them for it.
+
+Lateral moves out of the engineering family are possible and are treated as a new hire into the band that matches the new role, with pay placed by the same rules as an external hire.
+
+18. Career path in the security family
+======================================
+
+People in the security family move up through four levels. Movement is based on growth of scope and skill, not on time served.
+
+18.1. From Security Analyst (S1) to Security Engineer (S2)
+----------------------------------------------------------
+
+Moving from security analyst to security engineer means a change in scope. The security analyst works within a range of 7 to 11. The security engineer works within 12 to 20. The panel looks for evidence that the person already works at the scope of a security engineer and that colleagues rely on them for it.
+
+18.2. From Security Engineer (S2) to Senior Security Engineer (S3)
+------------------------------------------------------------------
+
+Moving from security engineer to senior security engineer means a change in scope. The security engineer works within a range of 12 to 20. The senior security engineer works within 20 to 32. The panel looks for evidence that the person already works at the scope of a senior security engineer and that colleagues rely on them for it.
+
+18.3. From Senior Security Engineer (S3) to Security Architect (S4)
+-------------------------------------------------------------------
+
+Moving from senior security engineer to security architect means a change in scope. The senior security engineer works within a range of 20 to 32. The security architect works within 32 to 50. The panel looks for evidence that the person already works at the scope of a security architect and that colleagues rely on them for it.
+
+Lateral moves out of the security family are possible and are treated as a new hire into the band that matches the new role, with pay placed by the same rules as an external hire.
+
+19. Career path in the sales family
+===================================
+
+People in the sales family move up through four levels. Movement is based on growth of scope and skill, not on time served.
+
+19.1. From Sales Executive (A1) to Account Manager (A2)
+-------------------------------------------------------
+
+Moving from sales executive to account manager means a change in scope. The sales executive works within a range of 5 to 8. The account manager works within 9 to 15. The panel looks for evidence that the person already works at the scope of a account manager and that colleagues rely on them for it.
+
+19.2. From Account Manager (A2) to Senior Account Manager (A3)
+--------------------------------------------------------------
+
+Moving from account manager to senior account manager means a change in scope. The account manager works within a range of 9 to 15. The senior account manager works within 15 to 26. The panel looks for evidence that the person already works at the scope of a senior account manager and that colleagues rely on them for it.
+
+19.3. From Senior Account Manager (A3) to Sales Director (A4)
+-------------------------------------------------------------
+
+Moving from senior account manager to sales director means a change in scope. The senior account manager works within a range of 15 to 26. The sales director works within 28 to 45. The panel looks for evidence that the person already works at the scope of a sales director and that colleagues rely on them for it.
+
+Lateral moves out of the sales family are possible and are treated as a new hire into the band that matches the new role, with pay placed by the same rules as an external hire.
+
+20. Career path in the support family
+=====================================
+
+People in the support family move up through four levels. Movement is based on growth of scope and skill, not on time served.
+
+20.1. From Support Analyst (U1) to Support Engineer (U2)
+--------------------------------------------------------
+
+Moving from support analyst to support engineer means a change in scope. The support analyst works within a range of 4 to 7. The support engineer works within 8 to 13. The panel looks for evidence that the person already works at the scope of a support engineer and that colleagues rely on them for it.
+
+20.2. From Support Engineer (U2) to Senior Support Engineer (U3)
+----------------------------------------------------------------
+
+Moving from support engineer to senior support engineer means a change in scope. The support engineer works within a range of 8 to 13. The senior support engineer works within 13 to 20. The panel looks for evidence that the person already works at the scope of a senior support engineer and that colleagues rely on them for it.
+
+20.3. From Senior Support Engineer (U3) to Support Manager (U4)
+---------------------------------------------------------------
+
+Moving from senior support engineer to support manager means a change in scope. The senior support engineer works within a range of 13 to 20. The support manager works within 20 to 32. The panel looks for evidence that the person already works at the scope of a support manager and that colleagues rely on them for it.
+
+Lateral moves out of the support family are possible and are treated as a new hire into the band that matches the new role, with pay placed by the same rules as an external hire.
+
+21. Career path in the hr family
+================================
+
+People in the hr family move up through four levels. Movement is based on growth of scope and skill, not on time served.
+
+21.1. From HR Associate (H1) to HR Business Partner (H2)
+--------------------------------------------------------
+
+Moving from hr associate to hr business partner means a change in scope. The hr associate works within a range of 4 to 7. The hr business partner works within 9 to 15. The panel looks for evidence that the person already works at the scope of a hr business partner and that colleagues rely on them for it.
+
+21.2. From HR Business Partner (H2) to Senior HR Partner (H3)
+-------------------------------------------------------------
+
+Moving from hr business partner to senior hr partner means a change in scope. The hr business partner works within a range of 9 to 15. The senior hr partner works within 15 to 25. The panel looks for evidence that the person already works at the scope of a senior hr partner and that colleagues rely on them for it.
+
+21.3. From Senior HR Partner (H3) to Head of HR (H4)
+----------------------------------------------------
+
+Moving from senior hr partner to head of hr means a change in scope. The senior hr partner works within a range of 15 to 25. The head of hr works within 30 to 45. The panel looks for evidence that the person already works at the scope of a head of hr and that colleagues rely on them for it.
+
+Lateral moves out of the hr family are possible and are treated as a new hire into the band that matches the new role, with pay placed by the same rules as an external hire.
+
+22. Career path in the finance family
+=====================================
+
+People in the finance family move up through four levels. Movement is based on growth of scope and skill, not on time served.
+
+22.1. From Finance Analyst (F1) to Finance Manager (F2)
+-------------------------------------------------------
+
+Moving from finance analyst to finance manager means a change in scope. The finance analyst works within a range of 5 to 8. The finance manager works within 10 to 18. The panel looks for evidence that the person already works at the scope of a finance manager and that colleagues rely on them for it.
+
+22.2. From Finance Manager (F2) to Senior Finance Manager (F3)
+--------------------------------------------------------------
+
+Moving from finance manager to senior finance manager means a change in scope. The finance manager works within a range of 10 to 18. The senior finance manager works within 18 to 30. The panel looks for evidence that the person already works at the scope of a senior finance manager and that colleagues rely on them for it.
+
+22.3. From Senior Finance Manager (F3) to Head of Finance (F4)
+--------------------------------------------------------------
+
+Moving from senior finance manager to head of finance means a change in scope. The senior finance manager works within a range of 18 to 30. The head of finance works within 32 to 50. The panel looks for evidence that the person already works at the scope of a head of finance and that colleagues rely on them for it.
+
+Lateral moves out of the finance family are possible and are treated as a new hire into the band that matches the new role, with pay placed by the same rules as an external hire.
+
+23. Pay review guide by rating and position in band
+===================================================
+
+The guide below shows the usual percentage increase in the annual pay review. The range shown for each cell is a guide and depends on the budget approved for the year.
+
+Performance rating   | Below first quartile | First quartile to midpoint | Midpoint to third quartile | Above third quartile
+---------------------+----------------------+----------------------------+----------------------------+---------------------
+Outstanding          | 12 to 15 percent     | 10 to 12 percent           | 8 to 10 percent            | 5 to 7 percent      
+Exceeds expectations | 9 to 11 percent      | 8 to 10 percent            | 6 to 8 percent             | 4 to 5 percent      
+Meets expectations   | 6 to 8 percent       | 5 to 7 percent             | 4 to 5 percent             | 2 to 4 percent      
+Needs improvement    | 0 to 3 percent       | 0 to 2 percent             | 0 percent                  | 0 percent           
+Unsatisfactory       | 0 percent            | 0 percent                  | 0 percent                  | 0 percent           
+(Guide to annual increases)
+
+23.1. Rules
+-----------
+
+  - Increases are applied from the first day of the review cycle.
+  - No increase takes pay above the band maximum without approval.
+  - New joiners in the last quarter are reviewed at the next cycle.
+  - People on a performance plan receive no increase until the plan is closed.
+
+24. Position against the market
+===============================
+
+The table compares the midpoint of each band with a market range taken from the survey data used in the last review. The market range runs from four percent below to four percent above the midpoint of the band.
+
+Level | Title                    | Band midpoint | Market low | Market high
+------+--------------------------+---------------+------------+------------
+E1    | Associate Engineer       | 8.0           | 7.7        | 8.3        
+E2    | Engineer                 | 16.0          | 15.4       | 16.6       
+E3    | Senior Engineer          | 26.0          | 25.0       | 27.0       
+E4    | Staff Engineer           | 40.0          | 38.4       | 41.6       
+S1    | Security Analyst         | 9.0           | 8.6        | 9.4        
+S2    | Security Engineer        | 16.0          | 15.4       | 16.6       
+S3    | Senior Security Engineer | 26.0          | 25.0       | 27.0       
+S4    | Security Architect       | 41.0          | 39.4       | 42.6       
+A1    | Sales Executive          | 6.5           | 6.2        | 6.8        
+A2    | Account Manager          | 12.0          | 11.5       | 12.5       
+A3    | Senior Account Manager   | 20.5          | 19.7       | 21.3       
+A4    | Sales Director           | 36.5          | 35.0       | 38.0       
+U1    | Support Analyst          | 5.5           | 5.3        | 5.7        
+U2    | Support Engineer         | 10.5          | 10.1       | 10.9       
+U3    | Senior Support Engineer  | 16.5          | 15.8       | 17.2       
+U4    | Support Manager          | 26.0          | 25.0       | 27.0       
+H1    | HR Associate             | 5.5           | 5.3        | 5.7        
+H2    | HR Business Partner      | 12.0          | 11.5       | 12.5       
+H3    | Senior HR Partner        | 20.0          | 19.2       | 20.8       
+H4    | Head of HR               | 37.5          | 36.0       | 39.0       
+F1    | Finance Analyst          | 6.5           | 6.2        | 6.8        
+F2    | Finance Manager          | 14.0          | 13.4       | 14.6       
+F3    | Senior Finance Manager   | 24.0          | 23.0       | 25.0       
+F4    | Head of Finance          | 41.0          | 39.4       | 42.6       
+(Midpoints and the market range)
+
+Bands that fall outside the market range at the next review are flagged for adjustment.
+
+25. Overlap between levels
+==========================
+
+Adjacent levels overlap so that an experienced person in one level can earn more than a new joiner in the next. The table shows the size of the overlap, from the maximum of one level to the minimum of the next.
+
+Family      | Levels   | Overlap
+------------+----------+--------
+Engineering | E1 to E2 | 0      
+Engineering | E2 to E3 | 0      
+Engineering | E3 to E4 | 0      
+Security    | S1 to S2 | 0      
+Security    | S2 to S3 | 0      
+Security    | S3 to S4 | 0      
+Sales       | A1 to A2 | 0      
+Sales       | A2 to A3 | 0      
+Sales       | A3 to A4 | 0      
+Support     | U1 to U2 | 0      
+Support     | U2 to U3 | 0      
+Support     | U3 to U4 | 0      
+Hr          | H1 to H2 | 0      
+Hr          | H2 to H3 | 0      
+Hr          | H3 to H4 | 0      
+Finance     | F1 to F2 | 0      
+Finance     | F2 to F3 | 0      
+Finance     | F3 to F4 | 0      
+(Overlap of adjacent bands)
+
+Where the overlap is zero, the maximum of the lower level equals the minimum of the next level. A promotion from the top of a band therefore leads to a move into the next band's range, normally to its first quartile.
+
+26. Using the bands when hiring
+===============================
+
+  1. Confirm the level of the role with the hiring manager and the head of HR.
+  2. Compare the candidate's experience with the typical experience for the level.
+  3. Make the offer within the band. The usual position is between the minimum and the midpoint.
+  4. If the candidate needs more than the midpoint, follow the exceptions process.
+  5. Record the offer and the reason in the people system.
+  6. Never tell the candidate the band. State only the amount offered.
+
+Candidate profile                         | Usual position in band                       
+------------------------------------------+----------------------------------------------
+Meets minimum requirements                | Minimum to first quartile                    
+Fully meets requirements                  | First quartile to midpoint                   
+Exceeds requirements with strong evidence | Midpoint to third quartile, with approval    
+Rare skill with a market premium          | Above third quartile, with executive approval
+(Where offers usually fall)
+
+27. Using the bands for promotion
+=================================
+
+A promotion moves a person to the next level when they have been working at that level for at least six months and a panel agrees.
+
+  - Evidence of work at the next level over time, not a single project.
+  - Support from the manager and one skip-level leader.
+  - A vacancy or a clear business need at the higher level.
+
+Pay on promotion moves into the new band. As a guide, the new pay is not less than the minimum of the new band and is normally not more than a fifth above current pay. If current pay is already above the minimum of the new band, the increase is smaller.
+
+Case                           | Guidance                             
+-------------------------------+--------------------------------------
+Current pay below new minimum  | Move to the new minimum at least     
+Current pay within new band    | Increase within the guidance above   
+Current pay above new midpoint | Increase only with executive approval
+(Pay on promotion)
+
+28. Annual review of the bands
+==============================
+
+The bands are reviewed every year before the pay review cycle.
+
+  1. HR collects market data from salary surveys.
+  2. Finance confirms the budget for pay.
+  3. HR proposes changes to the bands.
+  4. The Chief Executive approves the bands.
+  5. HR updates this document and the access list.
+  6. Managers are told about their individual pay decisions, not about the bands.
+
+Bands are compared with the market at the midpoint. A family or level that is more than ten percent behind the market is flagged for a review within the year.
+
+29. Exceptions
+==============
+
+Case                                  | Approver                          
+--------------------------------------+-----------------------------------
+Offer above the midpoint              | Head of HR                        
+Offer above the third quartile        | Head of HR and the department head
+Offer above the maximum               | Chief Executive                   
+Retention increase above the guide    | Head of HR and the Chief Executive
+Temporary allowance outside the bands | Head of HR and the head of finance
+(Approvals for exceptions)
+
+Every exception is recorded with the reason, the amount and the approver. Exceptions are reported to the Chief Executive each quarter.
+
+30. Questions and answers
+=========================
+
+30.1. Can I tell a manager the band of their team member?
+---------------------------------------------------------
+
+Managers may be told the band only on the written permission of the head of HR. They may be told the pay decision for their own team members.
+
+30.2. Does the band include bonuses?
+------------------------------------
+
+No. The bands show annual fixed pay only. Variable pay and benefits are described in separate documents.
+
+30.3. What happens when a person reaches the maximum?
+-----------------------------------------------------
+
+Pay does not rise above the maximum. Increases above that point are given as one-off payments or by promotion when the person is ready.
+
+30.4. How often are the bands updated?
+--------------------------------------
+
+Once a year, for the new financial year.
+
+31. Glossary
+============
+
+Term       | Meaning                                                    
+-----------+------------------------------------------------------------
+LPA        | Lakh rupees per year                                       
+Band       | A range of pay for a level                                 
+Midpoint   | The reference point halfway between the minimum and maximum
+Quartile   | A quarter of the way through a range                       
+Job family | A group of jobs with similar work                          
+Level      | The size of a job within its family                        
+(Terms)
