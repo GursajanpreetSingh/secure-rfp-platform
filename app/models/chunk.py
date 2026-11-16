@@ -3,6 +3,7 @@ from datetime import date, datetime
 
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
+    Boolean,
     CheckConstraint,
     Computed,
     Date,
@@ -13,6 +14,7 @@ from sqlalchemy import (
     String,
     Text,
     Uuid,
+    false,
     func,
 )
 from sqlalchemy.dialects.postgresql import ARRAY, TSVECTOR
@@ -22,7 +24,8 @@ from app.core.db import Base
 from app.models.enums import Classification, DocStatus
 from app.models.types import db_enum
 
-EMBEDDING_DIM = 1536
+# Size of the vectors made by the local model BAAI/bge-small-en-v1.5 (see app/retrieval/embedder.py)
+EMBEDDING_DIM = 384
 
 
 class Chunk(Base):
@@ -53,6 +56,7 @@ class Chunk(Base):
     page: Mapped[int | None] = mapped_column(Integer)
     section: Mapped[str | None] = mapped_column(String(255))
     token_count: Mapped[int] = mapped_column(Integer, default=0)
+    from_ocr: Mapped[bool] = mapped_column(Boolean, default=False, server_default=false())
 
     embedding: Mapped[list[float] | None] = mapped_column(Vector(EMBEDDING_DIM))
     tsv: Mapped[str | None] = mapped_column(
