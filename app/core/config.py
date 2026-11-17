@@ -15,9 +15,12 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 60
 
-    # LLM and embeddings (filled in later)
+    # Language model. LLM_MODELS is a comma-separated list, best choice first. Free-tier
+    # model names change often, so they live here and not in the code.
     llm_provider: str = ""
     llm_api_key: SecretStr = SecretStr("")
+    llm_models: str = ""
+    llm_timeout_ms: int = 45_000
     embedding_model: str = ""
 
     # Password for the synthetic demo accounts created by scripts/seed_users.py
