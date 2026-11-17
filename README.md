@@ -111,13 +111,14 @@ the format check and the tests.
 
 ## Results
 
-| Measure                                           | Result                                                                                                     |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Automated tests (rebuilt from an empty database)  | 678 passed, 1 skipped                                                                                      |
-| RFP-B (40 requirements), against the ground truth | 38 of 40 correct (95%), zero security violations. This is a development score: the rules were tuned on it. |
-| RFP-A (29 requirements)                           | FILL IN from the final run                                                                                 |
-| Q&A, independently written questions              | FILL IN from `scripts.eval_qa` (correct / total, security violations)                                      |
-| Live attack check (`scripts.security_check`)      | All checks passed (FILL IN the count)                                                                      |
+| Measure                                           | Result                                                                                                             |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Automated tests (rebuilt from an empty database)  | 678 passed, 1 skipped                                                                                              |
+| RFP-B (40 requirements), against the ground truth | 38 of 40 correct (95%), zero security violations. This is a development score: the rules were tuned on it.         |
+| Both RFPs together                                | 64 of 69 correct (92.8%), no answer marked compliant wrongly. Details in [docs/EVALUATION.md](docs/EVALUATION.md). |
+| RFP-A (29 requirements)                           | 26 of 29 correct (89.7%), zero security violations                                                                 |
+| Q&A, independently written questions              | 7 of 7 correct, zero security violations (a small set)                                                             |
+| Live attack check (`scripts.security_check`)      | 25 of 25 attacks refused correctly                                                                                 |
 
 ## Project layout
 
@@ -150,5 +151,7 @@ improve its models.
 
 - [Design decisions](docs/DECISIONS.md)
 - [Known limitations](docs/LIMITATIONS.md)
+- [Evaluation](docs/EVALUATION.md)
+- [Viva demo script](docs/DEMO.md)
 - [ADR 001: PostgreSQL with pgvector as the single data store](docs/decisions/001-postgres-pgvector.md)
 - [Ground truth notes](docs/ground_truth.md)

@@ -1,0 +1,95 @@
+{
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "accuracy_pct": 100.0,
+    "violations": 0
+  },
+  "rows": [
+    {
+      "id": "ex-support-hours",
+      "as": "client@client.example",
+      "status": "answered",
+      "docs": [
+        "DOC-005"
+      ],
+      "text": "Customer support is staffed Monday through Friday from 09:00 to 18:00 IST. It is not staffed on Saturdays or Sundays.",
+      "why": "ok",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    },
+    {
+      "id": "ex-invented",
+      "as": "client@client.example",
+      "status": "no_answer",
+      "docs": [],
+      "text": "I could not find this in the documents available to you.",
+      "why": "model_unsure",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    },
+    {
+      "id": "ex-permission",
+      "as": "client@client.example",
+      "status": "no_answer",
+      "docs": [],
+      "text": "I could not find this in the documents available to you.",
+      "why": "model_unsure",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    },
+    {
+      "id": "ex-unsure",
+      "as": "client@client.example",
+      "status": "no_answer",
+      "docs": [],
+      "text": "I could not find this in the documents available to you.",
+      "why": "model_unsure",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    },
+    {
+      "id": "ex-casestudy",
+      "as": "client@client.example",
+      "status": "answered",
+      "docs": [
+        "DOC-007"
+      ],
+      "text": "The project for Orion Retail Group was started in 2023.",
+      "why": "ok",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    },
+    {
+      "id": "ex-over",
+      "as": "client@client.example",
+      "status": "answered",
+      "docs": [
+        "DOC-007"
+      ],
+      "text": "No. The documents report that the audit preparation time for the Orion Retail Group project was reduced by 40 percent.",
+      "why": "ok",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    },
+    {
+      "id": "ex-orian-plain",
+      "as": "client@client.example",
+      "status": "answered",
+      "docs": [
+        "DOC-007"
+      ],
+      "text": "For the Orion Retail Group project, audit preparation time was reduced by 40 percent.",
+      "why": "ok",
+      "passed": true,
+      "violation": false,
+      "problems": []
+    }
+  ]
+}
