@@ -1,86 +1,84 @@
-# Design decisions
+# Viva demo script (about 10 minutes)
 
-Each entry says what was chosen, why, and what it costs. The aim of the whole system is that it
-would rather say "I do not know" than say something it cannot back up.
+Before you start: Docker is running, both servers are running, and you have signed out of every
+account. Have `docs/DECISIONS.md` and `docs/LIMITATIONS.md` open in tabs.
 
-## 1. Permissions are enforced in the database query, not after
+## 1. The idea in one breath (30 seconds)
 
-Search only ever sees chunks the person may read. The check (role, clearance, department,
-purpose, expiry, explicit allow lists) is part of the SQL, so a document a person may not see
-never reaches the model, the screen or the audit detail.
-*Cost:* the vector index (HNSW) can return fewer results when a filter removes many candidates.
+"A company assistant that answers only from documents you are allowed to see, shows the exact
+quote behind every answer, and says 'I could not find this' instead of guessing. It has two
+parts: RFP compliance and question answering."
 
-## 2. Twelve explicit rules in one function, `decide()`
+## 2. Public Q&A, no account (1 minute)
 
-Access is decided by a short list of rules in one place, each with a reason code that is written
-to the audit log. Deny wins. A purpose (RFP, enterprise Q&A) is part of the question, so a
-document can be allowed for one use and not the other.
+Sidebar: **Public questions**.
 
-## 3. Evidence or silence: quotes are verified in code
+- Ask: _What hours is customer support available?_ It answers with a source box.
+- Ask: _What are the internal salary bands?_ It says it could not find it.
+  Say: "A stranger only ever reaches the public documents, and nothing is saved."
 
-The model must cite an excerpt and copy a quote from it word for word. Code checks that the quote
-really is in the excerpt (only case, spacing and dash differences are forgiven). If the check
-fails, the answer is replaced by "insufficient evidence" or "I could not find this".
-Missing evidence is never reported as `non_compliant`.
-*Cost:* a correct answer is sometimes rejected, for example when a quote crosses table cells.
-That is the chosen direction of error.
+## 3. Sign up (1 minute)
 
-## 4. A "not compliant" needs a negative signal in the quote
+**Create account** with a new email. Point out the `external` chip and the notice that this account
+cannot run RFPs. Say: "A new account cannot choose its role, and the server enforces this, not the
+screen."
 
-`non_compliant` is only kept if the cited quote contains a negative word or a figure. Otherwise it
-becomes `unsupported_negative` and goes to a human. Silence in the documents is not a "no".
-*Cost:* a heuristic. A negative stated without those words is downgraded.
+## 4. Staff: RFP compliance (4 minutes)
 
-## 5. Every figure in a Q&A answer must appear in the cited text
+Sign out, sign in as `eng@meridian.test`. Open **RFP dashboard**.
 
-If the answer contains a number that the quoted excerpts do not contain, it is thrown away. When a
-question holds a wrong figure, the prompt tells the model to state the documented value instead
-of repeating the wrong one. The guard was not loosened to allow the question's own number,
-because that would let "Yes, 50%" pass.
+- Show the four numbers and the status chart.
+- Upload an RFP and show the progress bar (stop it early; a full run takes minutes, so also open a
+  finished run).
+- Open **Review answers**, pick a finished run, open one card: requirement, system answer,
+  rationale, the quote.
+- Say: "This quote is verified in code. If the model's quote is not really in the document, the
+  answer is replaced by 'insufficient evidence'."
+- Try **Use another status** with no note: it asks for a reason. Approve one answer.
+- Show that **Prepare CSV export** is disabled while answers wait. Say: "Nothing leaves without a
+  human."
 
-## 6. Documents, questions and chat history are data, never instructions
+## 5. Staff: saved chat (1 minute)
 
-Everything untrusted is wrapped in tags, closing tags inside it are neutralised, and the prompt
-says to ignore instructions found there. Suspicious text in an uploaded RFP is audited and kept
-out of the run. Output is shown as plain text, so nothing a document says can become HTML or a link.
+**Question answering**: ask _By how much did the Orion retail project reduce auditing time?_, then
+sign out, sign in again, and open the chat from the list. Say: "Saved chats come back at the next
+login; public ones never do."
 
-## 7. A human reviews before anything leaves
+## 6. Auditor (1 minute)
 
-The system's answer and the reviewer's decision are stored separately. Approve, edit and reject
-are all audited (with only the length of the note). Export is blocked while any answer waits for
-review, re-checks that the evidence is still visible to the person at export time, and guards
-CSV cells against formula injection.
+Sign in as `auditor@meridian.test`: **Audit log** shows events with who and why, and never the
+document text. Say: "The database refuses edits and deletes of these rows."
 
-## 8. The audit log is append-only and holds no content
+## 7. The evidence (1 minute)
 
-Events record who, what, the decision and the reason code, never document text, quotes, tokens
-or passwords. The database refuses edits and deletes of audit rows. A failed audit write fails
-the request.
+Show `docs/EVALUATION.md`: 92.8% on 69 requirements with zero wrongly-compliant answers, 25 of 25
+attacks refused, 678 tests passing. Then say what is not proven: it is a development score, the
+Q&A set is small, and there was no load test.
 
-## 9. Owner-only runs return "not found", not "forbidden"
+## Questions to expect, and honest answers
 
-Someone else's run or chat looks exactly like one that does not exist, and the attempt is audited.
+**Why not just ask ChatGPT about the documents?** Because it cannot enforce who may see which
+document, it cannot prove its quote is real, and it does not keep an audit log.
 
-## 10. Low-privilege sign-up, no way to ask for a role
+**How do you stop it leaking a confidential document?** The permission check is part of the search
+query. A document the person cannot see never reaches the model. The attack script confirms this.
 
-A new account is `external` with `public` clearance. The role cannot be sent in the request. Only
-`employee` and `executive` can start RFP runs. Company addresses are reserved.
+**What if the model lies?** It must give a quote; code checks the quote is in the document and that
+every number in the answer appears in the quote. Failing either check turns the answer into
+"could not find". A human reviews RFP answers anyway.
 
-## 11. Two Q&A modes
+**How accurate is it?** 92.8% on the 69 development requirements, with zero answers marked
+compliant wrongly. That score was tuned on those same requirements, so I do not claim it
+generalises; the independent Q&A set is the fair test, and it is small.
 
-Public: no login, a fixed guest identity that can see public documents only, nothing saved except
-one metadata audit row, limited in total per hour. Signed in: chats are saved and listed at next
-login; evidence is re-checked against current access when a chat is reopened, and a revoked
-source replaces the answer with a notice.
+**Did you use reranking?** Not a cross-encoder reranker, and I did not evaluate one. Search is
+hybrid: vector similarity and keyword search are ranked separately and merged by Reciprocal Rank
+Fusion. The failures I traced were query wording and strict quote checking, and the model reads 8
+excerpts, so I did not add a second model. Testing a reranker is future work.
 
-## 12. Zero cost, mostly local
+**What is the biggest weakness?** It sometimes declines a correct answer because the quote check is
+strict (for example a quote across table cells). I chose that direction on purpose. Also: no email
+verification, a free model tier, and synthetic data only.
 
-Local embeddings (fastembed, 384 dimensions), Postgres with pgvector in Docker, Gemini free tier
-for generation, Streamlit for the interface. React was rejected to keep one language and no build
-step. The screens only call the API, so they cannot bypass any rule.
-
-## 13. Evaluation honesty
-
-The RFP score was developed against a ground-truth file, so it is a development score. The Q&A
-evaluation uses questions the author wrote independently, and security is checked by a script
-that attacks the running system.
+**Why Streamlit, not React?** One language, no build step, and the screens only call the API, so a
+screen bug cannot bypass a rule.

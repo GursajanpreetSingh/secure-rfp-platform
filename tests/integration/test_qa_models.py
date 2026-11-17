@@ -66,20 +66,29 @@ def test_database_rejects_unknown_roles_and_statuses(db_session, field, value):
 
 def test_deleting_a_conversation_deletes_its_messages(db_session):
     conversation = make_conversation(db_session, make_user(db_session))
+    conversation_id = conversation.id
     db_session.add(message(conversation))
     db_session.flush()
     db_session.delete(conversation)
     db_session.flush()
     db_session.expire_all()
-    assert db_session.scalars(select(QaMessage)).all() == []
+    # Only this test's own rows: the database may already hold real saved chats.
+    left = select(QaMessage).where(QaMessage.conversation_id == conversation_id)
+    assert db_session.scalars(left).all() == []
 
 
 def test_deleting_a_user_deletes_their_chats(db_session):
     user = make_user(db_session)
+    user_id = user.id
     conversation = make_conversation(db_session, user)
+    conversation_id = conversation.id
     db_session.add(message(conversation))
     db_session.flush()
     db_session.delete(user)
     db_session.flush()
     db_session.expire_all()
-    assert db_session.scalars(select(QaConversation)).all() == []
+    # Only this test's own rows: the database may already hold real saved chats.
+    chats = select(QaConversation).where(QaConversation.user_id == user_id)
+    assert db_session.scalars(chats).all() == []
+    messages = select(QaMessage).where(QaMessage.conversation_id == conversation_id)
+    assert db_session.scalars(messages).all() == []

@@ -4,23 +4,29 @@ Before you start: Docker is running, both servers are running, and you have sign
 account. Have `docs/DECISIONS.md` and `docs/LIMITATIONS.md` open in tabs.
 
 ## 1. The idea in one breath (30 seconds)
+
 "A company assistant that answers only from documents you are allowed to see, shows the exact
 quote behind every answer, and says 'I could not find this' instead of guessing. It has two
 parts: RFP compliance and question answering."
 
 ## 2. Public Q&A, no account (1 minute)
+
 Sidebar: **Public questions**.
-- Ask: *What hours is customer support available?* It answers with a source box.
-- Ask: *What are the internal salary bands?* It says it could not find it.
-Say: "A stranger only ever reaches the public documents, and nothing is saved."
+
+- Ask: _What hours is customer support available?_ It answers with a source box.
+- Ask: _What are the internal salary bands?_ It says it could not find it.
+  Say: "A stranger only ever reaches the public documents, and nothing is saved."
 
 ## 3. Sign up (1 minute)
+
 **Create account** with a new email. Point out the `external` chip and the notice that this account
 cannot run RFPs. Say: "A new account cannot choose its role, and the server enforces this, not the
 screen."
 
 ## 4. Staff: RFP compliance (4 minutes)
+
 Sign out, sign in as `eng@meridian.test`. Open **RFP dashboard**.
+
 - Show the four numbers and the status chart.
 - Upload an RFP and show the progress bar (stop it early; a full run takes minutes, so also open a
   finished run).
@@ -33,15 +39,18 @@ Sign out, sign in as `eng@meridian.test`. Open **RFP dashboard**.
   human."
 
 ## 5. Staff: saved chat (1 minute)
-**Question answering**: ask *By how much did the Orion retail project reduce auditing time?*, then
+
+**Question answering**: ask _By how much did the Orion retail project reduce auditing time?_, then
 sign out, sign in again, and open the chat from the list. Say: "Saved chats come back at the next
 login; public ones never do."
 
 ## 6. Auditor (1 minute)
+
 Sign in as `auditor@meridian.test`: **Audit log** shows events with who and why, and never the
 document text. Say: "The database refuses edits and deletes of these rows."
 
 ## 7. The evidence (1 minute)
+
 Show `docs/EVALUATION.md`: 92.8% on 69 requirements with zero wrongly-compliant answers, 25 of 25
 attacks refused, 678 tests passing. Then say what is not proven: it is a development score, the
 Q&A set is small, and there was no load test.
@@ -62,8 +71,10 @@ every number in the answer appears in the quote. Failing either check turns the 
 compliant wrongly. That score was tuned on those same requirements, so I do not claim it
 generalises; the independent Q&A set is the fair test, and it is small.
 
-**Did you use reranking?** No, and I did not evaluate it. The failures I traced were query wording
-and strict quote checking, and the model reads 8 excerpts. Testing a reranker is future work.
+**Did you use reranking?** Not a cross-encoder reranker, and I did not evaluate one. Search is
+hybrid: vector similarity and keyword search are ranked separately and merged by Reciprocal Rank
+Fusion. The failures I traced were query wording and strict quote checking, and the model reads 8
+excerpts, so I did not add a second model. Testing a reranker is future work.
 
 **What is the biggest weakness?** It sometimes declines a correct answer because the quote check is
 strict (for example a quote across table cells). I chose that direction on purpose. Also: no email
