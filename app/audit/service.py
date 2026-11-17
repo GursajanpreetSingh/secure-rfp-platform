@@ -45,6 +45,7 @@ class AuditAction(StrEnum):
     RFP_RUN_FINISHED = "rfp_run_finished"
     RFP_REVIEW = "rfp_review"
     RFP_EXPORTED = "rfp_exported"
+    ACCOUNT_CREATED = "account_created"
 
 
 def email_digest(email: str) -> str:
