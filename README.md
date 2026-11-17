@@ -113,7 +113,7 @@ the format check and the tests.
 
 | Measure                                           | Result                                                                                                             |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Automated tests (rebuilt from an empty database)  | 678 passed, 1 skipped                                                                                              |
+| Automated tests (rebuilt from an empty database)  | 684 passed, 1 skipped                                                                                              |
 | RFP-B (40 requirements), against the ground truth | 38 of 40 correct (95%), zero security violations. This is a development score: the rules were tuned on it.         |
 | Both RFPs together                                | 64 of 69 correct (92.8%), no answer marked compliant wrongly. Details in [docs/EVALUATION.md](docs/EVALUATION.md). |
 | RFP-A (29 requirements)                           | 26 of 29 correct (89.7%), zero security violations                                                                 |

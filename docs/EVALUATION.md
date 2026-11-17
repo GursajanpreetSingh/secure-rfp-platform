@@ -63,7 +63,7 @@ document).
 
 ## 4. Automated tests
 
-678 passed, 1 skipped on a database rebuilt from the migrations. CI runs lint, the format check and
+684 passed, 1 skipped on a database rebuilt from the migrations. CI runs lint, the format check and
 the tests on every push.
 
 ## 5. Not measured
