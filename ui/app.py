@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import streamlit as st  # noqa: E402
 
 from ui import state, theme  # noqa: E402
-from ui.views import home, login  # noqa: E402
+from ui.views import home, login, rfp_dashboard, rfp_review  # noqa: E402
 
 st.set_page_config(page_title="RFP AI Agent", page_icon="🛡️", layout="wide")
 theme.apply()
@@ -31,8 +31,17 @@ else:
         if st.button("Sign out", use_container_width=True):
             state.sign_out()
             st.rerun()
-    page = navigation(
-        [st.Page(home.render, title="Home", icon="🏠", url_path="home", default=True)]
-    )
+    pages = {
+        "home": st.Page(home.render, title="Home", icon="🏠", url_path="home", default=True),
+    }
+    if state.can_run_rfps():
+        pages["dashboard"] = st.Page(
+            rfp_dashboard.render, title="RFP dashboard", icon="📊", url_path="rfp"
+        )
+        pages["review"] = st.Page(
+            rfp_review.render, title="Review answers", icon="✅", url_path="review"
+        )
+    st.session_state.pages = pages  # screens use this to move to another page
+    page = navigation(list(pages.values()))
 
 page.run()
