@@ -122,6 +122,16 @@ def review_problem(action: str, final_status: str | None, note: str) -> str | No
     return None
 
 
+def source_line(source: dict) -> str:
+    """Where a quote came from: title, section and page, as plain text."""
+    where = source.get("title") or "Document"
+    if source.get("section"):
+        where += f", {source['section']}"
+    if source.get("page"):
+        where += f", page {source['page']}"
+    return where
+
+
 def upload_problem(filename: str, size: int) -> str | None:
     suffix = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
     if suffix not in UPLOAD_TYPES:

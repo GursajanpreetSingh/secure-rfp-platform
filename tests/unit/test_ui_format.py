@@ -99,3 +99,11 @@ def test_upload_problem():
     assert fmt.upload_problem("rfp", 1000) is not None
     assert fmt.upload_problem("rfp.pdf", 0) is not None
     assert fmt.upload_problem("rfp.pdf", fmt.MAX_UPLOAD_BYTES + 1) is not None
+
+
+def test_source_line():
+    assert (
+        fmt.source_line({"title": "Policy", "section": "2.1", "page": 3}) == "Policy, 2.1, page 3"
+    )
+    assert fmt.source_line({"title": "Policy"}) == "Policy"
+    assert fmt.source_line({}) == "Document"

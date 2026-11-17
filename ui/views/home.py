@@ -20,7 +20,8 @@ def render() -> None:
                 "review the answers and export the result."
             )
             if state.can_run_rfps():
-                st.caption("Coming in the next step: the dashboard and upload.")
+                if st.button("Open the RFP dashboard", type="primary"):
+                    st.switch_page(st.session_state.pages["dashboard"])
             else:
                 st.info("Your account type cannot run RFPs. Ask an administrator for staff access.")
     with qa:
@@ -30,4 +31,5 @@ def render() -> None:
                 "Ask questions about the documents you are allowed to see. "
                 "Your chats are saved, and every answer shows its sources."
             )
-            st.caption("Coming in the next step: the chat.")
+            if st.button("Open the chat", type="primary", key="open_chat"):
+                st.switch_page(st.session_state.pages["chat"])
