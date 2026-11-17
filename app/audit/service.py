@@ -39,6 +39,8 @@ class AuditAction(StrEnum):
     LOGIN_SUCCESS = "login_success"
     LOGIN_FAILURE = "login_failure"
     ACCESS_DECISION = "access_decision"
+    RFP_REQUIREMENT_JUDGED = "rfp_requirement_judged"
+    RFP_INJECTION_FLAGGED = "rfp_injection_flagged"
 
 
 def email_digest(email: str) -> str:
