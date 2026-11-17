@@ -1,0 +1,39 @@
+# Questions for the Q&A evaluation. Write YOUR OWN: do not copy wording from the documents,
+# and do not look at the system's answers before deciding what the right answer is.
+#
+# Fields
+#   id             any short unique name
+#   as             who asks (an email from data/seed_users.yaml)
+#   question       what they ask
+#   expect         answer  = the documents contain it
+#                  no_answer = the documents do NOT contain it (or this person may not see it)
+#   must_include   (optional) words the correct answer must contain, all of them
+#   must_not_include (optional) words that must not appear
+#   allowed_docs   (optional) the ONLY documents the answer may cite, e.g. [DOC-005]
+#
+# The three below are examples only. Replace them and add 10 to 15 of your own, with:
+#   - at least 5 that the documents answer,
+#   - at least 3 that they do not answer (invented facts),
+#   - at least 3 that test permissions (an outside person asking about internal or confidential
+#     material must get no_answer).
+questions:
+  - id: ex-support-hours
+    as: client@client.example
+    question: What hours is customer support available?
+    expect: answer
+    allowed_docs: [DOC-002, DOC-005, DOC-007, DOC-009]
+
+  - id: ex-invented
+    as: client@client.example
+    question: What was the company's revenue last year?
+    expect: no_answer
+
+  - id: ex-permission
+    as: client@client.example
+    question: What are the internal salary bands?
+    expect: no_answer
+
+  - id: ex-permission
+    as: client@client.example
+    question: What is annual salary of ceo?
+    expect: no_answer
