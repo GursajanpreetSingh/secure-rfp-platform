@@ -58,8 +58,7 @@ cp .env.example .env
 docker compose up -d
 uv run alembic upgrade head
 uv run python -m app.auth.seed                 # demo accounts (data/seed_users.yaml)
-uv run python -m app.datagen.generate          # the synthetic company documents
-uv run python -m app.ingestion.load            # read, chunk and store them with their access rules
+uv run python -m app.ingestion.load            # read the synthetic documents, chunk and store them with their access rules
 uv run python -m app.retrieval.embed_chunks    # compute the embeddings
 ```
 
@@ -114,10 +113,11 @@ the format check and the tests.
 
 | Measure                                           | Result                                                                                                     |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Automated tests (rebuilt from an empty database)  | 678 passed, 1 skipped                                                                                      |
 | RFP-B (40 requirements), against the ground truth | 38 of 40 correct (95%), zero security violations. This is a development score: the rules were tuned on it. |
-| RFP-A (29 requirements)                           | 26/29                                                                                                      |
-| Q&A, independently written questions              | 7/7 , 0 Violations (correct / total, security violations)                                                  |
-| Live attack check (`scripts.security_check`)      | All checks passed (25/25)                                                                                  |
+| RFP-A (29 requirements)                           | FILL IN from the final run                                                                                 |
+| Q&A, independently written questions              | FILL IN from `scripts.eval_qa` (correct / total, security violations)                                      |
+| Live attack check (`scripts.security_check`)      | All checks passed (FILL IN the count)                                                                      |
 
 ## Project layout
 
@@ -139,9 +139,9 @@ the format check and the tests.
 ## Data
 
 All data is synthetic. The fictional vendor, Meridian Cloud Services, is defined in
-`data/company_facts.yaml`, the source of truth for every generated document and every expected
-test answer. It includes deliberate traps (an expired certificate, a partially met requirement,
-contradicted and undocumented capabilities) so that correctness can be measured.
+`data/company_facts.yaml`, the source of truth for every document and every expected test answer.
+It includes deliberate traps (an expired certificate, a partially met requirement, contradicted
+and undocumented capabilities) so that correctness can be measured.
 
 Do not load real or confidential documents: the free language-model tier may use prompts to
 improve its models.
