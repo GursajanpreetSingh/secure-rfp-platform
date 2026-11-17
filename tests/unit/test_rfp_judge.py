@@ -230,3 +230,39 @@ def test_buyer_words_get_a_reminder_in_the_prompt():
 
 def test_no_reminder_when_no_buyer_word():
     assert "NOTE:" not in build_prompt("Uptime of 99.9%.", "mandatory", [ev(1, UPTIME)])
+
+
+def test_a_no_must_be_backed_by_a_negative_or_a_figure():
+    e1 = ev(1, "The infrastructure that hosts the platform is provided by a third-party host.")
+    quote = "provided by a third-party host"
+    result, _ = run([e1], answer("non_compliant", [("E1", quote)]))
+    assert result.status is Status.INSUFFICIENT_EVIDENCE
+    assert result.reason is Reason.UNSUPPORTED_NEGATIVE
+    assert result.downgraded_from is Status.NON_COMPLIANT
+
+
+def test_a_no_with_a_figure_is_accepted():
+    e1 = ev(1, "When a customer leaves, their data is deleted within 90 days of the end.")
+    result, _ = run([e1], answer("non_compliant", [("E1", "deleted within 90 days of the end")]))
+    assert result.status is Status.NON_COMPLIANT
+
+
+def test_negative_signal_words():
+    from app.rfp.judge import has_negative_signal
+
+    assert has_negative_signal("Support is not staffed on Sundays")
+    assert has_negative_signal("Available only on weekdays")
+    assert has_negative_signal("kept for 14 days")
+    assert not has_negative_signal("Customers share the application tier")
+
+
+def test_short_pieces_may_add_up_but_a_bare_figure_may_not():
+    text = "Control: Key rotation | Frequency: Every 365 days | Owner: Security"
+    assert quote_is_in("Key rotation | Every 365 days", text)
+    assert not quote_is_in("Every 365 days", text)
+
+
+def test_prompt_says_a_no_needs_nothing_supporting_and_silence_is_not_failure():
+    flat = " ".join(SYSTEM_PROMPT.split())
+    assert "Use it only when nothing in the excerpts supports meeting the requirement" in flat
+    assert "is silence, not a failure" in flat

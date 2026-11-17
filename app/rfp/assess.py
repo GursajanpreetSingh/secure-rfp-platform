@@ -7,6 +7,7 @@ skipped by accident. That is also what makes this module easy to test with fakes
 
 from __future__ import annotations
 
+import re
 import uuid
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
@@ -19,7 +20,7 @@ if TYPE_CHECKING:
     from app.retrieval.search import SearchHit
     from app.rfp.parse import Requirement
 
-MAX_EVIDENCE = 6  # excerpts shown to the model for one requirement
+MAX_EVIDENCE = 8  # excerpts shown to the model for one requirement
 STOP_AFTER_FAILURES = 3  # model unavailable this many times in a row: stop calling it
 
 ERR_LLM_UNAVAILABLE = "llm_unavailable"
@@ -54,6 +55,24 @@ def hits_to_evidence(hits: Sequence[SearchHit], limit: int = MAX_EVIDENCE) -> li
     ]
 
 
+_BOILERPLATE_START = re.compile(
+    r"^\s*(?:the|a|an)?\s*(?:proposed\s+)?"
+    r"(?:vendor|supplier|contractor|bidder|solution|platform|service|system)\s+"
+    r"(?:shall|must|should|will)\s+(?:also\s+)?(?:be able to\s+)?",
+    re.IGNORECASE,
+)
+
+
+def requirement_query(text: str) -> str:
+    """The words to search with: the requirement without its "The vendor shall" opening.
+
+    Those opening words say nothing about the topic and pull search towards unrelated text. The
+    judge still receives the full requirement; only the search question is shortened.
+    """
+    cleaned = _BOILERPLATE_START.sub("", text.strip()).strip().rstrip(".;:").strip()
+    return cleaned if len(cleaned.split()) >= 3 else text.strip()
+
+
 class ModelAsk:
     """Turns an LLM into the `ask(system, prompt) -> JudgeAnswer` the judge expects."""
 
@@ -77,7 +96,7 @@ def assess_requirement(
         # The requirement's own wording tried to steer the system. A person looks at it instead.
         return Assessment(requirement, None, ERR_FLAGGED, 0, (), None)
 
-    evidence = hits_to_evidence(search_fn(requirement.text), limit)
+    evidence = hits_to_evidence(search_fn(requirement_query(requirement.text)), limit)
     document_ids = tuple(dict.fromkeys(item.document_id for item in evidence))
     try:
         judgement = judge_requirement(requirement.text, requirement.priority, evidence, ask)

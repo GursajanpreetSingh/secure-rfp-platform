@@ -25,7 +25,8 @@ MAX_EVIDENCE_CHARS = 1800  # per excerpt; what the model sees is exactly what we
 MAX_CITATIONS = 3
 MAX_QUOTE_CHARS = 400
 MAX_RATIONALE_CHARS = 500
-MIN_LONGEST_FRAGMENT = 15  # a quote must contain at least one stretch this long
+MIN_LONGEST_FRAGMENT = 10  # a quote must contain at least one stretch this long
+MIN_QUOTE_CHARS = 20  # and be at least this long in total, after joining its pieces
 
 
 class Status(StrEnum):
@@ -42,6 +43,7 @@ class Reason(StrEnum):
     NO_CITATION = "no_citation"
     BAD_REFERENCE = "bad_reference"
     UNVERIFIED_CITATION = "unverified_citation"
+    UNSUPPORTED_NEGATIVE = "unsupported_negative"
 
 
 # --- what the model must return -------------------------------------------------------------
@@ -134,10 +136,12 @@ conditions, or that the evidence stops short of the level asked (for example, te
 users when 2,000 are required) without saying the vendor cannot go further.
    - non_compliant: the excerpts state a commitment, figure or limit that fails the \
 requirement (for example, backups kept 14 days when 30 are required), or explicitly say the \
-vendor does not offer it.
+vendor does not offer it. Use it only when nothing in the excerpts supports meeting the \
+requirement. If some excerpts support it and others limit it, answer partial.
    - insufficient_evidence: the excerpts do not say enough either way.
 4. Missing evidence is never non_compliant. If the excerpts are silent, unrelated or unclear, \
-answer insufficient_evidence. Saying what the vendor does offer (for example, a French \
+answer insufficient_evidence. A passage that simply does not mention the detail asked for is \
+silence, not a failure. Saying what the vendor does offer (for example, a French \
 helpline) does not mean it lacks something else (a Spanish helpline).
 5. Every answer other than insufficient_evidence needs 1 to 3 citations. Each citation has the \
 excerpt ref (like "E2") and a quote copied EXACTLY, word for word, from that excerpt (at most \
@@ -218,18 +222,34 @@ def normalize(text: str) -> str:
 
 
 def quote_is_in(quote: str, text: str) -> bool:
-    """True when every piece of the quote appears in the text and one piece is long enough.
+    """True when every piece of the quote appears in the text and the quote is not trivial.
 
-    Pieces are separated by "..." or by " | " (the separator used between table cells).
+    Pieces are separated by "..." or by " | " (the separator used between table cells). Joined
+    together they must have at least MIN_QUOTE_CHARS characters, and the longest piece at least
+    MIN_LONGEST_FRAGMENT, so that a bare figure such as "99.95%" is never enough.
     """
     haystack = normalize(text)
     pieces = [normalize(piece) for piece in _SPLIT.split(quote)]
     pieces = [piece for piece in pieces if piece]
     if not pieces:
         return False
+    if sum(len(piece) for piece in pieces) < MIN_QUOTE_CHARS:
+        return False
     if max(len(piece) for piece in pieces) < MIN_LONGEST_FRAGMENT:
         return False
     return all(piece in haystack for piece in pieces)
+
+
+# A "no" has to be written down somewhere: a negative word, a limit word, or a figure.
+_NEGATIVE_SIGNAL = re.compile(
+    r"\b(?:not|no|never|none|cannot|without|neither|nor|except|unless|excluding|"
+    r"unavailable|only)\b|n't|\d",
+    re.IGNORECASE,
+)
+
+
+def has_negative_signal(quote: str) -> bool:
+    return _NEGATIVE_SIGNAL.search(quote) is not None
 
 
 def _insufficient(
@@ -296,6 +316,14 @@ def verify(answer: JudgeAnswer, evidence: Sequence[Evidence]) -> Judgement:
         )
         if len(accepted) == MAX_CITATIONS:
             break
+
+    if claimed is Status.NON_COMPLIANT and not any(has_negative_signal(c.quote) for c in accepted):
+        return _insufficient(
+            Reason.UNSUPPORTED_NEGATIVE,
+            "The answer said the requirement is not met, but no quote states a failure or a "
+            "limit, so it was not accepted.",
+            claimed,
+        )
 
     return Judgement(
         status=claimed,

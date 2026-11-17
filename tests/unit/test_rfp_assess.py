@@ -12,6 +12,7 @@ from app.rfp.assess import (
     assess_requirement,
     assess_rfp,
     hits_to_evidence,
+    requirement_query,
 )
 from app.rfp.judge import JudgeAnswer, Reason, Status
 
@@ -75,7 +76,7 @@ def test_search_receives_the_requirement_text():
     seen = []
     ask = ModelAsk(FakeLLM(good_answer()))
     assess_requirement(req(), lambda q: seen.append(q) or [hit()], ask)
-    assert seen == ["Uptime of 99.9%."]
+    assert seen == ["Uptime of 99.9%"]
 
 
 def test_no_hits_means_no_model_call():
@@ -155,3 +156,28 @@ def test_evidence_limit_can_be_changed():
     assert out.evidence_count == 8
     out = assess_rfp([req()], lambda q: seen.append(q) or [hit() for _ in range(10)], ask, limit=3)
     assert out[0].evidence_count == 3
+
+
+def test_query_drops_the_opening_boilerplate():
+    cases = {
+        "The vendor shall employ at least 200 people.": "employ at least 200 people",
+        "The solution shall support at least 6,000 concurrent users.": (
+            "support at least 6,000 concurrent users"
+        ),
+        "The proposed platform must also be able to export audit logs.": "export audit logs",
+        "A supplier will provide staff training.": "provide staff training",
+    }
+    for original, expected in cases.items():
+        assert requirement_query(original) == expected
+
+
+def test_query_keeps_requirements_without_that_opening():
+    text = "All data in transit shall be protected with TLS 1.2 or higher."
+    assert requirement_query(text) == text.rstrip(".")
+    assert requirement_query("Customer tenants shall be isolated.") == (
+        "Customer tenants shall be isolated"
+    )
+
+
+def test_query_never_becomes_too_short_to_search_with():
+    assert requirement_query("The vendor shall comply.") == "The vendor shall comply."
