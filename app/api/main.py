@@ -3,7 +3,7 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from app.api.routes import accounts, auth, qa, rfp
+from app.api.routes import accounts, auth, dashboard, qa, rfp
 from app.core.db import get_db
 
 app = FastAPI(title="Secure RFP Platform", version="0.1.0")
@@ -11,6 +11,7 @@ app.include_router(auth.router)
 app.include_router(accounts.router)
 app.include_router(rfp.router)
 app.include_router(qa.router)
+app.include_router(dashboard.router)
 
 
 @app.get("/health")
