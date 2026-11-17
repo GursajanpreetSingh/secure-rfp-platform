@@ -17,3 +17,7 @@ data/generated/
 .idea/
 .DS_Store
 Thumbs.db
+
+# local run outputs
+run_*.json
+matrix.csv
