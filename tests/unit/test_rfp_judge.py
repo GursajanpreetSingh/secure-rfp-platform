@@ -197,3 +197,36 @@ def test_system_prompt_states_the_honesty_rules():
 def test_normalize_is_idempotent():
     once = normalize("  A—B \n C ")
     assert normalize(once) == once == "a-b c"
+
+
+def test_rejected_quote_is_kept_for_debugging():
+    result, _ = run(
+        [ev(1, UPTIME)], answer("compliant", [("E1", "We guarantee total uptime always")])
+    )
+    assert result.reason is Reason.UNVERIFIED_CITATION
+    assert result.rejected_quotes == ("We guarantee total uptime always",)
+
+
+def test_system_prompt_separates_failing_figures_from_silence():
+    assert "state a commitment, figure or limit that fails the requirement" in " ".join(
+        SYSTEM_PROMPT.split()
+    )
+    assert "does not mean it lacks something else" in " ".join(SYSTEM_PROMPT.split())
+
+
+def test_system_prompt_explains_table_quotes_and_buyer_words():
+    flat = " ".join(SYSTEM_PROMPT.split())
+    assert "Label: value | Label: value" in flat
+    assert '"the Authority"' in flat and "not a regulator" in flat
+
+
+def test_buyer_words_get_a_reminder_in_the_prompt():
+    prompt = build_prompt(
+        "Breaches shall be notified to the Authority.", "mandatory", [ev(1, UPTIME)]
+    )
+    assert 'NOTE: In this requirement "the Authority" means the buyer' in prompt
+    assert "does not mean a regulator" in prompt
+
+
+def test_no_reminder_when_no_buyer_word():
+    assert "NOTE:" not in build_prompt("Uptime of 99.9%.", "mandatory", [ev(1, UPTIME)])

@@ -40,12 +40,13 @@ def summarize(assessment: Assessment) -> dict:
     req, judgement = assessment.requirement, assessment.judgement
     row = {"id": req.id, "priority": req.priority, "section": req.section}
     if judgement is None:
-        row.update(status="not_judged", reason=assessment.error, citations=[])
+        row.update(status="not_judged", reason=assessment.error, citations=[], rejected_quotes=[])
         return row
     row.update(
         status=judgement.status.value,
         reason=judgement.reason.value,
         downgraded_from=judgement.downgraded_from.value if judgement.downgraded_from else None,
+        rejected_quotes=list(judgement.rejected_quotes),
         rationale=judgement.rationale,
         citations=[
             {"doc": doc_code(c.title), "page": c.page, "section": c.section, "quote": c.quote}
@@ -64,6 +65,13 @@ def main() -> int:
     parser.add_argument("--ids", default="", help="only these requirement IDs, comma separated")
     parser.add_argument("--limit", type=int, default=0, help="only the first N requirements")
     parser.add_argument("--verbose", action="store_true", help="show rationale and quotes")
+    parser.add_argument(
+        "--top-k",
+        type=int,
+        default=MAX_EVIDENCE,
+        help="excerpts retrieved and shown per requirement",
+    )
+    parser.add_argument("--hits", action="store_true", help="show which excerpts were retrieved")
     parser.add_argument("--json", type=Path, help="also save the results to this file")
     args = parser.parse_args()
 
@@ -128,14 +136,25 @@ def main() -> int:
             )
             if args.verbose and row["status"] != "not_judged":
                 print(f"        why: {row['rationale']}")
+                for quote in row["rejected_quotes"]:
+                    print(f'        REJECTED quote: "{quote}"')
                 for cite in row["citations"]:
                     print(f'        {cite["doc"]} p{cite["page"]}: "{cite["quote"]}"')
 
         def search_fn(question: str):
-            return search(db, subject, question, Purpose.RFP, embedder, top_k=MAX_EVIDENCE)
+            hits = search(db, subject, question, Purpose.RFP, embedder, top_k=args.top_k)
+            if args.hits:
+                print(f"  retrieved for: {question[:70]}")
+                for number, hit in enumerate(hits, start=1):
+                    print(
+                        f"    E{number} {doc_code(hit.filename)} p{hit.page} "
+                        f"vector#{hit.vector_rank} keyword#{hit.keyword_rank} "
+                        f"{(hit.section or '')[:40]}"
+                    )
+            return hits
 
         try:
-            assess_rfp(requirements, search_fn, ModelAsk(llm), on_result=show)
+            assess_rfp(requirements, search_fn, ModelAsk(llm), on_result=show, limit=args.top_k)
         finally:
             db.commit()
 

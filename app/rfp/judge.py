@@ -90,6 +90,7 @@ class Judgement:
     citations: tuple[Citation, ...]
     reason: Reason
     downgraded_from: Status | None = None
+    rejected_quotes: tuple[str, ...] = ()  # for debugging only; never written to the audit log
 
 
 def make_evidence(
@@ -128,17 +129,26 @@ what the excerpts say about the requirement.
 3. Status meanings:
    - compliant: the excerpts show the vendor fully meets the requirement, including any \
 numbers, dates or limits it names.
-   - partial: the excerpts show it is met only in part, only under conditions, or with a \
-weaker figure than required.
-   - non_compliant: the excerpts explicitly say the vendor does NOT or CANNOT meet it.
+   - partial: the excerpts show part of the requirement is met, or that it is met only under \
+conditions, or that the evidence stops short of the level asked (for example, tested with 500 \
+users when 2,000 are required) without saying the vendor cannot go further.
+   - non_compliant: the excerpts state a commitment, figure or limit that fails the \
+requirement (for example, backups kept 14 days when 30 are required), or explicitly say the \
+vendor does not offer it.
    - insufficient_evidence: the excerpts do not say enough either way.
 4. Missing evidence is never non_compliant. If the excerpts are silent, unrelated or unclear, \
-answer insufficient_evidence.
+answer insufficient_evidence. Saying what the vendor does offer (for example, a French \
+helpline) does not mean it lacks something else (a Spanish helpline).
 5. Every answer other than insufficient_evidence needs 1 to 3 citations. Each citation has the \
 excerpt ref (like "E2") and a quote copied EXACTLY, word for word, from that excerpt (at most \
-300 characters). Do not paraphrase inside a quote. Use "..." to skip words between pieces.
+300 characters). Do not paraphrase inside a quote. Use "..." to skip words between pieces. \
+Table rows appear as "Label: value | Label: value"; copy the cells exactly as shown, labels \
+included, and never rewrite a table as a sentence.
 6. For insufficient_evidence use an empty citations list.
-7. rationale: at most two plain sentences saying why. Do not add facts that are not in your quotes.
+7. The requirement is written by the buyer. Words such as "the Authority", "the Client" or \
+"the Purchaser" mean the vendor's customer (the buyer), not a regulator, unless the requirement \
+says otherwise.
+8. rationale: at most two plain sentences saying why. Do not add facts that are not in your quotes.
 """
 
 
@@ -147,9 +157,25 @@ def _clean_for_tag(text: str) -> str:
     return re.sub(r"</?\s*excerpt", "<_excerpt", text, flags=re.IGNORECASE)
 
 
+_BUYER_TERM = re.compile(r"\bthe (Contracting Authority|Authority|Client|Purchaser|Buyer)\b")
+
+
+def buyer_note(requirement_text: str) -> str | None:
+    """A reminder when the requirement names the buyer the way RFPs usually do."""
+    match = _BUYER_TERM.search(requirement_text)
+    if match is None:
+        return None
+    return (
+        f'NOTE: In this requirement "{match.group(0)}" means the buyer, who is the vendor\'s '
+        "customer. It does not mean a regulator."
+    )
+
+
 def build_prompt(requirement_text: str, priority: str, evidence: Sequence[Evidence]) -> str:
+    note = buyer_note(requirement_text)
     parts = [
         f"REQUIREMENT (priority: {priority})",
+        *([note] if note else []),
         "<requirement>",
         _clean_for_tag(requirement_text.strip()).replace("<requirement", "<_requirement"),
         "</requirement>",
@@ -206,13 +232,19 @@ def quote_is_in(quote: str, text: str) -> bool:
     return all(piece in haystack for piece in pieces)
 
 
-def _insufficient(reason: Reason, rationale: str, claimed: Status | None = None) -> Judgement:
+def _insufficient(
+    reason: Reason,
+    rationale: str,
+    claimed: Status | None = None,
+    rejected: tuple[str, ...] = (),
+) -> Judgement:
     return Judgement(
         status=Status.INSUFFICIENT_EVIDENCE,
         rationale=rationale,
         citations=(),
         reason=reason,
         downgraded_from=claimed,
+        rejected_quotes=rejected,
     )
 
 
@@ -245,6 +277,7 @@ def verify(answer: JudgeAnswer, evidence: Sequence[Evidence]) -> Judgement:
                 Reason.UNVERIFIED_CITATION,
                 "A quoted passage could not be found in the cited excerpt, so it was not accepted.",
                 claimed,
+                rejected=(" ".join(cited.quote.split())[:MAX_QUOTE_CHARS],),
             )
         key = (source.ref, normalize(cited.quote))
         if key in seen:

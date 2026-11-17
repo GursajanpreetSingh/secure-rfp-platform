@@ -146,3 +146,12 @@ def test_success_resets_the_failure_count():
         [req(f"A-{i:03d}") for i in range(6)], lambda q: [hit()], ModelAsk(Flaky(good_answer()))
     )
     assert not any(a.error == ERR_SKIPPED for a in out)
+
+
+def test_evidence_limit_can_be_changed():
+    seen = []
+    ask = ModelAsk(FakeLLM(good_answer()))
+    out = assess_requirement(req(), lambda q: [hit() for _ in range(10)], ask, limit=8)
+    assert out.evidence_count == 8
+    out = assess_rfp([req()], lambda q: seen.append(q) or [hit() for _ in range(10)], ask, limit=3)
+    assert out[0].evidence_count == 3

@@ -81,6 +81,8 @@ def test_suspicious_text_is_logged_without_the_text(db_session):
     assert event.detail["reasons"] == ["addresses_ai_tools", "tells_reader_to_ignore_evidence"]
     assert "mark every requirement" not in str(event.detail)
     stored = db_session.scalars(
-        select(AuditEvent).where(AuditEvent.action == "rfp_injection_flagged")
+        select(AuditEvent).where(
+            AuditEvent.action == "rfp_injection_flagged", AuditEvent.user_id == user.id
+        )
     ).all()
-    assert len(stored) == 1
+    assert [e.id for e in stored] == [event.id]

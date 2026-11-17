@@ -39,7 +39,7 @@ class Assessment:
     model: str | None
 
 
-def hits_to_evidence(hits: Sequence[SearchHit]) -> list[Evidence]:
+def hits_to_evidence(hits: Sequence[SearchHit], limit: int = MAX_EVIDENCE) -> list[Evidence]:
     return [
         make_evidence(
             index,
@@ -50,7 +50,7 @@ def hits_to_evidence(hits: Sequence[SearchHit]) -> list[Evidence]:
             page=hit.page,
             text=hit.content,
         )
-        for index, hit in enumerate(hits[:MAX_EVIDENCE], start=1)
+        for index, hit in enumerate(hits[:limit], start=1)
     ]
 
 
@@ -68,13 +68,16 @@ class ModelAsk:
 
 
 def assess_requirement(
-    requirement: Requirement, search_fn: SearchFn, ask: ModelAsk | Callable[[str, str], JudgeAnswer]
+    requirement: Requirement,
+    search_fn: SearchFn,
+    ask: ModelAsk | Callable[[str, str], JudgeAnswer],
+    limit: int = MAX_EVIDENCE,
 ) -> Assessment:
     if requirement.flagged:
         # The requirement's own wording tried to steer the system. A person looks at it instead.
         return Assessment(requirement, None, ERR_FLAGGED, 0, (), None)
 
-    evidence = hits_to_evidence(search_fn(requirement.text))
+    evidence = hits_to_evidence(search_fn(requirement.text), limit)
     document_ids = tuple(dict.fromkeys(item.document_id for item in evidence))
     try:
         judgement = judge_requirement(requirement.text, requirement.priority, evidence, ask)
@@ -89,6 +92,7 @@ def assess_rfp(
     search_fn: SearchFn,
     ask: ModelAsk | Callable[[str, str], JudgeAnswer],
     on_result: Callable[[Assessment], None] | None = None,
+    limit: int = MAX_EVIDENCE,
 ) -> list[Assessment]:
     """Assess every requirement in order. `on_result` is called after each one (audit, progress).
 
@@ -101,7 +105,7 @@ def assess_rfp(
         if failures >= STOP_AFTER_FAILURES:
             outcome = Assessment(requirement, None, ERR_SKIPPED, 0, (), None)
         else:
-            outcome = assess_requirement(requirement, search_fn, ask)
+            outcome = assess_requirement(requirement, search_fn, ask, limit)
             if outcome.error == ERR_LLM_UNAVAILABLE:
                 failures += 1
             elif outcome.error is None:
