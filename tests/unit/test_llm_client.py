@@ -4,7 +4,6 @@ import pytest
 from pydantic import BaseModel
 
 from app.llm import client as llm
-from app.llm.client import GeminiLLM, LLMUnavailable, build_llm, classify_error
 
 
 class Answer(BaseModel):
@@ -43,10 +42,10 @@ class FakeClient:
         return outcome
 
 
-def make(script: list, models: list[str] | None = None) -> tuple[GeminiLLM, FakeClient, list]:
+def make(script: list, models: list[str] | None = None) -> tuple[llm.GeminiLLM, FakeClient, list]:
     client = FakeClient(script)
     waits: list[float] = []
-    return GeminiLLM(client, models or ["m1", "m2"], sleep=waits.append), client, waits
+    return llm.GeminiLLM(client, models or ["m1", "m2"], sleep=waits.append), client, waits
 
 
 def test_first_model_answers() -> None:
@@ -108,7 +107,7 @@ def test_when_every_model_is_out_of_quota_it_waits_and_tries_again() -> None:
 
 def test_rejected_key_stops_at_once_without_trying_other_models() -> None:
     model, client, _ = make([ApiError(403, "PERMISSION_DENIED"), Reply(GOOD)])
-    with pytest.raises(LLMUnavailable, match="API key was rejected"):
+    with pytest.raises(llm.LLMUnavailable, match="API key was rejected"):
         model.generate("s", "p", Answer)
     assert len(client.calls) == 1
 
@@ -128,7 +127,7 @@ def test_reply_with_wrong_fields_counts_as_bad() -> None:
 def test_failure_lists_every_model_tried() -> None:
     errors = [ApiError(404, "NOT_FOUND"), ApiError(504, "DEADLINE_EXCEEDED")]
     model, _, _ = make(errors)
-    with pytest.raises(LLMUnavailable) as caught:
+    with pytest.raises(llm.LLMUnavailable) as caught:
         model.generate("s", "p", Answer)
     message = str(caught.value)
     assert "m1: missing" in message and "m2: slow" in message
@@ -147,12 +146,12 @@ def test_failure_lists_every_model_tried() -> None:
     ],
 )
 def test_error_classification(error: Exception, kind: str) -> None:
-    assert classify_error(error) == kind
+    assert llm.classify_error(error) == kind
 
 
 def test_a_model_list_is_required() -> None:
     with pytest.raises(ValueError):
-        GeminiLLM(FakeClient([]), [])
+        llm.GeminiLLM(FakeClient([]), [])
 
 
 @pytest.mark.parametrize(
@@ -161,4 +160,4 @@ def test_a_model_list_is_required() -> None:
 )
 def test_build_llm_rejects_incomplete_settings(provider: str, key: str, models: str) -> None:
     with pytest.raises(ValueError):
-        build_llm(provider, key, models)
+        llm.build_llm(provider, key, models)
