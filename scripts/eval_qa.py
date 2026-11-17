@@ -25,7 +25,11 @@ def doc_code(title: str) -> str:
 def load_questions(path: Path) -> list[dict]:
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     questions = data.get("questions") or []
+    seen: set[str] = set()
     for number, item in enumerate(questions, start=1):
+        if item.get("id") in seen:
+            raise ValueError(f"the id '{item['id']}' is used twice; every id must be unique")
+        seen.add(item.get("id"))
         for key in ("id", "as", "question", "expect"):
             if not item.get(key):
                 raise ValueError(f"question {number} is missing '{key}'")
@@ -131,7 +135,7 @@ def main() -> int:
                         "text": "",
                     }
                 )
-                print(f"{item['id']:<8}ERROR  {type(problem).__name__}")
+                print(f"{item['id']:<24}ERROR  {type(problem).__name__}")
                 continue
             docs = list(dict.fromkeys(doc_code(c.title) for c in answer.citations))
             verdict = judge(item, answer.status.value, answer.text, docs)
@@ -142,15 +146,18 @@ def main() -> int:
                     "status": answer.status.value,
                     "docs": docs,
                     "text": answer.text,
+                    "why": answer.why.value,
                     **verdict,
                 }
             )
             mark = (
                 "PASS" if verdict["passed"] else ("VIOLATION" if verdict["violation"] else "FAIL")
             )
-            print(f"{item['id']:<8}{mark:<10}{answer.status.value:<11}{','.join(docs) or '-'}")
+            print(f"{item['id']:<24}{mark:<11}{answer.status.value:<11}{','.join(docs) or '-'}")
             for line in verdict["problems"]:
                 print(f"         - {line}")
+            if not verdict["passed"]:
+                print(f"         why the system said so: {answer.why.value}")
             if args.verbose:
                 print(f"         {answer.text[:300]}")
             sys.stdout.flush()

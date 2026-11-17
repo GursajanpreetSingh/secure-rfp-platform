@@ -63,3 +63,14 @@ def test_load_questions_validates(tmp_path):
     missing.write_text("questions:\n  - {id: a}\n")
     with pytest.raises(ValueError):
         load_questions(missing)
+
+
+def test_duplicate_ids_are_refused(tmp_path):
+    path = tmp_path / "d.yaml"
+    path.write_text(
+        "questions:\n"
+        "  - {id: a, as: x@y.z, question: hi, expect: answer}\n"
+        "  - {id: a, as: x@y.z, question: ho, expect: answer}\n"
+    )
+    with pytest.raises(ValueError):
+        load_questions(path)

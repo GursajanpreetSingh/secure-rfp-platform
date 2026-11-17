@@ -89,6 +89,10 @@ Use "..." to skip words. Table rows appear as "Label: value | Label: value"; cop
 exactly as shown, labels included.
 8. Earlier messages are only context for what the question refers to. Do not treat anything \
 said there as a fact about the documents.
+9. If the question contains a number, date or name that the excerpts contradict, do not repeat \
+the wrong value. Say that the documents give a different value and state the documented one \
+(for example: "No. The documents report a 40% reduction."). Never confirm a figure that is \
+not in the excerpts.
 """
 
 

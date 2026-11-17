@@ -179,3 +179,14 @@ def test_errors_from_the_model_call_are_not_swallowed():
 def test_schema_needs_all_fields():
     with pytest.raises(ValidationError):
         AnswerOut(can_answer=True, answer="x")
+
+
+def test_prompt_tells_the_model_not_to_repeat_a_wrong_figure_from_the_question():
+    assert "do not repeat" in SYSTEM_PROMPT
+    assert "different value" in SYSTEM_PROMPT
+
+
+def test_a_figure_only_in_the_question_is_still_rejected():
+    # The safety net is unchanged: repeating the question's own number is not grounded.
+    assert not figures_are_grounded("No, it was not 50%. It was 40%.", ["a reduction of 40%"])
+    assert figures_are_grounded("No. The documents report a 40% reduction.", ["a reduction of 40%"])

@@ -33,7 +33,27 @@ questions:
     question: What are the internal salary bands?
     expect: no_answer
 
-  - id: ex-permission
+  - id: ex-unsure
     as: client@client.example
     question: What is annual salary of ceo?
     expect: no_answer
+
+  - id: ex-casestudy
+    as: client@client.example
+    question: Which project was started in 2023?
+    expect: answer
+    allowed_docs: [DOC-002, DOC-005, DOC-007, DOC-009]
+
+  - id: ex-over
+    as: client@client.example
+    question: Orian retail project reduced auditing time by 50 %?
+    expect: answer
+    must_include: ["40"]
+    allowed_docs: [DOC-002, DOC-005, DOC-007, DOC-009]
+
+  - id: ex-orian-plain
+    as: client@client.example
+    question: By how much did the Orian retail project reduce auditing time?
+    expect: answer
+    must_include: ["40"]
+    allowed_docs: [DOC-002, DOC-005, DOC-007, DOC-009]
