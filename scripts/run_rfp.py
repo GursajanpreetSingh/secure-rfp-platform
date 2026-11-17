@@ -170,6 +170,7 @@ def main() -> int:
     print("\nSummary: " + ", ".join(f"{name} {count}" for name, count in sorted(counts.items())))
     print(f"Saved as run {run.id}. Nothing is exportable until each answer is reviewed.")
     if args.json:
+        args.json.parent.mkdir(parents=True, exist_ok=True)
         args.json.write_text(json.dumps(rows, indent=2), encoding="utf-8")
         print(f"Saved {args.json}")
     return 0

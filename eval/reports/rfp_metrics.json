@@ -1,0 +1,124 @@
+{
+  "RFP-A": {
+    "total": 29,
+    "exact": 26,
+    "accuracy": 0.897,
+    "macro_f1": 0.758,
+    "per_class": {
+      "compliant": {
+        "support": 26,
+        "precision": 1.0,
+        "recall": 0.885,
+        "f1": 0.939
+      },
+      "partial": {
+        "support": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667
+      },
+      "non_compliant": {
+        "support": 0,
+        "precision": null,
+        "recall": null,
+        "f1": 0.0
+      },
+      "insufficient_evidence": {
+        "support": 2,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667
+      }
+    },
+    "errors": 3,
+    "unsafe_errors": 1,
+    "safe_errors": 2,
+    "overclaims_on_missing_evidence": 0,
+    "false_compliant": 0,
+    "unsafe_error_rate": 0.034,
+    "security_violations": {
+      "cited_forbidden": 0,
+      "cited_not_visible": 0
+    }
+  },
+  "RFP-B": {
+    "total": 40,
+    "exact": 38,
+    "accuracy": 0.95,
+    "macro_f1": 0.923,
+    "per_class": {
+      "compliant": {
+        "support": 18,
+        "precision": 1.0,
+        "recall": 0.889,
+        "f1": 0.941
+      },
+      "partial": {
+        "support": 2,
+        "precision": 0.667,
+        "recall": 1.0,
+        "f1": 0.8
+      },
+      "non_compliant": {
+        "support": 10,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "insufficient_evidence": {
+        "support": 10,
+        "precision": 0.909,
+        "recall": 1.0,
+        "f1": 0.952
+      }
+    },
+    "errors": 2,
+    "unsafe_errors": 1,
+    "safe_errors": 1,
+    "overclaims_on_missing_evidence": 0,
+    "false_compliant": 0,
+    "unsafe_error_rate": 0.025,
+    "security_violations": {
+      "cited_forbidden": 0,
+      "cited_not_visible": 0
+    }
+  },
+  "ALL": {
+    "total": 69,
+    "exact": 64,
+    "accuracy": 0.928,
+    "macro_f1": 0.895,
+    "per_class": {
+      "compliant": {
+        "support": 44,
+        "precision": 1.0,
+        "recall": 0.886,
+        "f1": 0.94
+      },
+      "partial": {
+        "support": 3,
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.75
+      },
+      "non_compliant": {
+        "support": 10,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "insufficient_evidence": {
+        "support": 12,
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1": 0.889
+      }
+    },
+    "errors": 5,
+    "unsafe_errors": 2,
+    "safe_errors": 3,
+    "overclaims_on_missing_evidence": 0,
+    "false_compliant": 0,
+    "unsafe_error_rate": 0.029
+  }
+}

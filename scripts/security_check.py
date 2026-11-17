@@ -169,6 +169,9 @@ def evaluate(runner: Runner) -> None:
     else:
         r.record("other staff: run", "read someone else's run", None, "staff has no runs yet")
     chats = r.call("GET", "/qa/conversations", STAFF).json()
+    if not chats:  # make one real saved chat, so the owner-only check below always runs
+        r.call("POST", "/qa/ask", STAFF, json={"question": "What are the support hours?"})
+        chats = r.call("GET", "/qa/conversations", STAFF).json()
     if chats:
         chat_id = chats[0]["id"]
         code = r.call("GET", f"/qa/conversations/{chat_id}", OTHER_STAFF).status_code

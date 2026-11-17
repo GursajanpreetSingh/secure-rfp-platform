@@ -1,0 +1,152 @@
+[
+  {
+    "name": "no token: /rfp/runs",
+    "attack": "request without signing in",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "no token: /qa/conversations",
+    "attack": "request without signing in",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "no token: /rfp/overview",
+    "attack": "request without signing in",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "no token: /audit/recent",
+    "attack": "request without signing in",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "garbage token",
+    "attack": "token that was not issued",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "tampered signature",
+    "attack": "token that was not issued",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "disabled account",
+    "attack": "sign in after leaving",
+    "result": "PASS",
+    "detail": "HTTP 401"
+  },
+  {
+    "name": "role in sign-up",
+    "attack": "ask for role=executive",
+    "result": "PASS",
+    "detail": "HTTP 422"
+  },
+  {
+    "name": "new account role",
+    "attack": "sign up normally",
+    "result": "PASS",
+    "detail": "role=external"
+  },
+  {
+    "name": "new account runs RFP",
+    "attack": "external uploads an RFP",
+    "result": "PASS",
+    "detail": "HTTP 403"
+  },
+  {
+    "name": "company address",
+    "attack": "sign up as @meridian.test",
+    "result": "PASS",
+    "detail": "HTTP 422"
+  },
+  {
+    "name": "fake PDF",
+    "attack": "text sent as .pdf",
+    "result": "PASS",
+    "detail": "HTTP 415"
+  },
+  {
+    "name": "wrong file type",
+    "attack": "upload a .exe",
+    "result": "PASS",
+    "detail": "HTTP 415"
+  },
+  {
+    "name": "oversize upload",
+    "attack": "upload over 10 MB",
+    "result": "PASS",
+    "detail": "HTTP 413"
+  },
+  {
+    "name": "other staff: /run",
+    "attack": "read someone else's run",
+    "result": "PASS",
+    "detail": "HTTP 404"
+  },
+  {
+    "name": "other staff: /results",
+    "attack": "read someone else's run",
+    "result": "PASS",
+    "detail": "HTTP 404"
+  },
+  {
+    "name": "other staff: /export",
+    "attack": "read someone else's run",
+    "result": "PASS",
+    "detail": "HTTP 404"
+  },
+  {
+    "name": "other staff: review",
+    "attack": "review someone else's answer",
+    "result": "PASS",
+    "detail": "HTTP 404"
+  },
+  {
+    "name": "other person's chat",
+    "attack": "read someone else's chat",
+    "result": "PASS",
+    "detail": "HTTP 404"
+  },
+  {
+    "name": "delete other's chat",
+    "attack": "delete someone else's chat",
+    "result": "PASS",
+    "detail": "HTTP 404"
+  },
+  {
+    "name": "audit: outsider view",
+    "attack": "read the audit log",
+    "result": "PASS",
+    "detail": "5 rows, 0 with private fields"
+  },
+  {
+    "name": "audit: auditor view",
+    "attack": "auditor reads the log",
+    "result": "PASS",
+    "detail": "50 rows"
+  },
+  {
+    "name": "public: confidential",
+    "attack": "ask for confidential facts",
+    "result": "PASS",
+    "detail": "no_answer, cited=-"
+  },
+  {
+    "name": "public: prompt theft",
+    "attack": "ask for the hidden rules",
+    "result": "PASS",
+    "detail": "no_answer, cited=-"
+  },
+  {
+    "name": "public: forced citation",
+    "attack": "demand a document",
+    "result": "PASS",
+    "detail": "no_answer, cited=-"
+  }
+]
