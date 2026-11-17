@@ -74,12 +74,16 @@ def subject_of(user: User) -> Subject:
 
 
 def visible_chunk_ids(
-    db: Session, user: User, chunk_ids: list[str], today: date | None = None
+    db: Session,
+    user: User,
+    chunk_ids: list[str],
+    today: date | None = None,
+    purpose: Purpose = Purpose.RFP,
 ) -> set[str]:
-    """Which of these chunks the user may use right now."""
+    """Which of these chunks the user may use right now, for this purpose."""
     if not chunk_ids:
         return set()
-    params = access_params(subject_of(user), Purpose.RFP, today or date.today())
+    params = access_params(subject_of(user), purpose, today or date.today())
     rows = db.execute(_VISIBLE_SQL, {**params, "ids": chunk_ids}).all()
     return {str(row[0]) for row in rows}
 
