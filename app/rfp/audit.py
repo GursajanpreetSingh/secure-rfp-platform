@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import uuid
 from collections.abc import Sequence
 from typing import TYPE_CHECKING
 
@@ -17,7 +18,12 @@ if TYPE_CHECKING:
 
 
 def audit_assessment(
-    db: Session, user: User, rfp: str, assessment: Assessment, request_id: str | None = None
+    db: Session,
+    user: User,
+    rfp: str,
+    assessment: Assessment,
+    request_id: str | None = None,
+    run_id: uuid.UUID | None = None,
 ):
     judgement = assessment.judgement
     detail: dict = {
@@ -26,6 +32,8 @@ def audit_assessment(
         "documents_shown": [str(doc_id) for doc_id in assessment.document_ids],
         "model": assessment.model,
     }
+    if run_id is not None:
+        detail["run_id"] = str(run_id)
     if judgement is None:
         detail["error"] = assessment.error
         decision = AuditDecision.ERROR

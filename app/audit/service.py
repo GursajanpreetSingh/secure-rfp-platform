@@ -41,6 +41,9 @@ class AuditAction(StrEnum):
     ACCESS_DECISION = "access_decision"
     RFP_REQUIREMENT_JUDGED = "rfp_requirement_judged"
     RFP_INJECTION_FLAGGED = "rfp_injection_flagged"
+    RFP_RUN_STARTED = "rfp_run_started"
+    RFP_RUN_FINISHED = "rfp_run_finished"
+    RFP_REVIEW = "rfp_review"
 
 
 def email_digest(email: str) -> str:

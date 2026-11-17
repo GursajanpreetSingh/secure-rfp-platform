@@ -29,6 +29,7 @@ from app.retrieval.search import search
 from app.rfp.assess import MAX_EVIDENCE, Assessment, ModelAsk, assess_rfp
 from app.rfp.audit import audit_assessment, audit_suspicious
 from app.rfp.parse import parse_rfp
+from app.rfp.store import create_run, finish_run, save_assessment
 
 
 def doc_code(filename: str) -> str:
@@ -121,10 +122,14 @@ def main() -> int:
             print(f"  {len(parsed.suspicious)} suspicious passage(s) kept out of the run (audited)")
             audit_suspicious(db, user, rfp_name, parsed.suspicious, request_id)
 
+        run = create_run(
+            db, user, rfp_name, args.file.name, len(requirements), parsed.warnings, request_id
+        )
         rows: list[dict] = []
 
         def show(assessment: Assessment) -> None:
-            audit_assessment(db, user, rfp_name, assessment, request_id)
+            audit_assessment(db, user, rfp_name, assessment, request_id, run.id)
+            save_assessment(db, run, len(rows) + 1, assessment)
             row = summarize(assessment)
             rows.append(row)
             docs = ",".join(dict.fromkeys(c["doc"] for c in row["citations"])) or "-"
@@ -153,13 +158,17 @@ def main() -> int:
                     )
             return hits
 
+        state = "failed"
         try:
             assess_rfp(requirements, search_fn, ModelAsk(llm), on_result=show, limit=args.top_k)
+            state = "completed"
         finally:
+            finish_run(db, user, run, state, request_id)
             db.commit()
 
     counts = Counter(row["status"] for row in rows)
     print("\nSummary: " + ", ".join(f"{name} {count}" for name, count in sorted(counts.items())))
+    print(f"Saved as run {run.id}. Nothing is exportable until each answer is reviewed.")
     if args.json:
         args.json.write_text(json.dumps(rows, indent=2), encoding="utf-8")
         print(f"Saved {args.json}")
