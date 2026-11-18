@@ -122,24 +122,40 @@ def review_problem(action: str, final_status: str | None, note: str) -> str | No
     return None
 
 
-def answer_markdown(text: str) -> str:
-    """Lay out a model answer: bold first line, then bullets. Every piece is escaped first,
-    so nothing the model (or a document) wrote can become a link, an image or HTML."""
+def split_answer(text: str) -> tuple[str, list[str], list[str]]:
+    """Split a model answer into (headline, bullet lines, other lines). Nothing is escaped here."""
     lines = [line.strip() for line in (text or "").splitlines() if line.strip()]
     if not lines:
-        return ""
-    out = [f"**{md_escape(lines[0])}**"]
+        return "", [], []
     bullets, other = [], []
     for line in lines[1:]:
         if line.startswith(("- ", "* ", "\u2022 ")):
-            bullets.append(f"- {md_escape(line[2:])}")
+            bullets.append(line[2:].strip())
         else:
-            other.append(md_escape(line))
+            other.append(line)
+    return lines[0], bullets, other
+
+
+def answer_markdown(text: str) -> str:
+    """Lay out a model answer as markdown: bold first line, then bullets. Every piece is escaped
+    first, so nothing the model (or a document) wrote can become a link, an image or HTML."""
+    headline, bullets, other = split_answer(text)
+    if not headline:
+        return ""
+    out = [f"**{md_escape(headline)}**"]
     if other:
-        out.append("\n\n".join(other))
+        out.append("\n\n".join(md_escape(line) for line in other))
     if bullets:
-        out.append("\n".join(bullets))
+        out.append("\n".join(f"- {md_escape(line)}" for line in bullets))
     return "\n\n".join(out)
+
+
+def doc_label(source: dict) -> str:
+    """A short label for a source chip, such as 'DOC-005 \u00b7 SLA'."""
+    title = str(source.get("title") or "Document")
+    code = title.split("_", 1)[0].strip() if title.startswith("DOC-") else title[:28]
+    section = str(source.get("section") or "").strip()
+    return f"{code} \u00b7 {section[:28]}" if section else code
 
 
 def source_line(source: dict) -> str:

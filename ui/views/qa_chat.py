@@ -14,8 +14,8 @@ def _call(action, *args):
 
 
 def _sidebar(current: str | None) -> None:
-    st.subheader("Your chats")
-    if st.button("New chat", use_container_width=True, type="primary"):
+    st.markdown("**Your chats**")
+    if st.button("➕ New chat", use_container_width=True, type="primary"):
         st.session_state.conversation_id = None
         st.rerun()
     chats = _call(state.api().conversations) or []
@@ -32,7 +32,7 @@ def _sidebar(current: str | None) -> None:
         ):
             st.session_state.conversation_id = chat["id"]
             st.rerun()
-        if delete_col.button("🗑", key=f"del_{chat['id']}", help="Delete this chat"):
+        if delete_col.button("\U0001f5d1", key=f"del_{chat['id']}", help="Delete this chat"):
             _call(state.api().delete_conversation, chat["id"])
             if chat["id"] == current:
                 st.session_state.conversation_id = None
@@ -41,8 +41,9 @@ def _sidebar(current: str | None) -> None:
 
 def _history(conversation_id: str | None) -> None:
     if not conversation_id:
-        st.caption(
-            "Ask about the documents you are allowed to see. Every answer shows its sources."
+        qa_parts.empty_state(
+            "Answers come only from documents you are allowed to see, and every answer "
+            "shows where it came from."
         )
         return
     messages = _call(state.api().messages, conversation_id)
@@ -50,13 +51,15 @@ def _history(conversation_id: str | None) -> None:
         st.session_state.conversation_id = None
         return
     for message in messages:
-        with st.chat_message(message["role"]):
-            if message["role"] == "user":
-                st.text(message["content"])
-            else:
-                qa_parts.show_answer(message["status"], message["content"], message["citations"])
-                if message.get("redacted"):
-                    st.caption("A source for this answer is no longer available to you.")
+        if message["role"] == "user":
+            qa_parts.render_user(message["content"])
+        else:
+            qa_parts.render_assistant(
+                message["status"],
+                message["content"],
+                message["citations"],
+                bool(message.get("redacted")),
+            )
 
 
 def render() -> None:
@@ -67,13 +70,11 @@ def render() -> None:
         _sidebar(current)
     with main:
         _history(current)
-        question = st.chat_input("Ask a question")
+        question = qa_parts.next_question("Ask a question about your documents")
         if question:
-            with st.chat_message("user"):
-                st.text(question)
-            with st.chat_message("assistant"):
-                with st.spinner("Looking through your documents..."):
-                    reply = _call(state.api().ask, question, current)
-                if reply is not None:
-                    st.session_state.conversation_id = reply["conversation_id"]
-                    st.rerun()
+            qa_parts.render_user(question)
+            with st.spinner("Looking through your documents..."):
+                reply = _call(state.api().ask, question, current)
+            if reply is not None:
+                st.session_state.conversation_id = reply["conversation_id"]
+                st.rerun()

@@ -125,3 +125,14 @@ def test_answer_markdown_never_lets_text_become_a_link_or_html():
 def test_answer_markdown_handles_empty_and_plain_text():
     assert fmt.answer_markdown("") == ""
     assert fmt.answer_markdown("Just one line") == "**Just one line**"
+
+
+def test_split_answer():
+    assert fmt.split_answer("Head.\n- a\n* b\nplain") == ("Head.", ["a", "b"], ["plain"])
+    assert fmt.split_answer("") == ("", [], [])
+
+
+def test_doc_label():
+    assert fmt.doc_label({"title": "DOC-005_support.pdf", "section": "SLA"}) == "DOC-005 \u00b7 SLA"
+    assert fmt.doc_label({"title": "DOC-007_cases.pdf"}) == "DOC-007"
+    assert fmt.doc_label({}) == "Document"

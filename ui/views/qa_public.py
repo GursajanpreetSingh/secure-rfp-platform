@@ -10,25 +10,23 @@ def render() -> None:
         "No account needed. You can ask about public documents only. "
         "Nothing you type here is saved."
     )
-    # Only this page's own memory of the questions, kept in the browser session. It is not stored.
+    # Only this tab's own memory of the questions, kept in the browser session. It is not stored.
     turns = st.session_state.setdefault("public_turns", [])
+    if not turns:
+        qa_parts.empty_state("Ask about our public documents. Nothing you type is saved.")
     for turn in turns:
-        with st.chat_message("user"):
-            st.text(turn["question"])
-        with st.chat_message("assistant"):
-            qa_parts.show_answer(turn["status"], turn["text"], turn["sources"])
-    question = st.chat_input("Ask a question about public documents")
+        qa_parts.render_user(turn["question"])
+        qa_parts.render_assistant(turn["status"], turn["text"], turn["sources"])
+    question = qa_parts.next_question("Ask a question about public documents")
     if not question:
         return
-    with st.chat_message("user"):
-        st.text(question)
-    with st.chat_message("assistant"):
-        with st.spinner("Looking..."):
-            try:
-                reply = state.api().ask_public(question)
-            except ApiError as problem:
-                st.error(problem.message)
-                return
+    qa_parts.render_user(question)
+    with st.spinner("Looking..."):
+        try:
+            reply = state.api().ask_public(question)
+        except ApiError as problem:
+            st.error(problem.message)
+            return
     turns.append(
         {
             "question": question,
