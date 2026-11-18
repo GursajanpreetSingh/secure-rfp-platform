@@ -44,6 +44,7 @@ if TYPE_CHECKING:
 MAX_QUESTIONS_PER_HOUR = 30  # per logged-in person
 MAX_PUBLIC_QUESTIONS_PER_HOUR = 60  # for all anonymous visitors together
 EVIDENCE_LIMIT = 6
+ANSWER_TEMPERATURE = 0.4  # a little variety in wording; the checks still decide what is shown
 TITLE_CHARS = 60
 REVOKED_TEXT = "[This answer used a document you can no longer access.]"
 
@@ -118,12 +119,20 @@ def _hour_ago() -> datetime:
     return datetime.now(UTC) - timedelta(hours=1)
 
 
+def for_answers(llm):
+    """The model client to use for answers: a little varied if it can be, otherwise as given.
+
+    The RFP judge never calls this, so its results stay fully repeatable."""
+    varied = getattr(llm, "with_temperature", None)
+    return varied(ANSWER_TEMPERATURE) if varied else llm
+
+
 def _run_model(
     question: str, history: list[Turn], search_fn: SearchFn, llm
 ) -> tuple[Answer, list, str | None]:
     hits = search_fn(search_text(question, history))
     evidence = hits_to_evidence(hits, EVIDENCE_LIMIT)
-    ask = QaAsk(llm)
+    ask = QaAsk(for_answers(llm))
     try:
         answer = answer_question(question, history, evidence, ask)
     except LLMUnavailable:

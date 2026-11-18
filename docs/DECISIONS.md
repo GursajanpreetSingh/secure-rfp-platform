@@ -82,3 +82,10 @@ verification, a free model tier, and synthetic data only.
 
 **Why Streamlit, not React?** One language, no build step, and the screens only call the API, so a
 screen bug cannot bypass a rule.
+
+## 15. Temperature differs by task
+
+The RFP judge runs at temperature 0, so the same RFP gives the same answers and the evaluation
+numbers can be repeated. Q&A answers run at 0.4 so repeated questions are not worded identically.
+The quote check and the number check run on every answer, so the facts cannot change with the
+wording. The cost is that a few more answers may be withheld, which is the safe direction.

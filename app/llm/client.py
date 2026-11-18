@@ -73,12 +73,19 @@ class GeminiLLM:
         self._client = client
         self._models = models
         self._sleep = sleep
+        self._temperature = 0.0
+
+    def with_temperature(self, temperature: float) -> "GeminiLLM":
+        """The same models and retries, with another temperature. The original is unchanged."""
+        clone = GeminiLLM(self._client, self._models, self._sleep)
+        clone._temperature = temperature
+        return clone
 
     def generate[T: BaseModel](self, system: str, prompt: str, schema: type[T]) -> LLMResult[T]:
         problems: list[str] = []
         config = {
             "system_instruction": _system_with_schema(system, schema),
-            "temperature": 0,
+            "temperature": self._temperature,
             "response_mime_type": "application/json",
         }
         for pass_number in range(PASSES):
