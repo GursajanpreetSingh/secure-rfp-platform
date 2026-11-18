@@ -122,6 +122,26 @@ def review_problem(action: str, final_status: str | None, note: str) -> str | No
     return None
 
 
+def answer_markdown(text: str) -> str:
+    """Lay out a model answer: bold first line, then bullets. Every piece is escaped first,
+    so nothing the model (or a document) wrote can become a link, an image or HTML."""
+    lines = [line.strip() for line in (text or "").splitlines() if line.strip()]
+    if not lines:
+        return ""
+    out = [f"**{md_escape(lines[0])}**"]
+    bullets, other = [], []
+    for line in lines[1:]:
+        if line.startswith(("- ", "* ", "\u2022 ")):
+            bullets.append(f"- {md_escape(line[2:])}")
+        else:
+            other.append(md_escape(line))
+    if other:
+        out.append("\n\n".join(other))
+    if bullets:
+        out.append("\n".join(bullets))
+    return "\n\n".join(out)
+
+
 def source_line(source: dict) -> str:
     """Where a quote came from: title, section and page, as plain text."""
     where = source.get("title") or "Document"

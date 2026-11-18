@@ -107,3 +107,21 @@ def test_source_line():
     )
     assert fmt.source_line({"title": "Policy"}) == "Policy"
     assert fmt.source_line({}) == "Document"
+
+
+def test_answer_markdown_bolds_headline_and_bullets_the_rest():
+    out = fmt.answer_markdown("Support is 9 to 6.\n- Monday to Friday\n- Not on weekends")
+    assert out.startswith("**Support is 9 to 6\\.**")
+    assert "- Monday to Friday" in out and "- Not on weekends" in out
+
+
+def test_answer_markdown_never_lets_text_become_a_link_or_html():
+    out = fmt.answer_markdown("[click](http://evil) <b>x</b>\n- ![img](http://evil/x.png)")
+    assert "](" not in out.replace("\\](", "")
+    assert "<b>" not in out
+    assert "![" not in out
+
+
+def test_answer_markdown_handles_empty_and_plain_text():
+    assert fmt.answer_markdown("") == ""
+    assert fmt.answer_markdown("Just one line") == "**Just one line**"

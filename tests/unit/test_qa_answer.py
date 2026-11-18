@@ -190,3 +190,22 @@ def test_a_figure_only_in_the_question_is_still_rejected():
     # The safety net is unchanged: repeating the question's own number is not grounded.
     assert not figures_are_grounded("No, it was not 50%. It was 40%.", ["a reduction of 40%"])
     assert figures_are_grounded("No. The documents report a 40% reduction.", ["a reduction of 40%"])
+
+
+def test_prompt_asks_for_a_headline_then_bullets():
+    assert 'each starting with "- "' in SYSTEM_PROMPT
+
+
+def test_a_detail_line_with_an_ungrounded_figure_is_dropped_but_the_answer_stays():
+    text = "Uptime is 99.95 percent.\n- It is measured monthly.\n- Credits start at 12 percent."
+    reply = raw(answer=text)
+    result, _ = run([ev(1, SLA)], reply)
+    assert result.status is AnswerStatus.ANSWERED
+    assert "measured monthly" in result.text
+    assert "12 percent" not in result.text
+
+
+def test_an_ungrounded_figure_in_the_headline_still_withholds_the_answer():
+    reply = raw(answer="Uptime is 99.99 percent.\n- It is measured monthly.")
+    result, _ = run([ev(1, SLA)], reply)
+    assert (result.status, result.why) == (AnswerStatus.NO_ANSWER, Why.UNGROUNDED_NUMBER)
