@@ -3,14 +3,18 @@ import streamlit as st
 _CSS = """
 <style>
   .block-container { padding-top: 2rem; max-width: 1200px; }
-  [data-testid="stSidebar"] { background: #0e1630; border-right: 1px solid #1c2748; }
+  [data-testid="stSidebar"] { background: #eceefa !important; border-right: 1px solid #d9dcf0; }
+  [data-testid="stSidebar"] * { color: #1b2140 !important; }
+  [data-testid="stSidebar"] [aria-current="page"], [data-testid="stSidebar"] a:hover {
+    background: #dfe2fb !important; border-radius: 8px; }
+  [data-testid="stSidebar"] .brand small { color: #5b6490 !important; }
   div[data-testid="stVerticalBlockBorderWrapper"] { border-radius: 14px; }
   .brand { font-size: 1.25rem; font-weight: 700; letter-spacing: .2px; }
-  .brand small { display: block; font-size: .72rem; font-weight: 400; color: #8f9ac2; }
+  .brand small { display: block; font-size: .72rem; font-weight: 400; color: #5b6490; }
   .chip { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .75rem;
-          background: #1b2750; color: #aab6ff; border: 1px solid #2b3a74; }
-  .muted { color: #8f9ac2; font-size: .9rem; }
-  .kpi-label { color: #8f9ac2; font-size: .85rem; }
+          background: #e4e6ff; color: #3730a3; border: 1px solid #c7ccf5; }
+  .muted { color: #5b6490; font-size: .9rem; }
+  .kpi-label { color: #5b6490; font-size: .85rem; }
   .kpi-value { font-size: 2rem; font-weight: 700; line-height: 1.1; }
 </style>
 """
